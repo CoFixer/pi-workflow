@@ -1,0 +1,162 @@
+{
+  "version": "1.0",
+  "description": "React/Next.js skill triggers - consolidated structure",
+  "skills": {
+    "frontend-dev-guidelines": {
+      "type": "domain",
+      "enforcement": "suggest",
+      "priority": "high",
+      "file": "../agents/frontend-development/frontend-developer.md",
+      "promptTriggers": {
+        "keywords": ["frontend", "react", "component", "page", "api integration", "playwright", "e2e test", "typescript", "tailwind", "redux", "router"],
+        "intentPatterns": [
+          "(create|implement|build|add|update|fix).*?(component|page|route|feature)",
+          "(integrate|connect|fetch).*?(api|backend|endpoint)",
+          "(test|testing).*?(e2e|playwright|integration)"
+        ]
+      }
+    },
+    "design-qa-figma": {
+      "type": "domain",
+      "enforcement": "suggest",
+      "priority": "high",
+      "file": "qa/design-qa-figma.md",
+      "promptTriggers": {
+        "keywords": ["design qa", "design-qa", "pixel-perfect", "qa report", "visual comparison", "design verification", "figma qa"],
+        "intentPatterns": [
+          "(qa|verify|check|compare).*?(design|figma|screen|implementation)",
+          "(design|figma).*?(qa|review|audit|check)",
+          "pixel.?perfect",
+          "figma.*?(qa|verify|check)"
+        ]
+      }
+    },
+    "design-qa-html": {
+      "type": "domain",
+      "enforcement": "suggest",
+      "priority": "high",
+      "file": "qa/design-qa-html.md",
+      "promptTriggers": {
+        "keywords": ["design qa", "design-qa", "html qa", "html prototype", "prototype qa", "visual comparison"],
+        "intentPatterns": [
+          "(qa|verify|check|compare).*?(html|prototype|implementation)",
+          "html.*?(qa|review|audit|check)",
+          "prototype.*?(qa|verify|compare)"
+        ]
+      }
+    },
+    "e2e-testing": {
+      "type": "domain",
+      "enforcement": "suggest",
+      "priority": "high",
+      "file": "e2e-testing/SKILL.md",
+      "promptTriggers": {
+        "keywords": [
+          "e2e test",
+          "playwright",
+          "end-to-end",
+          "generate test",
+          "create test",
+          "write test",
+          "integration test",
+          "e2e fixtures",
+          "playwright fixtures",
+          "test fixtures",
+          "test data",
+          "page objects",
+          "page object pattern",
+          "POM"
+        ],
+        "intentPatterns": [
+          "(create|generate|write|add).*?(e2e|playwright|test)",
+          "(test|testing).*?(page|flow|user)",
+          "(create|add|write).*?(playwright|test).*?fixture",
+          "fixture.*?(pattern|setup)",
+          "(create|add|write).*?page.*object",
+          "page.*object.*?(pattern|setup)"
+        ]
+      },
+      "fileTriggers": {
+        "pathPatterns": [
+          "**/test/**/*.spec.ts",
+          "**/e2e/**/*.ts",
+          "**/playwright/**/*.ts"
+        ]
+      }
+    },
+    "figma-to-react-converter": {
+      "type": "domain",
+      "enforcement": "suggest",
+      "priority": "high",
+      "file": "converters/figma-to-react-converter.md",
+      "promptTriggers": {
+        "keywords": ["figma", "convert figma", "figma to react", "implement design"],
+        "intentPatterns": [
+          "(convert|implement).*?figma",
+          "figma.*?(react|component|implementation)"
+        ]
+      }
+    },
+    "html-to-react-converter": {
+      "type": "domain",
+      "enforcement": "suggest",
+      "priority": "medium",
+      "file": "converters/html-to-react-converter.md",
+      "promptTriggers": {
+        "keywords": ["convert html", "html to react", "migrate html", "static html"],
+        "intentPatterns": [
+          "(convert|migrate|transform).*?html",
+          "html.*?(react|component)"
+        ]
+      }
+    },
+    "dashboard-builder": {
+      "type": "domain",
+      "enforcement": "suggest",
+      "priority": "medium",
+      "file": "builders/dashboard-builder.md",
+      "promptTriggers": {
+        "keywords": ["dashboard", "admin dashboard", "admin panel", "crud operations", "admin ui"],
+        "intentPatterns": [
+          "(build|create|generate).*?(dashboard|admin)",
+          "(crud|admin).*?(panel|dashboard)",
+          "analytics.*?dashboard"
+        ]
+      }
+    },
+    "code-quality": {
+      "type": "domain",
+      "enforcement": "suggest",
+      "priority": "medium",
+      "file": "code-quality/organize-types.md",
+      "promptTriggers": {
+        "keywords": ["organize types", "typescript types", "type organization", "refactor types", "centralize types", ".d.ts", "barrel exports"],
+        "intentPatterns": [
+          "(organize|clean|refactor|centralize).*?types",
+          "type.*?(organization|structure|cleanup)",
+          "(create|add).*?\\.d\\.ts"
+        ]
+      },
+      "fileTriggers": {
+        "pathPatterns": [
+          "**/types/**/*.ts",
+          "**/types/**/*.d.ts"
+        ]
+      }
+    },
+    "debugging": {
+      "type": "domain",
+      "enforcement": "suggest",
+      "priority": "medium",
+      "file": "debugging/fix-bug.md",
+      "promptTriggers": {
+        "keywords": ["fix bug", "debug", "react error", "frontend bug", "typescript error", "runtime error", "redux error"],
+        "intentPatterns": [
+          "(fix|debug|solve|resolve).*?bug",
+          "(react|frontend|typescript).*?error",
+          "troubleshoot.*?(issue|problem|error)"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,237 @@
+# PROJECT_KNOWLEDGE.md Generation Rules
+
+## Overview
+
+This prompt guides the generation of the PROJECT_KNOWLEDGE.md file, which serves as the high-level project overview document.
+
+---
+
+## Document Structure
+
+```markdown
+# Project Knowledge - {PROJECT_NAME}
+
+## Overview
+## Tech Stack
+## Project Structure
+## User Roles & Permissions
+## Core Features
+## Page Breakdown
+## Categories/Enums
+## Success Metrics (if available)
+## Team Information (if available)
+```
+
+---
+
+## Section Generation Rules
+
+### 1. Overview Section
+
+**Required fields:**
+
+```markdown
+## Overview
+
+**Project Name**: {project_name}
+**Version**: {version}
+**Created**: {created_date}
+**Status**: {status}
+**Client**: {client_name}
+
+**Description**: {description}
+
+**Key Differentiator**: {differentiator}
+```
+
+**Formatting rules:**
+
+- Description should be 2-3 sentences
+- Use bold for field labels
+- Include all available metadata
+
+### 2. Tech Stack Section
+
+**Format:**
+
+```markdown
+## Tech Stack
+
+- **Backend**: {backend_stack}
+- **Frontend**: {frontend_stack}
+- **Admin Dashboard**: {admin_stack}
+- **Database**: {database}
+- **Authentication**: {auth_methods}
+- **Deployment**: {deployment} (if available)
+```
+
+**Rules:**
+
+- List each technology on its own line
+- Group related technologies (e.g., "React, Redux, TypeScript")
+- Include version numbers if specified in PRD
+
+### 3. Project Structure Section
+
+**Format:**
+
+```markdown
+## Project Structure
+
+```
+{project_name}/
+├── backend/                 # NestJS API
+│   ├── src/
+│   │   ├── modules/        # Feature modules
+│   │   ├── shared/         # Shared utilities
+│   │   └── database/       # Migrations, seeds
+│   └── test/               # E2E tests
+├── frontend/               # React application
+│   ├── app/
+│   │   ├── components/     # UI components
+│   │   ├── pages/          # Page components
+│   │   ├── redux/          # State management
+│   │   └── services/       # API services
+│   └── public/             # Static assets
+└── frontend-admin-dashboard/  # Admin panel
+```
+```
+
+**Rules:**
+
+- Infer structure from tech stack
+- Use standard conventions for each framework
+- Include comments explaining each directory
+
+### 4. User Roles & Permissions Section
+
+**Format as table:**
+
+```markdown
+## User Roles & Permissions
+
+| Role | Description | Key Permissions |
+|------|-------------|-----------------|
+| Guest | Unauthenticated visitor | View public content, Browse |
+| User | Registered user | Submit, Vote, Comment, Save |
+| Admin | Platform administrator | Manage users, Moderate content |
+| Super Admin | Full access | All permissions, System config |
+```
+
+**Rules:**
+
+- One row per user type
+- Description should be 1 sentence
+- Key permissions as comma-separated list
+- Order from least to most privileged
+
+### 5. Core Features Section
+
+**Group by user type:**
+
+```markdown
+## Core Features
+
+### Phase 1 Scope
+
+#### Public Features
+1. **Feature Name** - Brief description
+2. **Feature Name** - Brief description
+
+#### User Features
+1. **Feature Name** - Brief description
+2. **Feature Name** - Brief description
+
+#### Admin Features
+1. **Feature Name** - Brief description
+2. **Feature Name** - Brief description
+```
+
+**Rules:**
+
+- Number each feature
+- Bold the feature name
+- Keep descriptions to one line
+- Group by phase if PRD has phases
+
+### 6. Page Breakdown Section
+
+**Format:**
+
+```markdown
+## Page Breakdown
+
+### Public Pages
+| Page | Route | Description |
+|------|-------|-------------|
+| Home | / | Landing page with featured content |
+| Browse | /browse | List all items with filters |
+
+### User Pages
+| Page | Route | Description |
+|------|-------|-------------|
+| Dashboard | /dashboard | User's personal dashboard |
+| Profile | /profile | User profile management |
+
+### Admin Pages
+| Page | Route | Description |
+|------|-------|-------------|
+| Admin Dashboard | /admin | Admin overview |
+| User Management | /admin/users | Manage users |
+```
+
+**Rules:**
+
+- Use tables for clarity
+- Include route paths
+- Brief description (< 10 words)
+- Separate public, user, and admin sections
+
+### 7. Categories/Enums Section
+
+**Format:**
+
+```markdown
+## Categories/Enums
+
+### {EnumName}Enum
+| Value | Description |
+|-------|-------------|
+| VALUE_1 | Description |
+| VALUE_2 | Description |
+
+### Status Definitions
+- **Draft**: Initial state
+- **Published**: Visible to users
+- **Archived**: Hidden from view
+```
+
+**Rules:**
+
+- One subsection per enum type
+- Use tables for enums with many values
+- Use bullet lists for simpler enums
+- Include descriptions for each value
+
+---
+
+## Formatting Guidelines
+
+1. **Headings**: Use ## for main sections, ### for subsections
+2. **Tables**: Use markdown tables for structured data
+3. **Lists**: Use numbered lists for ordered items, bullets for unordered
+4. **Bold**: Use for emphasis on key terms
+5. **Code**: Use backticks for technical terms, routes, file paths
+
+---
+
+## Footer
+
+Always end with:
+
+```markdown
+---
+*Generated by project-doc-writer skill*
+*Last Updated: {timestamp}*
+*Source: {prd_filename}*
+```

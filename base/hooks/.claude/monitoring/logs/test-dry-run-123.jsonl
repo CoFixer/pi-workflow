@@ -1,0 +1,1 @@
+{"timestamp":"2026-02-28T14:17:02.391Z","event_type":"agent_invoked","session_id":"test-dry-run-123","agent_name":"backend-developer","agent_type":"unknown","team":null,"role":"unknown","parent_agent":null,"task_description":"test dry run","depth":0,"status":"started","duration_ms":null,"error":null}

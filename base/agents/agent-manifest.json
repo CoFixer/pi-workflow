@@ -1,0 +1,54 @@
+{
+  "version": "1.0",
+  "stack": "base",
+  "agents": {
+    "playwright-qa-agent": {
+      "file": "testing/playwright-qa-agent.md",
+      "model": "sonnet",
+      "tier": "medium",
+      "domain": "qa",
+      "roles": ["tester", "verifier"],
+      "description": "Execute user stories via Playwright with PASS/FAIL reports"
+    },
+    "doc-updater": {
+      "file": "documentation/doc-updater.md",
+      "model": "sonnet",
+      "tier": "medium",
+      "domain": "documentation",
+      "roles": ["documenter"],
+      "description": "Analyze session and propose documentation updates"
+    },
+    "automation-scout": {
+      "file": "analysis/automation-scout.md",
+      "model": "sonnet",
+      "tier": "low",
+      "domain": "meta",
+      "roles": ["analyzer"],
+      "description": "Detect repetitive patterns and suggest automations"
+    },
+    "learning-extractor": {
+      "file": "analysis/learning-extractor.md",
+      "model": "sonnet",
+      "tier": "low",
+      "domain": "meta",
+      "roles": ["analyzer"],
+      "description": "Extract learnings from session in TIL format"
+    },
+    "followup-suggester": {
+      "file": "analysis/followup-suggester.md",
+      "model": "sonnet",
+      "tier": "low",
+      "domain": "meta",
+      "roles": ["analyzer"],
+      "description": "Identify incomplete work and prioritize follow-ups"
+    },
+    "duplicate-checker": {
+      "file": "analysis/duplicate-checker.md",
+      "model": "haiku",
+      "tier": "low",
+      "domain": "meta",
+      "roles": ["validator"],
+      "description": "Check proposals for duplicates against existing docs"
+    }
+  }
+}

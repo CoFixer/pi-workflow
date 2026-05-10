@@ -1,0 +1,139 @@
+{
+  "version": "1.0",
+  "description": "NestJS-specific skill triggers",
+  "skills": {
+    "crud-module-generator": {
+      "type": "domain",
+      "enforcement": "suggest",
+      "priority": "high",
+      "file": "crud-module-generator/SKILL.md",
+      "promptTriggers": {
+        "keywords": [
+          "crud",
+          "module",
+          "generator",
+          "scaffold",
+          "entity",
+          "nestjs"
+        ],
+        "intentPatterns": [
+          "(generate|create|scaffold|build|make|add)\\s+(a\\s+)?(new\\s+)?(crud|module|entity)",
+          "(crud|module|entity).*(generate|create|scaffold|for)",
+          "nestjs.*(crud|module|generator|scaffold)",
+          "(create|add|build).*(entity|model).*(module|crud)"
+        ]
+      }
+    },
+    "response-dto-factory": {
+      "type": "domain",
+      "enforcement": "suggest",
+      "priority": "medium",
+      "file": "response-dto-factory/SKILL.md",
+      "promptTriggers": {
+        "keywords": [
+          "response dto",
+          "response wrapper",
+          "success response",
+          "created response",
+          "paginated response"
+        ],
+        "intentPatterns": [
+          "(generate|create).*?response.*?(dto|wrapper)",
+          "success.*?response",
+          "paginated.*?response"
+        ]
+      }
+    },
+    "swagger-doc-generator": {
+      "type": "domain",
+      "enforcement": "suggest",
+      "priority": "medium",
+      "file": "swagger-doc-generator/SKILL.md",
+      "promptTriggers": {
+        "keywords": [
+          "swagger docs",
+          "api documentation",
+          "swagger decorator",
+          "openapi",
+          "api docs"
+        ],
+        "intentPatterns": [
+          "(add|generate|create).*?(swagger|openapi).*?(docs|documentation)",
+          "document.*?api",
+          "swagger.*?(decorators|annotations)"
+        ]
+      }
+    },
+    "guard-decorator-builder": {
+      "type": "domain",
+      "enforcement": "suggest",
+      "priority": "medium",
+      "file": "guard-decorator-builder/SKILL.md",
+      "promptTriggers": {
+        "keywords": [
+          "guard",
+          "decorator",
+          "authorization",
+          "roles",
+          "public endpoint",
+          "jwt guard"
+        ],
+        "intentPatterns": [
+          "(create|add|generate).*?(guard|decorator)",
+          "(roles|authorization).*?(guard|decorator)",
+          "public.*?endpoint"
+        ]
+      }
+    },
+    "e2e-test-generator": {
+      "type": "domain",
+      "enforcement": "suggest",
+      "priority": "high",
+      "file": "e2e-test-generator/SKILL.md",
+      "promptTriggers": {
+        "keywords": [
+          "e2e",
+          "playwright",
+          "test",
+          "testing",
+          "fixture",
+          "integration",
+          "endpoint"
+        ],
+        "intentPatterns": [
+          "(generate|create|add|write|make|build)\\s+(a\\s+)?(new\\s+)?(e2e|playwright|integration|end.to.end).*test",
+          "test.*(endpoint|controller|api|page|flow|feature)",
+          "(e2e|playwright|integration|end.to.end).*(test|testing).*(generate|create|for|add)",
+          "(create|add|write|build).*test.*(endpoint|api|controller)",
+          "(page.object|fixture|test.data).*(pattern|setup|create|generate)"
+        ]
+      }
+    },
+    "code-quality-checker": {
+      "type": "domain",
+      "enforcement": "suggest",
+      "priority": "low",
+      "file": "code-quality-checker/SKILL.md",
+      "promptTriggers": {
+        "keywords": [
+          "code quality",
+          "check code",
+          "lint",
+          "format code",
+          "analyze code",
+          "eslint",
+          "prettier",
+          "code review",
+          "improve code",
+          "refactor"
+        ],
+        "intentPatterns": [
+          "(check|analyze|review|improve).*?(code|quality)",
+          "(lint|format).*?code",
+          "code.*?(quality|analysis|review)",
+          "(eslint|prettier).*?(check|run|fix)"
+        ]
+      }
+    }
+  }
+}

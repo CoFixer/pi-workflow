@@ -1,0 +1,40 @@
+{
+    "enableAllProjectMcpServers": true,
+    "enabledMcpjsonServers": ["mysql", "sequential-thinking", "playwright", "notion"],
+    "permissions": {
+        "allow": [
+            "Edit:*",
+            "Write:*",
+            "MultiEdit:*",
+            "NotebookEdit:*",
+            "Bash:*"
+        ],
+        "defaultMode": "acceptEdits"
+    },
+    "hooks": {
+        "UserPromptSubmit": [
+            {
+                "hooks": [
+                    {
+                        "type": "command",
+                        "command": "$CLAUDE_PROJECT_DIR/.pi/hooks/skill-management/skill-activation-prompt.sh"
+                    }
+                ]
+            }
+        ],
+        "Stop": [
+            {
+                "hooks": [
+                    {
+                        "type": "command",
+                        "command": "$CLAUDE_PROJECT_DIR/.pi/hooks/build-checks/tsc-check.sh"
+                    },
+                    {
+                        "type": "command",
+                        "command": "$CLAUDE_PROJECT_DIR/.pi/hooks/build-checks/trigger-build-resolver.sh"
+                    }
+                ]
+            }
+        ]
+    }
+}

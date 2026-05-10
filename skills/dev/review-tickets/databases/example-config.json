@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "Project Ticket database configuration for Potential Inc workspace.",
+
+  "id": "ba90177d-58a7-443f-8a59-87c589e48f58",
+  "name": "Project Ticket",
+  "description": "Track bugs, features, change requests, and tasks across projects",
+
+  "properties": {
+    "title": "Title",
+    "status": "Status",
+    "priority": "Priority",
+    "category": "Category",
+    "app": "App / Dashboard",
+    "description": "Description",
+    "devComment": "Dev's Comment",
+    "feature": "Feature",
+    "sprint": "Sprint",
+    "assignee": "Assignee",
+    "client": "Client",
+    "project": "Project",
+    "ticketId": "Ticket ID",
+    "url": "URL",
+    "attachments": "Image, Video",
+    "dueDate": "Due Date",
+    "createdTime": "Created time",
+    "createdBy": "Created by"
+  },
+
+  "statusValues": {
+    "todo": ["Backlog", "New"],
+    "inProgress": ["In Progress"],
+    "done": ["Ready for test", "Close"]
+  },
+
+  "priorityValues": ["Urgent", "High", "Medium", "Low"],
+
+  "categoryValues": ["Bug", "New Feature", "Change Request", "Todo"],
+
+  "sprintValues": ["Sprint 1", "Sprint 2", "Sprint 3", "Sprint 4", "Sprint 5", "Sprint 6"],
+
+  "appValues": [
+    "Nanny App", "Parent App", "Admin Dashboard", "APP",
+    "Teacher Dashboard", "All Pages", "Student Dashboard",
+    "K Talk Live Landing Page", "E-commerce Website", "K Talk Live",
+    "K Talk Language Center", "Crypoo App", "Project Owner", "Team Member"
+  ],
+
+  "workflowMapping": {
+    "start": "In Progress",
+    "complete": "Ready for test",
+    "close": "Close",
+    "backlog": "Backlog"
+  },
+
+  "commentTemplate": "Fix implemented:\n- Files modified: {files}\n- Changes: {changes}\n- Feature: {feature}\n- Ready for QA",
+
+  "envKeyLocation": "backend/.env"
+}

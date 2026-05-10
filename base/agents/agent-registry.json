@@ -1,0 +1,576 @@
+{
+  "version": "2.0",
+  "description": "Central registry mapping agents to their framework resources, team structure, and Agent Teams configuration",
+  "teams": {
+    "team-backend": {
+      "name": "Backend Engineering Team",
+      "description": "Server-side development: APIs, database, business logic, migrations",
+      "leader": "backend-developer",
+      "members": [
+        "nestjs-specialist",
+        "database-designer"
+      ],
+      "color": "green",
+      "domain": [
+        "api-endpoints",
+        "database",
+        "business-logic",
+        "migrations",
+        "backend-architecture"
+      ]
+    },
+    "team-frontend": {
+      "name": "Frontend & Mobile Team",
+      "description": "Client-side development: React web, React Native mobile, UI components",
+      "leader": "frontend-developer",
+      "members": [
+        "mobile-developer",
+        "api-integration-agent"
+      ],
+      "color": "blue",
+      "domain": [
+        "ui-components",
+        "routing",
+        "state-management",
+        "html-conversion",
+        "mobile-features"
+      ]
+    },
+    "team-quality": {
+      "name": "Quality & Architecture Team",
+      "description": "Code review, plan review, refactoring, error resolution, monitoring",
+      "leader": "quality-lead",
+      "members": [
+        "reviewer",
+        "refactorer",
+        "auto-error-resolver",
+        "agent-monitor",
+        "gap-finder"
+      ],
+      "color": "purple",
+      "domain": [
+        "code-review",
+        "plan-review",
+        "refactoring",
+        "error-resolution",
+        "architecture-assessment",
+        "monitoring"
+      ]
+    },
+    "team-docs": {
+      "name": "Documentation & Research Team",
+      "description": "Documentation creation, PRD conversion, technical research",
+      "leader": "documentation-architect",
+      "members": [
+        "web-research-specialist",
+        "prd-converter"
+      ],
+      "color": "yellow",
+      "domain": [
+        "documentation",
+        "prd-conversion",
+        "research",
+        "api-docs",
+        "design-system-docs"
+      ]
+    }
+  },
+  "coordinator": {
+    "agent": "project-coordinator",
+    "description": "Top-level orchestrator for multi-team and multi-agent workflows",
+    "manages": [
+      "team-backend",
+      "team-frontend",
+      "team-quality",
+      "team-docs"
+    ],
+    "crossTeamAgents": [
+      "ticket-fixer"
+    ]
+  },
+  "agentTypes": {
+    "backend": {
+      "description": "Backend development agents",
+      "frameworks": [
+        "nestjs"
+      ],
+      "color": "green",
+      "defaultModel": "opus",
+      "defaultPermissionMode": "acceptEdits",
+      "defaultMaxTurns": 40,
+      "role": "implementer"
+    },
+    "frontend": {
+      "description": "Frontend web development agents",
+      "frameworks": [
+        "react"
+      ],
+      "color": "blue",
+      "defaultModel": "opus",
+      "defaultPermissionMode": "acceptEdits",
+      "defaultMaxTurns": 40,
+      "role": "implementer"
+    },
+    "mobile": {
+      "description": "Mobile development agents",
+      "frameworks": [
+        "react-native"
+      ],
+      "color": "cyan",
+      "defaultModel": "opus",
+      "defaultPermissionMode": "acceptEdits",
+      "defaultMaxTurns": 40,
+      "role": "implementer"
+    },
+    "cross-stack": {
+      "description": "Full-stack agents working across multiple frameworks",
+      "frameworks": [
+        "nestjs",
+        "react"
+      ],
+      "color": "green",
+      "defaultModel": "opus",
+      "defaultPermissionMode": "acceptEdits",
+      "defaultMaxTurns": 40,
+      "role": "implementer"
+    },
+    "generic": {
+      "description": "Framework-agnostic agents",
+      "frameworks": [],
+      "color": "blue",
+      "defaultModel": "sonnet",
+      "defaultPermissionMode": "default",
+      "defaultMaxTurns": 25,
+      "role": "specialist"
+    }
+  },
+  "agents": {
+    "project-coordinator": {
+      "type": "cross-stack",
+      "description": "Top-level orchestrator for parallel multi-agent collaboration and cross-team coordination",
+      "frameworkOverrides": [
+        "nestjs",
+        "react"
+      ],
+      "permissionMode": "delegate",
+      "maxTurns": 60,
+      "role": "coordinator",
+      "team": null,
+      "canDelegate": [
+        "backend-developer",
+        "frontend-developer",
+        "quality-lead",
+        "documentation-architect",
+        "ticket-fixer"
+      ],
+      "canBeCalledBy": [
+        "user"
+      ]
+    },
+    "backend-developer": {
+      "type": "backend",
+      "description": "NestJS backend implementation",
+      "frameworkOverrides": null,
+      "team": "team-backend",
+      "role": "leader",
+      "canDelegate": [
+        "nestjs-specialist",
+        "database-designer"
+      ],
+      "canBeCalledBy": [
+        "project-coordinator",
+        "ticket-fixer",
+        "api-integration-agent",
+        "prd-converter"
+      ],
+      "permissionMode": "acceptEdits",
+      "maxTurns": 40,
+      "mcpServers": [
+        "mysql"
+      ]
+    },
+    "nestjs-specialist": {
+      "type": "backend",
+      "description": "Advanced NestJS architecture and optimization",
+      "frameworkOverrides": [
+        "nestjs"
+      ],
+      "team": "team-backend",
+      "role": "member",
+      "canDelegate": [],
+      "canBeCalledBy": [
+        "backend-developer"
+      ],
+      "permissionMode": "acceptEdits",
+      "maxTurns": 40,
+      "mcpServers": [
+        "mysql"
+      ]
+    },
+    "database-designer": {
+      "type": "backend",
+      "description": "Database schema design and migrations",
+      "frameworkOverrides": null,
+      "team": "team-backend",
+      "role": "member",
+      "canDelegate": [],
+      "canBeCalledBy": [
+        "backend-developer",
+        "project-coordinator",
+        "ticket-fixer"
+      ],
+      "permissionMode": "acceptEdits",
+      "maxTurns": 35,
+      "mcpServers": [
+        "mysql"
+      ]
+    },
+    "frontend-developer": {
+      "type": "frontend",
+      "description": "React web development",
+      "frameworkOverrides": null,
+      "team": "team-frontend",
+      "role": "leader",
+      "canDelegate": [
+        "mobile-developer",
+        "api-integration-agent"
+      ],
+      "canBeCalledBy": [
+        "project-coordinator",
+        "ticket-fixer",
+        "api-integration-agent",
+        "prd-converter"
+      ],
+      "permissionMode": "acceptEdits",
+      "maxTurns": 40,
+      "mcpServers": [
+        "playwright"
+      ]
+    },
+    "mobile-developer": {
+      "type": "mobile",
+      "description": "React Native mobile development",
+      "frameworkOverrides": null,
+      "team": "team-frontend",
+      "role": "member",
+      "canDelegate": [],
+      "canBeCalledBy": [
+        "frontend-developer"
+      ],
+      "permissionMode": "acceptEdits",
+      "maxTurns": 40
+    },
+    "quality-lead": {
+      "type": "generic",
+      "description": "Quality & Architecture team leader - coordinates review, refactoring, error resolution",
+      "frameworkOverrides": null,
+      "team": "team-quality",
+      "role": "leader",
+      "canDelegate": [
+        "reviewer",
+        "refactorer",
+        "auto-error-resolver",
+        "agent-monitor",
+        "gap-finder"
+      ],
+      "canBeCalledBy": [
+        "project-coordinator",
+        "ticket-fixer",
+        "backend-developer",
+        "frontend-developer"
+      ]
+    },
+    "reviewer": {
+      "type": "generic",
+      "description": "Code and plan review - architectural consistency, best practices, risk assessment",
+      "frameworkOverrides": null,
+      "team": "team-quality",
+      "role": "member",
+      "canDelegate": [
+        "web-research-specialist"
+      ],
+      "canBeCalledBy": [
+        "quality-lead",
+        "backend-developer",
+        "frontend-developer",
+        "ticket-fixer",
+        "refactorer"
+      ],
+      "permissionMode": "plan",
+      "maxTurns": 20,
+      "disallowedTools": [
+        "Write",
+        "Edit",
+        "MultiEdit",
+        "Bash",
+        "NotebookEdit"
+      ]
+    },
+    "refactorer": {
+      "type": "generic",
+      "description": "Refactoring planning and execution - analysis, strategy, file reorganization, import management",
+      "frameworkOverrides": null,
+      "team": "team-quality",
+      "role": "member",
+      "canDelegate": [
+        "auto-error-resolver"
+      ],
+      "canBeCalledBy": [
+        "quality-lead",
+        "reviewer"
+      ],
+      "permissionMode": "acceptEdits",
+      "maxTurns": 40
+    },
+    "auto-error-resolver": {
+      "type": "generic",
+      "description": "TypeScript compilation error fixing",
+      "frameworkOverrides": null,
+      "team": "team-quality",
+      "role": "member",
+      "canDelegate": [],
+      "canBeCalledBy": [
+        "quality-lead",
+        "backend-developer",
+        "refactorer"
+      ],
+      "permissionMode": "acceptEdits",
+      "maxTurns": 30
+    },
+    "agent-monitor": {
+      "type": "generic",
+      "description": "Agent orchestration monitoring and reporting",
+      "frameworkOverrides": null,
+      "team": "team-quality",
+      "role": "member",
+      "canDelegate": [],
+      "canBeCalledBy": [
+        "quality-lead",
+        "project-coordinator"
+      ]
+    },
+    "gap-finder": {
+      "type": "generic",
+      "description": "Full-stack gap analysis and compliance auditing",
+      "frameworkOverrides": null,
+      "team": "team-quality",
+      "role": "member",
+      "canDelegate": [],
+      "canBeCalledBy": [
+        "quality-lead",
+        "project-coordinator"
+      ]
+    },
+    "documentation-architect": {
+      "type": "generic",
+      "description": "Comprehensive documentation creation",
+      "frameworkOverrides": null,
+      "team": "team-docs",
+      "role": "leader",
+      "canDelegate": [
+        "web-research-specialist",
+        "prd-converter"
+      ],
+      "canBeCalledBy": [
+        "project-coordinator",
+        "ticket-fixer",
+        "backend-developer",
+        "frontend-developer",
+        "quality-lead"
+      ],
+      "permissionMode": "acceptEdits",
+      "maxTurns": 30,
+      "disallowedTools": [
+        "Bash"
+      ]
+    },
+    "web-research-specialist": {
+      "type": "generic",
+      "description": "Online technical research",
+      "frameworkOverrides": null,
+      "team": "team-docs",
+      "role": "member",
+      "canDelegate": [],
+      "canBeCalledBy": [
+        "documentation-architect",
+        "reviewer"
+      ],
+      "permissionMode": "default",
+      "maxTurns": 15,
+      "disallowedTools": [
+        "Write",
+        "Edit",
+        "MultiEdit",
+        "Bash",
+        "NotebookEdit"
+      ]
+    },
+    "prd-converter": {
+      "type": "generic",
+      "description": "PRD parsing and requirement extraction",
+      "frameworkOverrides": null,
+      "team": "team-docs",
+      "role": "member",
+      "canDelegate": [],
+      "canBeCalledBy": [
+        "documentation-architect",
+        "project-coordinator"
+      ],
+      "permissionMode": "acceptEdits",
+      "maxTurns": 30
+    },
+    "ticket-fixer": {
+      "type": "cross-stack",
+      "description": "Full-stack ticket resolution via Notion",
+      "frameworkOverrides": null,
+      "team": null,
+      "role": "cross-team",
+      "canDelegate": [
+        "backend-developer",
+        "frontend-developer",
+        "quality-lead",
+        "documentation-architect",
+        "database-designer",
+        "api-integration-agent"
+      ],
+      "canBeCalledBy": [
+        "project-coordinator"
+      ],
+      "permissionMode": "delegate",
+      "maxTurns": 50,
+      "mcpServers": [
+        "notion",
+        "mysql"
+      ],
+      "skills": [
+        "notion-ticket-reviewer"
+      ]
+    },
+    "api-integration-agent": {
+      "type": "cross-stack",
+      "description": "API integration audit and validation between frontend and backend",
+      "frameworkOverrides": [
+        "nestjs",
+        "react",
+        "react-native"
+      ],
+      "team": "team-frontend",
+      "role": "member",
+      "canDelegate": [
+        "backend-developer",
+        "frontend-developer",
+        "documentation-architect"
+      ],
+      "canBeCalledBy": [
+        "frontend-developer",
+        "ticket-fixer"
+      ],
+      "permissionMode": "acceptEdits",
+      "maxTurns": 40,
+      "mcpServers": [
+        "mysql"
+      ]
+    },
+    "automation-scout": {
+      "type": "generic",
+      "description": "Detect repetitive patterns and suggest automations",
+      "team": null,
+      "role": "specialist",
+      "canDelegate": [],
+      "canBeCalledBy": ["project-coordinator", "quality-lead"],
+      "permissionMode": "default",
+      "maxTurns": 15
+    },
+    "code-architecture-reviewer": {
+      "type": "generic",
+      "description": "Architecture review and structural analysis",
+      "team": null,
+      "role": "specialist",
+      "canDelegate": [],
+      "canBeCalledBy": ["quality-lead", "reviewer", "project-coordinator"],
+      "permissionMode": "default",
+      "maxTurns": 20
+    },
+    "code-refactor-master": {
+      "type": "generic",
+      "description": "Advanced refactoring patterns and execution",
+      "team": null,
+      "role": "specialist",
+      "canDelegate": [],
+      "canBeCalledBy": ["refactorer", "quality-lead"],
+      "permissionMode": "acceptEdits",
+      "maxTurns": 40
+    },
+    "doc-updater": {
+      "type": "generic",
+      "description": "Analyze session and propose documentation updates",
+      "team": null,
+      "role": "specialist",
+      "canDelegate": [],
+      "canBeCalledBy": ["documentation-architect", "project-coordinator"],
+      "permissionMode": "acceptEdits",
+      "maxTurns": 20
+    },
+    "duplicate-checker": {
+      "type": "generic",
+      "description": "Check proposals for duplicates against existing docs",
+      "team": null,
+      "role": "validator",
+      "canDelegate": [],
+      "canBeCalledBy": ["quality-lead", "documentation-architect"],
+      "permissionMode": "default",
+      "maxTurns": 10
+    },
+    "followup-suggester": {
+      "type": "generic",
+      "description": "Identify incomplete work and prioritize follow-ups",
+      "team": null,
+      "role": "analyst",
+      "canDelegate": [],
+      "canBeCalledBy": ["project-coordinator", "quality-lead"],
+      "permissionMode": "default",
+      "maxTurns": 15
+    },
+    "gap-fixer": {
+      "type": "generic",
+      "description": "Fix implementation gaps found by gap-finder",
+      "team": null,
+      "role": "specialist",
+      "canDelegate": [],
+      "canBeCalledBy": ["quality-lead", "project-coordinator", "gap-finder"],
+      "permissionMode": "acceptEdits",
+      "maxTurns": 30
+    },
+    "learning-extractor": {
+      "type": "generic",
+      "description": "Extract learnings from session in TIL format",
+      "team": null,
+      "role": "analyst",
+      "canDelegate": [],
+      "canBeCalledBy": ["project-coordinator"],
+      "permissionMode": "default",
+      "maxTurns": 10
+    },
+    "plan-reviewer": {
+      "type": "generic",
+      "description": "Review implementation plans for feasibility and risks",
+      "team": null,
+      "role": "reviewer",
+      "canDelegate": [],
+      "canBeCalledBy": ["quality-lead", "reviewer", "project-coordinator"],
+      "permissionMode": "default",
+      "maxTurns": 20
+    },
+    "playwright-qa-agent": {
+      "type": "generic",
+      "description": "Execute user stories via Playwright with PASS/FAIL reports",
+      "team": null,
+      "role": "tester",
+      "canDelegate": [],
+      "canBeCalledBy": ["quality-lead", "project-coordinator"],
+      "permissionMode": "acceptEdits",
+      "maxTurns": 30,
+      "mcpServers": ["playwright"]
+    }
+  }
+}

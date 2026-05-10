@@ -1,0 +1,269 @@
+{
+  "version": "1.0",
+  "description": "Skill triggers - project-specific skills only",
+  "skills": {
+    "develop-skills": {
+      "type": "domain",
+      "enforcement": "suggest",
+      "priority": "medium",
+      "file": "dev/develop-skills/SKILL.md",
+      "promptTriggers": {
+        "keywords": [
+          "create skill",
+          "new skill",
+          "skill development",
+          "skill-rules",
+          "build skill"
+        ],
+        "intentPatterns": [
+          "(create|build|add|develop).*skill",
+          "skill.*?(template|structure|format)"
+        ]
+      }
+    },
+    "generate-ppt": {
+      "type": "domain",
+      "enforcement": "suggest",
+      "priority": "medium",
+      "file": "operation/generate-ppt/SKILL.md",
+      "promptTriggers": {
+        "keywords": [
+          "presentation",
+          "ppt",
+          "powerpoint",
+          "slides",
+          "reveal.js",
+          "townhall",
+          "deck",
+          "generate-ppt"
+        ],
+        "intentPatterns": [
+          "(create|generate|build|make).*?(presentation|slides|deck|ppt)",
+          "(html|reveal).*?presentation",
+          "brand.*?(presentation|slides)"
+        ]
+      },
+      "fileTriggers": {
+        "pathPatterns": [
+          "presentations/**/*.html",
+          "presentations/**/*.md",
+          ".pi/**/reveal*.html"
+        ]
+      }
+    },
+    "review-tickets": {
+      "type": "domain",
+      "enforcement": "suggest",
+      "priority": "high",
+      "file": "dev/review-tickets/SKILL.md",
+      "promptTriggers": {
+        "keywords": [
+          "notion ticket",
+          "review ticket",
+          "notion task",
+          "ticket reviewer",
+          "notion database",
+          "notion review",
+          "fix ticket"
+        ],
+        "intentPatterns": [
+          "(review|fix|complete|process).*?(notion|ticket)",
+          "(fetch|get|list|query).*?(notion|ticket|task)",
+          "notion.*?(review|update|status)",
+          "fix ticket:?\\s*",
+          "fix next ticket"
+        ]
+      },
+      "commands": [
+        "fix-ticket"
+      ]
+    },
+    "run-fullstack": {
+      "type": "domain",
+      "enforcement": "suggest",
+      "priority": "high",
+      "file": "dev/run-fullstack/SKILL.md",
+      "promptTriggers": {
+        "keywords": [
+          "fullstack",
+          "/fullstack",
+          "fullstack project",
+          "fullstack workflow",
+          "development pipeline",
+          "project setup",
+          "project init",
+          "iteration manager"
+        ],
+        "intentPatterns": [
+          "(deploy|setup|init|initialize).*?project",
+          "(start|create|build).*?fullstack",
+          "(run|execute).*?(pipeline|workflow)",
+          "iteration.*?(manager|planning)"
+        ]
+      },
+      "commands": [
+        "fullstack"
+      ]
+    },
+    "create-dev-pr": {
+      "type": "domain",
+      "enforcement": "suggest",
+      "priority": "medium",
+      "file": "dev/create-dev-pr/SKILL.md",
+      "promptTriggers": {
+        "keywords": [
+          "create pr",
+          "pull request",
+          "dev branch",
+          "push to dev",
+          "pr to dev"
+        ],
+        "intentPatterns": [
+          "(create|make|open).*?pr",
+          "(push|submit).*?dev",
+          "pull.*?request.*?dev"
+        ]
+      }
+    },
+    "setup-claude": {
+      "type": "domain",
+      "enforcement": "suggest",
+      "priority": "medium",
+      "promptTriggers": {
+        "keywords": [
+          "setup claude",
+          "add framework",
+          "framework submodules",
+          "configure frameworks",
+          "add nestjs",
+          "add react",
+          "add react native",
+          "add marketing",
+          "add operations",
+          "framework configuration",
+          "department configuration"
+        ],
+        "intentPatterns": [
+          "(setup|add|configure|install).*?(framework|claude|submodule|department)",
+          "(framework|department).*?(setup|configuration|submodule)"
+        ]
+      },
+      "commands": [
+        "setup-claude"
+      ]
+    },
+    "find-gaps": {
+      "type": "domain",
+      "enforcement": "suggest",
+      "priority": "medium",
+      "file": "dev/find-gaps/SKILL.md",
+      "promptTriggers": {
+        "keywords": [
+          "gap finder",
+          "gap analysis",
+          "missing design",
+          "missing icons",
+          "design audit",
+          "implementation gaps",
+          "compliance check"
+        ],
+        "intentPatterns": [
+          "(find|check|scan|audit).*?(gaps|missing|incomplete)",
+          "(design|icon|implementation).*?(audit|check|review|gaps)",
+          "gap.*?(analysis|finder|report)"
+        ]
+      },
+      "commands": [
+        "gap-finder"
+      ]
+    },
+    "type-organization": {
+      "type": "guardrail",
+      "enforcement": "warn",
+      "priority": "high",
+      "promptTriggers": {
+        "keywords": [
+          "interface",
+          "type",
+          "types",
+          "extract types",
+          "inline interface",
+          "type organization",
+          "type assertion",
+          "as {}",
+          "inline cast",
+          "inline type assertion"
+        ],
+        "intentPatterns": [
+          "(create|add|define).*?(interface|type).*?(component|page|util|hook)",
+          "inline.*?(interface|type)",
+          "(move|extract).*?(interface|type).*?types",
+          "(fix|remove|extract).*?(inline|assertion).*?type"
+        ]
+      },
+      "fileTriggers": {
+        "pathPatterns": [
+          "*/app/components/**/*.tsx",
+          "*/app/pages/**/*.tsx",
+          "*/app/utils/**/*.ts",
+          "*/app/hooks/**/*.ts",
+          "*/app/redux/**/*.ts",
+          "*/app/services/**/*.ts"
+        ],
+        "pathExclusions": [
+          "*/app/types/**"
+        ],
+        "contentPatterns": [
+          "^(export )?interface ",
+          "^(export )?type ",
+          "as \\{[^}]+\\}",
+          "\\(data:\\s*\\{[^}]+\\}"
+        ]
+      },
+      "blockMessage": "All interfaces and types must be defined in `types/*.d.ts` files, not inline in {file_path}. Inline type assertions (`as { ... }`) and callback parameter types (`(data: { ... })`) should use named types from type files. Extract to the appropriate domain type file."
+    },
+    "mutation-thunk-guardrail": {
+      "type": "guardrail",
+      "enforcement": "warn",
+      "priority": "high",
+      "promptTriggers": {
+        "keywords": [
+          "createAsyncThunk",
+          "create thunk",
+          "mutation thunk",
+          "async thunk create",
+          "async thunk update",
+          "async thunk delete"
+        ],
+        "intentPatterns": [
+          "createAsyncThunk.*?(create|update|delete|remove|add|edit|reset|archive)",
+          "(create|add).*?thunk.*?(mutation|create|update|delete)"
+        ]
+      },
+      "fileTriggers": {
+        "pathPatterns": [
+          "*/app/services/httpServices/*Service.ts"
+        ],
+        "contentPatterns": [
+          "createAsyncThunk.*?(create|update|delete|remove|add|edit|reset|archive)"
+        ]
+      },
+      "blockMessage": "createAsyncThunk should ONLY be used for READ/FETCH operations. For mutations (create/update/delete), use direct service calls with FormHandleState pattern. See .pi/react/guides/crud-operations.md for the correct pattern."
+    },
+    "modal-submitting-guardrail": {
+      "type": "guardrail",
+      "enforcement": "warn",
+      "priority": "high",
+      "fileTriggers": {
+        "pathPatterns": [
+          "*/app/components/**/*Modal*.tsx",
+          "*/app/components/**/*Dialog*.tsx"
+        ],
+        "contentPatterns": [
+          "useState.*(submitting|isSubmitting|setSubmitting)"
+        ]
+      },
+      "blockMessage": "Modals MUST NOT have their own submitting/isSubmitting state. Pass loading as a prop from the parent's FormHandleState. See .pi/react/guides/crud-operations.md"
+    }
+  }
+}
