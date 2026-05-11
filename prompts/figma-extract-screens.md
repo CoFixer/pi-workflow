@@ -18,13 +18,13 @@ Extract the file key and node ID from the URL:
 
 ## Step 2: Fetch Figma Data via REST API
 
-Use the Figma REST API with the token stored in `.pi-project/secrets/figma-token.env`.
+Use the Figma REST API with the token stored in `.project/secrets/figma-token.env`.
 
 ### Fetch the node data:
 
 ```bash
 # Load token from secrets
-source .pi-project/secrets/figma-token.env
+source .project/secrets/figma-token.env
 
 # Variables from URL
 FILE_KEY="<file-key-from-url>"
@@ -89,7 +89,7 @@ for child in sorted(children, key=lambda x: x.get('name', '')):
 
 ## Step 4: Update the Status File
 
-Edit `.pi-project/status/FRONTEND_SCREEN_IMPLEMENTATION_STATUS.md`:
+Edit `.project/status/FRONTEND_SCREEN_IMPLEMENTATION_STATUS.md`:
 
 1. Find the "### All Figma Sections" table
 2. Add new sections or update existing ones
@@ -111,12 +111,12 @@ After updating, report:
 
 ## Figma Token Setup
 
-Token is stored at: `.pi-project/secrets/figma-token.env`
+Token is stored at: `.project/secrets/figma-token.env`
 
 To create a new token:
 1. Go to Figma → Settings → Account → Personal access tokens
 2. Create token with `file_content:read` scope
-3. Save to `.pi-project/secrets/figma-token.env` as:
+3. Save to `.project/secrets/figma-token.env` as:
    ```
    FIGMA_TOKEN=figd_xxxxx...
    ```

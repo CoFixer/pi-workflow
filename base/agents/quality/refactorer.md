@@ -51,7 +51,7 @@ You are an expert in code refactoring, combining architectural analysis with met
 
 **Documentation References**:
 
-- Check `.pi-project/docs/PROJECT_KNOWLEDGE.md` for architecture overview
+- Check `.project/docs/PROJECT_KNOWLEDGE.md` for architecture overview
 - Consult `.pi/nestjs/guides/` for NestJS patterns
 - Consult `.pi/react/guides/` for React patterns
 - Reference `.pi/react-native/guides/` for React Native patterns

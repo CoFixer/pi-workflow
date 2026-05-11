@@ -110,10 +110,10 @@ function main() {
     }
 
     const projectDir = process.env.CLAUDE_PROJECT_DIR || process.cwd();
-    const memoryPath = join(projectDir, '.claude-project', 'memory', 'agent-memory.json');
+    const memoryPath = join(projectDir, '.project', 'memory', 'agent-memory.json');
 
     if (!existsSync(memoryPath)) {
-      console.log('\n⚠️ AGENT MEMORY: File was deleted or moved. Expected at .pi-project/memory/agent-memory.json\n');
+      console.log('\n⚠️ AGENT MEMORY: File was deleted or moved. Expected at .project/memory/agent-memory.json\n');
       process.exit(0);
     }
 

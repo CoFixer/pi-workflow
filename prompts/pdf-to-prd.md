@@ -108,12 +108,12 @@ Create the markdown file with this exact structure:
 
 1. Create output directory if needed:
    ```bash
-   mkdir -p .pi-project/prd
+   mkdir -p .project/prd
    ```
 
 2. Save the markdown file:
    - Filename: [original-pdf-name].md (without .pdf extension)
-   - Location: .pi-project/prd/
+   - Location: .project/prd/
 
 3. Report the output file location
 
@@ -140,5 +140,5 @@ After conversion, provide:
 ```
 
 **Output:**
-- File created: `.pi-project/prd/coaching-record-prd.md`
+- File created: `.project/prd/coaching-record-prd.md`
 - Sections extracted: Overview, Terminology, User Types, Project Structure, Page Architecture, Page List

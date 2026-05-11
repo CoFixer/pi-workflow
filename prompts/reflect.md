@@ -152,7 +152,7 @@ Question: "Which memory level should these learnings be saved to?"
 |-------|----------|-------------|
 | **Personal** | `~/.pi/memory/` | Your individual preferences (follows you everywhere) |
 | **Team** | `.pi/base/docs/` | Team conventions (shared via submodule) |
-| **Project** | `.pi-project/memory/` | Project-specific details (default) |
+| **Project** | `.project/memory/` | Project-specific details (default) |
 
 **Guidelines for suggesting level:**
 - "I prefer..." → Personal (unless they say "we")
@@ -191,7 +191,7 @@ Options:
    - `PREFERENCES.md` - Team conventions
    - `CORRECTIONS.md` - Team anti-patterns
 
-   **Project level** (`.pi-project/memory/`):
+   **Project level** (`.project/memory/`):
    - `LEARNINGS.md` - Project-specific learnings
    - `PREFERENCES.md` - Project preferences
    - `CORRECTIONS.md` - Project-specific mistakes to avoid
@@ -216,7 +216,7 @@ Options:
 3. **Commit** the changes:
 
 ```bash
-git add .pi-project/memory/
+git add .project/memory/
 git commit -m "reflect: [brief summary of learnings]
 
 Captured from session:
@@ -236,7 +236,7 @@ Output:
 Reflection complete.
 
 Saved [N] learning(s) to:
-- .pi-project/memory/LEARNINGS.md
+- .project/memory/LEARNINGS.md
 
 Changes committed: [commit hash]
 
@@ -273,7 +273,7 @@ Memory files exist at three levels (priority: personal < team < project):
 - Team coding conventions
 - Shared library preferences
 
-### Project Level (`.pi-project/memory/`)
+### Project Level (`.project/memory/`)
 - Project-specific learnings
 - Codebase-specific patterns
 - Business logic details

@@ -18,8 +18,8 @@ Phase 6 of the fullstack pipeline. Creates an admin dashboard with CRUD operatio
 - **Project**: Read from PIPELINE_STATUS.md
 - **Previous phases**: backend (API endpoints), frontend (design patterns)
 - **Expected input**:
-  - `.pi-project/docs/PROJECT_DATABASE.md` - Entity definitions
-  - `.pi-project/docs/PROJECT_API.md` - API endpoints
+  - `.project/docs/PROJECT_DATABASE.md` - Entity definitions
+  - `.project/docs/PROJECT_API.md` - API endpoints
   - `frontend/` or `mobile/` - Existing design patterns
 - **Expected output**: `frontend-admin-dashboard/` folder with complete admin UI
 
@@ -45,8 +45,8 @@ ls -la frontend-admin-dashboard/ 2>/dev/null
 
 ```bash
 # Required docs for dashboard generation
-cat .pi-project/docs/PROJECT_DATABASE.md  # Entity definitions
-cat .pi-project/docs/PROJECT_API.md       # API endpoints
+cat .project/docs/PROJECT_DATABASE.md  # Entity definitions
+cat .project/docs/PROJECT_API.md       # API endpoints
 ```
 
 ---

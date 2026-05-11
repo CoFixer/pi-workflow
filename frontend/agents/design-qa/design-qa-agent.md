@@ -52,7 +52,7 @@ Arguments: $ARGUMENTS
 After project selection, load the screen implementation status file:
 
 ```
-.pi-project/plans/{project-name}/SCREEN_IMPLEMENTATION_STATUS.md
+.project/plans/{project-name}/SCREEN_IMPLEMENTATION_STATUS.md
 ```
 
 Parse the markdown file to extract:
@@ -337,7 +337,7 @@ To fix:
 
 ### Status File Not Found
 ```
-Error: Status file not found at .pi-project/plans/{project}/SCREEN_IMPLEMENTATION_STATUS.md
+Error: Status file not found at .project/plans/{project}/SCREEN_IMPLEMENTATION_STATUS.md
 
 Options:
 1. Provide a direct Figma URL with node-id parameter

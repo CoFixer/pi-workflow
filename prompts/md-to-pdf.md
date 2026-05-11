@@ -13,7 +13,7 @@ Convert a markdown file to PDF format using the `md-to-pdf` npm package.
 
 ```bash
 /md-to-pdf /path/to/file.md
-/md-to-pdf .pi-project/prd/MyApp_PRD_260115.md
+/md-to-pdf .project/prd/MyApp_PRD_260115.md
 ```
 
 ---
@@ -127,13 +127,13 @@ Troubleshooting:
 
 ## Example
 
-Running `/md-to-pdf .pi-project/prd/HealthBridge_PRD_260115.md`:
+Running `/md-to-pdf .project/prd/HealthBridge_PRD_260115.md`:
 
 ```
 ## PDF Generated Successfully
 
-**Input:** .pi-project/prd/HealthBridge_PRD_260115.md
-**Output:** .pi-project/prd/HealthBridge_PRD_260115.pdf
+**Input:** .project/prd/HealthBridge_PRD_260115.md
+**Output:** .project/prd/HealthBridge_PRD_260115.pdf
 **Size:** 245 KB
 ```
 

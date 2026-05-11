@@ -21,11 +21,11 @@ Dynamically discover and load before scanning:
 
 | Document | Discovery | What to Extract |
 |----------|-----------|-----------------|
-| PRD files | `Glob(pattern="**/*.{md,pdf}", path=".pi-project/prd/")` | Required screens, features, flows |
-| Project docs | `Glob(pattern="*.md", path=".pi-project/docs/")` | Design system, API specs, DB schema, architecture (use all found) |
+| PRD files | `Glob(pattern="**/*.{md,pdf}", path=".project/prd/")` | Required screens, features, flows |
+| Project docs | `Glob(pattern="*.md", path=".project/docs/")` | Design system, API specs, DB schema, architecture (use all found) |
 | CLAUDE.md | Read `CLAUDE.md` at project root | Design values, conventions, architecture rules |
 | Tailwind config | `Glob(pattern="tailwind.config.*")` | Theme colors, fonts, spacing tokens |
-| HTML Prototypes | `Glob(pattern="**/*.html", path=".pi-project/resources/HTML/")` | Visual reference (optional, skip if missing) |
+| HTML Prototypes | `Glob(pattern="**/*.html", path=".project/resources/HTML/")` | Visual reference (optional, skip if missing) |
 
 **Discovery rules:**
 - PRD files are required — at least one must exist for meaningful gap analysis
@@ -42,7 +42,7 @@ Dynamically discover and load before scanning:
 **Step 1a: Extract design values from available sources**
 
 Check these in priority order:
-1. Design guidelines doc (if found in `.pi-project/docs/`)
+1. Design guidelines doc (if found in `.project/docs/`)
 2. `CLAUDE.md` at project root (look for color hex codes, font names, spacing values)
 3. Tailwind config file (`tailwind.config.js` or `tailwind.config.ts`) for theme customizations
 
@@ -124,7 +124,7 @@ Grep(pattern="path:", glob="*.tsx", path="frontend/app/")
 Grep(pattern="Route ", glob="*.tsx", path="frontend/app/")
 
 # List HTML prototypes (if directory exists)
-Glob(pattern="**/*.html", path=".pi-project/resources/HTML/")
+Glob(pattern="**/*.html", path=".project/resources/HTML/")
 ```
 
 **Cross-reference:**
@@ -271,7 +271,7 @@ Glob(pattern="**/*.ts", path="frontend/app/services/")
 Grep(pattern="catch|error", glob="*.ts", path="frontend/app/services/", output_mode="files_with_matches")
 ```
 
-**Cross-reference against API documentation (if found in `.pi-project/docs/` or CLAUDE.md):**
+**Cross-reference against API documentation (if found in `.project/docs/` or CLAUDE.md):**
 - Each documented endpoint should have a service function
 - Each service function should have error handling
 - Each endpoint with pagination should pass page/limit params

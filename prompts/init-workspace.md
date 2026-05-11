@@ -1,19 +1,19 @@
 ---
-description: Initialize .claude-project folder with documentation templates
+description: Initialize .project folder with documentation templates
 argument-hint: Optional project name (will auto-detect if not provided)
 ---
 
-You are a project documentation initialization assistant. Your task is to create the `.pi-project/` folder structure with all necessary templates for project tracking.
+You are a project documentation initialization assistant. Your task is to create the `.project/` folder structure with all necessary templates for project tracking.
 
 ## Step 0: Check Prerequisites
 
-### Check for existing .claude-project folder
+### Check for existing .project folder
 
 ```bash
-ls -la .claude-project 2>/dev/null
+ls -la .project 2>/dev/null
 ```
 
-If `.pi-project/` already exists, use **AskUserQuestion** to ask:
+If `.project/` already exists, use **AskUserQuestion** to ask:
 
 **Options:**
 1. **Skip** - Keep existing folder, don't overwrite
@@ -94,33 +94,33 @@ Only prompt if auto-detection failed or user wants to change values.
 ## Step 3: Create Directory Structure
 
 Based on `$OVERWRITE_MODE`:
-- **Skip**: Exit with message "Keeping existing .pi-project/ folder"
-- **Overwrite**: `rm -rf .claude-project`
+- **Skip**: Exit with message "Keeping existing .project/ folder"
+- **Overwrite**: `rm -rf .project`
 - **Merge**: Continue (will skip existing files)
 
 Create the folder structure:
 
 ```bash
 # Create main directories
-mkdir -p .pi-project/docs
-mkdir -p .pi-project/memory
-mkdir -p .pi-project/status/backend
-mkdir -p .pi-project/status/frontend
-mkdir -p .pi-project/status/temp
-mkdir -p .pi-project/prd
-mkdir -p .pi-project/secrets
+mkdir -p .project/docs
+mkdir -p .project/memory
+mkdir -p .project/status/backend
+mkdir -p .project/status/frontend
+mkdir -p .project/status/temp
+mkdir -p .project/prd
+mkdir -p .project/secrets
 ```
 
 If `$HAS_DASHBOARD` is true:
 ```bash
-mkdir -p .pi-project/status/dashboard
+mkdir -p .project/status/dashboard
 ```
 
 Create .gitkeep files:
 ```bash
-touch .pi-project/status/temp/.gitkeep
-touch .pi-project/prd/.gitkeep
-touch .pi-project/secrets/.gitkeep
+touch .project/status/temp/.gitkeep
+touch .project/prd/.gitkeep
+touch .project/secrets/.gitkeep
 ```
 
 ## Step 4: Process and Copy Templates
@@ -132,33 +132,33 @@ For each template file in `.pi/base/templates/claude-project/`:
    - `$PROJECT_NAME` → actual project name
    - `$BACKEND` → detected backend framework
    - `$FRONTENDS` → comma-separated list of frontend frameworks
-3. Write to `.pi-project/` with `.template` removed from filename
+3. Write to `.project/` with `.template` removed from filename
 
 ### Template Mapping
 
 | Template | Destination |
 |----------|-------------|
-| `docs/PROJECT_API.template.md` | `.pi-project/docs/PROJECT_API.md` |
-| `docs/PROJECT_DATABASE.template.md` | `.pi-project/docs/PROJECT_DATABASE.md` |
-| `docs/PROJECT_KNOWLEDGE.template.md` | `.pi-project/docs/PROJECT_KNOWLEDGE.md` |
-| `docs/PROJECT_API_INTEGRATION.template.md` | `.pi-project/docs/PROJECT_API_INTEGRATION.md` |
-| `docs/FRONTEND_AUTH_FLOW.template.md` | `.pi-project/docs/FRONTEND_AUTH_FLOW.md` |
-| `memory/DECISIONS.template.md` | `.pi-project/memory/DECISIONS.md` |
-| `memory/LEARNINGS.template.md` | `.pi-project/memory/LEARNINGS.md` |
-| `memory/PREFERENCES.template.md` | `.pi-project/memory/PREFERENCES.md` |
-| `status/backend/API_IMPLEMENTATION_STATUS.template.md` | `.pi-project/status/backend/API_IMPLEMENTATION_STATUS.md` |
-| `status/frontend/SCREEN_IMPLEMENTATION_STATUS.template.md` | `.pi-project/status/frontend/SCREEN_IMPLEMENTATION_STATUS.md` |
-| `status/frontend/API_INTEGRATION_STATUS.template.md` | `.pi-project/status/frontend/API_INTEGRATION_STATUS.md` |
+| `docs/PROJECT_API.template.md` | `.project/docs/PROJECT_API.md` |
+| `docs/PROJECT_DATABASE.template.md` | `.project/docs/PROJECT_DATABASE.md` |
+| `docs/PROJECT_KNOWLEDGE.template.md` | `.project/docs/PROJECT_KNOWLEDGE.md` |
+| `docs/PROJECT_API_INTEGRATION.template.md` | `.project/docs/PROJECT_API_INTEGRATION.md` |
+| `docs/FRONTEND_AUTH_FLOW.template.md` | `.project/docs/FRONTEND_AUTH_FLOW.md` |
+| `memory/DECISIONS.template.md` | `.project/memory/DECISIONS.md` |
+| `memory/LEARNINGS.template.md` | `.project/memory/LEARNINGS.md` |
+| `memory/PREFERENCES.template.md` | `.project/memory/PREFERENCES.md` |
+| `status/backend/API_IMPLEMENTATION_STATUS.template.md` | `.project/status/backend/API_IMPLEMENTATION_STATUS.md` |
+| `status/frontend/SCREEN_IMPLEMENTATION_STATUS.template.md` | `.project/status/frontend/SCREEN_IMPLEMENTATION_STATUS.md` |
+| `status/frontend/API_INTEGRATION_STATUS.template.md` | `.project/status/frontend/API_INTEGRATION_STATUS.md` |
 
 If `$HAS_DASHBOARD` is true, also copy:
-| `status/frontend-dashboard/SCREEN_IMPLEMENTATION_STATUS.template.md` | `.pi-project/status/dashboard/SCREEN_IMPLEMENTATION_STATUS.md` |
-| `status/frontend-dashboard/API_INTEGRATION_STATUS.template.md` | `.pi-project/status/dashboard/API_INTEGRATION_STATUS.md` |
+| `status/frontend-dashboard/SCREEN_IMPLEMENTATION_STATUS.template.md` | `.project/status/dashboard/SCREEN_IMPLEMENTATION_STATUS.md` |
+| `status/frontend-dashboard/API_INTEGRATION_STATUS.template.md` | `.project/status/dashboard/API_INTEGRATION_STATUS.md` |
 
 **For merge mode**: Skip files that already exist.
 
 ## Step 5: Update .gitignore
 
-Check if `.gitignore` contains `.claude-project` entries:
+Check if `.gitignore` contains `.project` entries:
 
 ```bash
 grep -q "claude-project/secrets" .gitignore 2>/dev/null
@@ -168,16 +168,16 @@ If not present, append to `.gitignore`:
 
 ```
 # Claude Code project documentation
-.pi-project/secrets/*
-!.pi-project/secrets/.gitkeep
-.pi-project/status/temp/*
-!.pi-project/status/temp/.gitkeep
+.project/secrets/*
+!.project/secrets/.gitkeep
+.project/status/temp/*
+!.project/status/temp/.gitkeep
 ```
 
 ## Step 6: Report Results
 
 ```
-Created .pi-project/ folder structure
+Created .project/ folder structure
 
 Project: $PROJECT_NAME
 Tech Stack:
@@ -185,11 +185,11 @@ Tech Stack:
   - Frontend: $FRONTENDS
 
 Created directories:
-  - .pi-project/docs/         (API, Database, Knowledge docs)
-  - .pi-project/memory/       (Decisions, Learnings, Preferences)
-  - .pi-project/status/        (Implementation status tracking)
-  - .pi-project/prd/          (Product requirements)
-  - .pi-project/secrets/      (Sensitive config - gitignored)
+  - .project/docs/         (API, Database, Knowledge docs)
+  - .project/memory/       (Decisions, Learnings, Preferences)
+  - .project/status/        (Implementation status tracking)
+  - .project/prd/          (Product requirements)
+  - .project/secrets/      (Sensitive config - gitignored)
 
 Files created:
   - docs/PROJECT_API.md
@@ -205,8 +205,8 @@ Files created:
   [+ dashboard files if applicable]
 
 Next steps:
-1. Edit .pi-project/docs/PROJECT_KNOWLEDGE.md with project overview
-2. Review and customize .pi-project/memory/PREFERENCES.md
+1. Edit .project/docs/PROJECT_KNOWLEDGE.md with project overview
+2. Review and customize .project/memory/PREFERENCES.md
 3. Update implementation status files as you build features
 ```
 

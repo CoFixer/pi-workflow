@@ -178,7 +178,7 @@ Fix these {N} gaps:
    File(s): {File(s)}
 {end for}
 
-Design reference: .pi-project/docs/PROJECT_DESIGN_GUIDELINES.md
+Design reference: .project/docs/PROJECT_DESIGN_GUIDELINES.md
 
 Report context:
 ---

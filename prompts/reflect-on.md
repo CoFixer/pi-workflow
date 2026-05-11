@@ -11,7 +11,7 @@ Enable automatic analysis and learning capture when sessions end.
 
 ## What This Does
 
-1. Creates/updates `.pi-project/state/reflect-enabled.json`
+1. Creates/updates `.project/state/reflect-enabled.json`
 2. Sets `enabled: true`
 3. Future sessions will auto-capture HIGH confidence learnings on Stop
 
@@ -21,7 +21,7 @@ Enable automatic analysis and learning capture when sessions end.
 
 Create the state directory if needed and write the enabled state:
 
-**Target file:** `.pi-project/state/reflect-enabled.json`
+**Target file:** `.project/state/reflect-enabled.json`
 
 ```json
 {
@@ -44,7 +44,7 @@ What this means:
 - Session learnings will be automatically captured on Stop
 - Only HIGH confidence learnings are auto-applied
 - Changes are committed to git automatically
-- Learnings saved to .pi-project/memory/LEARNINGS.md
+- Learnings saved to .project/memory/LEARNINGS.md
 
 To disable: /reflect-off
 To check status: /reflect-status

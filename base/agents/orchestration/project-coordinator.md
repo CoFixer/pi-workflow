@@ -113,9 +113,9 @@ Task:
     {specific task description with full context}
 
     ## Project Context
-    - Read `.pi-project/docs/PROJECT_KNOWLEDGE.md` for architecture overview
-    - Read `.pi-project/docs/PROJECT_API.md` for API specifications
-    - Read `.pi-project/docs/PROJECT_DATABASE.md` for database schema
+    - Read `.project/docs/PROJECT_KNOWLEDGE.md` for architecture overview
+    - Read `.project/docs/PROJECT_API.md` for API specifications
+    - Read `.project/docs/PROJECT_DATABASE.md` for database schema
 
     ## Key Files
     {list relevant existing files}
@@ -251,7 +251,7 @@ If two teammates need the same file:
 
 ### Step 1: Read Project Knowledge
 
-Read `.pi-project/docs/PROJECT_KNOWLEDGE.md` to understand:
+Read `.project/docs/PROJECT_KNOWLEDGE.md` to understand:
 - Tech stack (backend framework, frontend framework, mobile framework)
 - Application directories (e.g., `backend/`, `frontend/`, `dashboard/`, `mobile/`)
 - Build commands for each application
@@ -282,11 +282,11 @@ Common patterns:
 
 ### Key Documentation (if exists)
 
-- `.pi-project/docs/PROJECT_KNOWLEDGE.md` - Architecture overview
-- `.pi-project/docs/PROJECT_API.md` - API endpoint specifications
-- `.pi-project/docs/PROJECT_DATABASE.md` - Database schema
-- `.pi-project/docs/PROJECT_DESIGN_GUIDELINES.md` - UI/UX design system
-- `.pi-project/docs/PROJECT_API_INTEGRATION.md` - Frontend-API integration status
+- `.project/docs/PROJECT_KNOWLEDGE.md` - Architecture overview
+- `.project/docs/PROJECT_API.md` - API endpoint specifications
+- `.project/docs/PROJECT_DATABASE.md` - Database schema
+- `.project/docs/PROJECT_DESIGN_GUIDELINES.md` - UI/UX design system
+- `.project/docs/PROJECT_API_INTEGRATION.md` - Frontend-API integration status
 
 **Teammate protocol**: All teammates should read `.pi/teams/TEAMMATE_PROTOCOL.md` for communication rules (if it exists; otherwise follow the Communication Patterns section above).
 
@@ -409,7 +409,7 @@ When receiving a `Task()` dispatch from the `/fullstack` orchestrator:
 
 1. Read the skill file path provided in the prompt FIRST — it is the authoritative guide for the phase
 2. Follow its instructions exactly, delegating to sub-agents as instructed
-3. Pass tech stack context (`$BACKEND`, `$FRONTEND`) and all `.pi-project/docs/` paths to sub-agents
+3. Pass tech stack context (`$BACKEND`, `$FRONTEND`) and all `.project/docs/` paths to sub-agents
 4. Return a structured `PHASE_RESULT` JSON block as the FINAL output of your response:
 
 ```json
@@ -426,7 +426,7 @@ Always include in sub-agent prompts:
 - `Pipeline: fullstack-pipeline. Phase: {N}/14.`
 - The resolved skill file path
 - Previous phases' PHASE_RESULT summaries
-- Status file path: `.pi-project/status/{project}/PIPELINE_STATUS.md`
+- Status file path: `.project/status/{project}/PIPELINE_STATUS.md`
 - Tech stack: `backend={BACKEND}, frontend={FRONTEND}`
 
 ---

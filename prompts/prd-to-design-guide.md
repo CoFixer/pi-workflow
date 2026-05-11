@@ -849,7 +849,7 @@ Progress bar: 5 steps, show completion, click to navigate completed steps
 
 **Save as:**
 - **Filename:** `[ProjectName]_DesignGuide_[YYMMDD].md`
-- **Location:** `.pi-project/design/` or project root
+- **Location:** `.project/design/` or project root
 - **Format:** Markdown (.md)
 
 **Share with:**

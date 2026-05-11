@@ -297,11 +297,11 @@ const styles = {
 - [CLAUDE.md](CLAUDE.md) in project root - Quick stack overview, commands, agents
 
 **DETAILED (Full Context):**
-- [.pi-project/docs/PROJECT_KNOWLEDGE.md](.pi-project/docs/PROJECT_KNOWLEDGE.md) - Full architecture & tech stack
-- [.pi-project/docs/PROJECT_API.md](.pi-project/docs/PROJECT_API.md) - API endpoint specifications
-- [.pi-project/docs/PROJECT_DATABASE.md](.pi-project/docs/PROJECT_DATABASE.md) - Database schema & ERD
-- [.pi-project/docs/PROJECT_API_INTEGRATION.md](.pi-project/docs/PROJECT_API_INTEGRATION.md) - Frontend-API mapping
-- **[.pi-project/docs/PROJECT_DESIGN_SYSTEM.md](.pi-project/docs/PROJECT_DESIGN_SYSTEM.md)** - Consistent styling across mobile and web (colors, hover/press states, spacing, typography)
+- [.project/docs/PROJECT_KNOWLEDGE.md](.project/docs/PROJECT_KNOWLEDGE.md) - Full architecture & tech stack
+- [.project/docs/PROJECT_API.md](.project/docs/PROJECT_API.md) - API endpoint specifications
+- [.project/docs/PROJECT_DATABASE.md](.project/docs/PROJECT_DATABASE.md) - Database schema & ERD
+- [.project/docs/PROJECT_API_INTEGRATION.md](.project/docs/PROJECT_API_INTEGRATION.md) - Frontend-API mapping
+- **[.project/docs/PROJECT_DESIGN_SYSTEM.md](.project/docs/PROJECT_DESIGN_SYSTEM.md)** - Consistent styling across mobile and web (colors, hover/press states, spacing, typography)
 - [.pi/react-native/guides/](.pi/react-native/guides/) - React Native development guides
 - [.pi/react-native/skills/](.pi/react-native/skills/) - Mobile-specific skills
 

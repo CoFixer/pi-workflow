@@ -32,7 +32,7 @@ describe('stack-detector', () => {
 - **Frontend**: react
 - **Database**: PostgreSQL
 `;
-      const knowledgePath = join(tempDir, '.claude-project', 'docs');
+      const knowledgePath = join(tempDir, '.project', 'docs');
       mkdirSync(knowledgePath, { recursive: true });
       writeFileSync(join(knowledgePath, 'PROJECT_KNOWLEDGE.md'), content);
 
@@ -49,7 +49,7 @@ describe('stack-detector', () => {
 - **Backend**: django
 - **Frontend**: react-native
 `;
-      const knowledgePath = join(tempDir, '.claude-project', 'docs');
+      const knowledgePath = join(tempDir, '.project', 'docs');
       mkdirSync(knowledgePath, { recursive: true });
       writeFileSync(join(knowledgePath, 'PROJECT_KNOWLEDGE.md'), content);
 
@@ -63,7 +63,7 @@ describe('stack-detector', () => {
       const content = `
 - **Backend**: NestJS
 `;
-      const knowledgePath = join(tempDir, '.claude-project', 'docs');
+      const knowledgePath = join(tempDir, '.project', 'docs');
       mkdirSync(knowledgePath, { recursive: true });
       writeFileSync(join(knowledgePath, 'PROJECT_KNOWLEDGE.md'), content);
 
@@ -78,7 +78,7 @@ describe('stack-detector', () => {
 - **Backend**: nestjs
 - **Frontend**: react, react-native
 `;
-      const knowledgePath = join(tempDir, '.claude-project', 'docs');
+      const knowledgePath = join(tempDir, '.project', 'docs');
       mkdirSync(knowledgePath, { recursive: true });
       writeFileSync(join(knowledgePath, 'PROJECT_KNOWLEDGE.md'), content);
 
@@ -106,7 +106,7 @@ This is a project without tech stack defined.
 - Feature 1
 - Feature 2
 `;
-      const knowledgePath = join(tempDir, '.claude-project', 'docs');
+      const knowledgePath = join(tempDir, '.project', 'docs');
       mkdirSync(knowledgePath, { recursive: true });
       writeFileSync(join(knowledgePath, 'PROJECT_KNOWLEDGE.md'), content);
 
@@ -123,7 +123,7 @@ This is a project without tech stack defined.
 - **Backend**: express
 - **Frontend**: react
 `;
-      const knowledgePath = join(tempDir, '.claude-project', 'docs');
+      const knowledgePath = join(tempDir, '.project', 'docs');
       mkdirSync(knowledgePath, { recursive: true });
       writeFileSync(join(knowledgePath, 'PROJECT_KNOWLEDGE.md'), content);
 
@@ -137,7 +137,7 @@ This is a project without tech stack defined.
 This is not a valid markdown file
 Random content
 `;
-      const knowledgePath = join(tempDir, '.claude-project', 'docs');
+      const knowledgePath = join(tempDir, '.project', 'docs');
       mkdirSync(knowledgePath, { recursive: true });
       writeFileSync(join(knowledgePath, 'PROJECT_KNOWLEDGE.md'), content);
 
@@ -149,7 +149,7 @@ Random content
 
     test('handles empty PROJECT_KNOWLEDGE.md', () => {
       const content = ``;
-      const knowledgePath = join(tempDir, '.claude-project', 'docs');
+      const knowledgePath = join(tempDir, '.project', 'docs');
       mkdirSync(knowledgePath, { recursive: true });
       writeFileSync(join(knowledgePath, 'PROJECT_KNOWLEDGE.md'), content);
 
@@ -162,7 +162,7 @@ Random content
       const content = `
 - **Backend**:    nestjs
 `;
-      const knowledgePath = join(tempDir, '.claude-project', 'docs');
+      const knowledgePath = join(tempDir, '.project', 'docs');
       mkdirSync(knowledgePath, { recursive: true });
       writeFileSync(join(knowledgePath, 'PROJECT_KNOWLEDGE.md'), content);
 
@@ -176,7 +176,7 @@ Some text - **Backend**: nestjs in the middle
 
 - **Backend**: django
 `;
-      const knowledgePath = join(tempDir, '.claude-project', 'docs');
+      const knowledgePath = join(tempDir, '.project', 'docs');
       mkdirSync(knowledgePath, { recursive: true });
       writeFileSync(join(knowledgePath, 'PROJECT_KNOWLEDGE.md'), content);
 

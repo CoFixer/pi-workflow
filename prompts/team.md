@@ -11,7 +11,7 @@ Launch agents with the right coordination pattern. Each mode composes agents fro
 
 ```bash
 # Team mode: PM + Dev(s) + QA continuous loop
-/dev:team team --prd .pi-project/prd/my-app-prd.md
+/dev:team team --prd .project/prd/my-app-prd.md
 
 # Ticket mode: PM + Dev + QA fixing Notion tickets automatically
 /dev:team ticket --project "Design Flow"
@@ -22,7 +22,7 @@ Launch agents with the right coordination pattern. Each mode composes agents fro
 /dev:team parallel --task "fix auth bug + fix payment form + update user docs"
 
 # Pipeline mode: sequential phases with dependencies
-/dev:team pipeline --prd .pi-project/prd/my-app-prd.md
+/dev:team pipeline --prd .project/prd/my-app-prd.md
 
 # Solo mode: single specialist for focused task
 /dev:team solo --task "review the user controller"
@@ -71,7 +71,7 @@ status = --status flag (show current status)
 
 **Handle --stop and --status first:**
 - If `--stop`: Find active team at `~/.pi/teams/team-*`, read config, send shutdown to all agents, TeamDelete, update status files, report.
-- If `--status`: Find status files in `.pi-project/status/`, read and display them.
+- If `--status`: Find status files in `.project/status/`, read and display them.
 
 **Auto-detect mode if not provided:**
 - Has `--project` (with or without other flags) → `ticket`
@@ -161,9 +161,9 @@ Key execution patterns by mode:
 
 ### Step 5: Status Tracking & Cleanup
 
-- **Team mode**: Track in `.pi-project/status/{slug}/TEAM_STATUS.md` + `CYCLE_LOG.md`
-- **Ticket mode**: Track in `.pi-project/status/ticket-{slug}/TICKET_STATUS.md` + `CYCLE_LOG.md`
-- **Pipeline mode**: Track in `.pi-project/status/{slug}/PIPELINE_STATUS.md`
+- **Team mode**: Track in `.project/status/{slug}/TEAM_STATUS.md` + `CYCLE_LOG.md`
+- **Ticket mode**: Track in `.project/status/ticket-{slug}/TICKET_STATUS.md` + `CYCLE_LOG.md`
+- **Pipeline mode**: Track in `.project/status/{slug}/PIPELINE_STATUS.md`
 - **Parallel/Solo**: No persistent status (one-shot execution)
 - On completion or stop: shut down agents, update status, clean up team
 

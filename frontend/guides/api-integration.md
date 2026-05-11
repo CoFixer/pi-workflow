@@ -23,9 +23,9 @@ This guide maps frontend screens to their required backend API endpoints. Use th
 | Patient | 10 | ~22 endpoints |
 | Shared | - | 5 endpoints |
 
-**Full API documentation:** [PROJECT_API.md](../../../../.pi-project/docs/PROJECT_API.md)
+**Full API documentation:** [PROJECT_API.md](../../../../.project/docs/PROJECT_API.md)
 
-**Screen-to-API mapping:** [PROJECT_API_INTEGRATION.md](../../../../.pi-project/docs/PROJECT_API_INTEGRATION.md)
+**Screen-to-API mapping:** [PROJECT_API_INTEGRATION.md](../../../../.project/docs/PROJECT_API_INTEGRATION.md)
 
 ---
 

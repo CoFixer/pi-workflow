@@ -46,7 +46,7 @@ Start a new iteration cycle.
 
 1. **Read Status File**
    ```
-   Read .pi-project/status/{project}/PIPELINE_STATUS.md
+   Read .project/status/{project}/PIPELINE_STATUS.md
    Parse current iteration number
    ```
 
@@ -187,7 +187,7 @@ Compare all phases against current PRD to identify improvements.
 
 1. **Read PRD**
    ```
-   Read .pi-project/prd/prd.pdf (or prd.md)
+   Read .project/prd/prd.pdf (or prd.md)
    Extract:
    - User flows / screens
    - Data entities / fields
@@ -197,10 +197,10 @@ Compare all phases against current PRD to identify improvements.
 
 2. **Read Current Implementation**
    ```
-   Read .pi-project/docs/PROJECT_KNOWLEDGE.md
-   Read .pi-project/docs/PROJECT_DATABASE.md
-   Read .pi-project/docs/PROJECT_API.md
-   Read .pi-project/docs/PROJECT_API_INTEGRATION.md
+   Read .project/docs/PROJECT_KNOWLEDGE.md
+   Read .project/docs/PROJECT_DATABASE.md
+   Read .project/docs/PROJECT_API.md
+   Read .project/docs/PROJECT_API_INTEGRATION.md
    ```
 
 3. **Compare Each Phase**
@@ -228,7 +228,7 @@ Compare all phases against current PRD to identify improvements.
    - Disconnected features
 
 4. **Generate Recommendations**
-   Create `.pi-project/status/{project}/IMPROVEMENT_RECOMMENDATIONS.md`:
+   Create `.project/status/{project}/IMPROVEMENT_RECOMMENDATIONS.md`:
 
    ```markdown
    # Improvement Recommendations - {project}
@@ -332,7 +332,7 @@ Compare two iterations.
    ```
 
 3. **Output**
-   Display comparison and save to `.pi-project/status/{project}/COMPARISON_{iter1}_vs_{iter2}.md`
+   Display comparison and save to `.project/status/{project}/COMPARISON_{iter1}_vs_{iter2}.md`
 
 ---
 

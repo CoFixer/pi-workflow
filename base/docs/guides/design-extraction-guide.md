@@ -10,32 +10,32 @@
 
 ## Extraction Script
 
-Execute this script when HTML prototypes exist in `.pi-project/resources/HTML/`:
+Execute this script when HTML prototypes exist in `.project/resources/HTML/`:
 
 ```bash
-if [ -d ".pi-project/resources/HTML" ]; then
+if [ -d ".project/resources/HTML" ]; then
   echo "Extracting design guidelines from HTML prototypes..."
 
   # Count HTML files
-  HTML_FILE_COUNT=$(find .pi-project/resources/HTML -name "*.html" 2>/dev/null | wc -l)
+  HTML_FILE_COUNT=$(find .project/resources/HTML -name "*.html" 2>/dev/null | wc -l)
 
   if [ "$HTML_FILE_COUNT" -eq 0 ]; then
-    echo "No HTML files found in .pi-project/resources/HTML/"
+    echo "No HTML files found in .project/resources/HTML/"
     echo "  Skipping design guidelines extraction"
   else
     echo "Processing $HTML_FILE_COUNT HTML files for design extraction..."
 
     # Copy template
     cp .pi/templates/claude-project/docs/PROJECT_DESIGN_GUIDELINES.template.md \
-       .pi-project/docs/PROJECT_DESIGN_GUIDELINES.md
+       .project/docs/PROJECT_DESIGN_GUIDELINES.md
 
     # Replace basic placeholders
-    sed -i "s/{PROJECT_NAME}/$PROJECT_NAME/g" .pi-project/docs/PROJECT_DESIGN_GUIDELINES.md
-    sed -i "s/{DATE}/$(date +%Y-%m-%d)/g" .pi-project/docs/PROJECT_DESIGN_GUIDELINES.md
+    sed -i "s/{PROJECT_NAME}/$PROJECT_NAME/g" .project/docs/PROJECT_DESIGN_GUIDELINES.md
+    sed -i "s/{DATE}/$(date +%Y-%m-%d)/g" .project/docs/PROJECT_DESIGN_GUIDELINES.md
 
     # Execute deep extraction
-    HTML_DIR=".pi-project/resources/HTML"
-    OUTPUT_FILE=".pi-project/docs/PROJECT_DESIGN_GUIDELINES.md"
+    HTML_DIR=".project/resources/HTML"
+    OUTPUT_FILE=".project/docs/PROJECT_DESIGN_GUIDELINES.md"
 
     # Create temp directory for extraction
     TEMP_DIR=$(mktemp -d -t design-extract-XXXXXX)
@@ -127,11 +127,11 @@ if [ -d ".pi-project/resources/HTML" ]; then
     echo "  - Accessibility guidelines"
     echo ""
     echo "  Source: Analyzed $HTML_FILE_COUNT HTML prototype files"
-    echo "  Output: .pi-project/docs/PROJECT_DESIGN_GUIDELINES.md"
+    echo "  Output: .project/docs/PROJECT_DESIGN_GUIDELINES.md"
   fi
 else
   echo "No HTML prototypes found - skipping design guidelines extraction"
-  echo "  Tip: Add HTML files to .pi-project/resources/HTML/ to enable comprehensive design extraction"
+  echo "  Tip: Add HTML files to .project/resources/HTML/ to enable comprehensive design extraction"
 fi
 ```
 

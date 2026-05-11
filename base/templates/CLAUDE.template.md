@@ -95,13 +95,13 @@ jq '.dependencies | keys[]' package.json
 
 | Document | Path | Purpose |
 |----------|------|---------|
-| Knowledge | .pi-project/docs/PROJECT_KNOWLEDGE.md | Full architecture & tech stack |
-| API | .pi-project/docs/PROJECT_API.md | Endpoint specifications |
-| Database | .pi-project/docs/PROJECT_DATABASE.md | Schema & ERD |
-| Integration | .pi-project/docs/PROJECT_API_INTEGRATION.md | Frontend-API mapping |
-| Design System | .pi-project/docs/PROJECT_DESIGN_GUIDELINES.md | Component styling |
-| PRD | .pi-project/prd/prd.pdf | Original requirements |
-| HTML Screens | .pi-project/resources/HTML/ | Prototype screens |
+| Knowledge | .project/docs/PROJECT_KNOWLEDGE.md | Full architecture & tech stack |
+| API | .project/docs/PROJECT_API.md | Endpoint specifications |
+| Database | .project/docs/PROJECT_DATABASE.md | Schema & ERD |
+| Integration | .project/docs/PROJECT_API_INTEGRATION.md | Frontend-API mapping |
+| Design System | .project/docs/PROJECT_DESIGN_GUIDELINES.md | Component styling |
+| PRD | .project/prd/prd.pdf | Original requirements |
+| HTML Screens | .project/resources/HTML/ | Prototype screens |
 
 ## Framework Resources
 
@@ -137,12 +137,12 @@ When planning implementation, ALWAYS consult these resources:
 4. `.pi/agents/development/backend-developer.md` — Full agent spec
 
 ### Always Reference
-- `.pi-project/docs/PROJECT_API.md` — API endpoints
-- `.pi-project/docs/PROJECT_API_INTEGRATION.md` — Frontend-API mapping
-- `.pi-project/docs/PROJECT_DESIGN_GUIDELINES.md` — Design system
-- `.pi-project/docs/PROJECT_DATABASE.md` — Database schema & ERD
-- `.pi-project/docs/PROJECT_KNOWLEDGE.md` — Architecture & tech stack
-- `.pi-project/prd/prd.pdf` — Source of truth
+- `.project/docs/PROJECT_API.md` — API endpoints
+- `.project/docs/PROJECT_API_INTEGRATION.md` — Frontend-API mapping
+- `.project/docs/PROJECT_DESIGN_GUIDELINES.md` — Design system
+- `.project/docs/PROJECT_DATABASE.md` — Database schema & ERD
+- `.project/docs/PROJECT_KNOWLEDGE.md` — Architecture & tech stack
+- `.project/prd/prd.pdf` — Source of truth
 
 ## Memory & Context System
 
@@ -151,7 +151,7 @@ When planning implementation, ALWAYS consult these resources:
 | Level | Location | Scope | Contents |
 |-------|----------|-------|----------|
 | **Team** | `.pi/memory/` | All projects using this base config | CORRECTIONS.md, LEARNINGS.md, PREFERENCES.md |
-| **Project** | `.pi-project/memory/` | This project only | DECISIONS.md, LEARNINGS.md, PREFERENCES.md, agent-memory.json |
+| **Project** | `.project/memory/` | This project only | DECISIONS.md, LEARNINGS.md, PREFERENCES.md, agent-memory.json |
 | **Agent** | `.pi/agent-memory/{agent-name}/` | Per-agent persistent state | MEMORY.md |
 
 ### Memory File Purposes
@@ -161,7 +161,7 @@ When planning implementation, ALWAYS consult these resources:
 - `LEARNINGS.md` -- Shared conventions, library gotchas, team patterns
 - `PREFERENCES.md` -- Team-wide coding standards and process preferences
 
-**Project Memory (`.pi-project/memory/`):**
+**Project Memory (`.project/memory/`):**
 - `DECISIONS.md` -- Architecture Decision Records (ADR) for this project
 - `LEARNINGS.md` -- Codebase-specific patterns, debugging insights, integration quirks
 - `PREFERENCES.md` -- Project-specific coding style and organization preferences
@@ -191,9 +191,9 @@ Project memory files are generated from templates during `/new-project`:
 
 | Template | Source | Destination |
 |----------|--------|-------------|
-| `DECISIONS.template.md` | `.pi/templates/claude-project/memory/` | `.pi-project/memory/DECISIONS.md` |
-| `LEARNINGS.template.md` | `.pi/templates/claude-project/memory/` | `.pi-project/memory/LEARNINGS.md` |
-| `PREFERENCES.template.md` | `.pi/templates/claude-project/memory/` | `.pi-project/memory/PREFERENCES.md` |
+| `DECISIONS.template.md` | `.pi/templates/claude-project/memory/` | `.project/memory/DECISIONS.md` |
+| `LEARNINGS.template.md` | `.pi/templates/claude-project/memory/` | `.project/memory/LEARNINGS.md` |
+| `PREFERENCES.template.md` | `.pi/templates/claude-project/memory/` | `.project/memory/PREFERENCES.md` |
 
 ---
 

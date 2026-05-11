@@ -11,7 +11,7 @@ Disable automatic analysis when sessions end.
 
 ## What This Does
 
-1. Updates `.pi-project/state/reflect-enabled.json`
+1. Updates `.project/state/reflect-enabled.json`
 2. Sets `enabled: false`
 3. Session learnings will NOT be auto-captured
 
@@ -21,7 +21,7 @@ Disable automatic analysis when sessions end.
 
 Update the state file while preserving history:
 
-**Target file:** `.pi-project/state/reflect-enabled.json`
+**Target file:** `.project/state/reflect-enabled.json`
 
 Read existing file if it exists, then update:
 
@@ -50,7 +50,7 @@ If file doesn't exist, create with:
 ```
 Auto-reflection DISABLED
 
-Previous reflections are preserved in .pi-project/memory/LEARNINGS.md
+Previous reflections are preserved in .project/memory/LEARNINGS.md
 
 You can still manually reflect using: /reflect
 To re-enable: /reflect-on

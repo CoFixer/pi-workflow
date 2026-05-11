@@ -28,7 +28,7 @@ function main(): void {
 
   // Log to team coordination file
   const projectDir = process.env.CLAUDE_PROJECT_DIR || process.cwd();
-  const logDir = join(projectDir, '.claude-project', 'logs');
+  const logDir = join(projectDir, '.project', 'logs');
 
   if (!existsSync(logDir)) {
     try {

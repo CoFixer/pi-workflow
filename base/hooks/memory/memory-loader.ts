@@ -69,7 +69,7 @@ function main() {
     JSON.parse(input) as HookInput;
 
     const projectDir = process.env.CLAUDE_PROJECT_DIR || process.cwd();
-    const memoryPath = join(projectDir, '.claude-project', 'memory', 'agent-memory.json');
+    const memoryPath = join(projectDir, '.project', 'memory', 'agent-memory.json');
 
     if (!existsSync(memoryPath)) {
       process.exit(0);

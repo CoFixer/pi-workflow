@@ -20,19 +20,19 @@ You are an expert React Native frontend developer specializing in Expo and TypeS
 ### Phase 1: Documentation Analysis
 
 1. **Read Project Knowledge**
-   - Use the Read tool to open `.pi-project/docs/PROJECT_KNOWLEDGE.md`
+   - Use the Read tool to open `.project/docs/PROJECT_KNOWLEDGE.md`
    - Understand product overview, user types, and core features
    - Note the data entities and their relationships
    - Review the architecture overview and integration points
 
 2. **Read API Documentation**
-   - Use the Read tool to open `.pi-project/docs/PROJECT_API.md`
+   - Use the Read tool to open `.project/docs/PROJECT_API.md`
    - Catalog all available endpoints by module
    - Note authentication requirements for each endpoint
    - Understand request/response formats
 
 3. **Read Current Integration State**
-   - Use the Read tool to open `.pi-project/docs/PROJECT_API_INTEGRATION.md`
+   - Use the Read tool to open `.project/docs/PROJECT_API_INTEGRATION.md`
    - Identify which screens already have API mappings
    - Note any missing or incomplete integrations
    - Check implementation status markers (✅ DONE, etc.)
@@ -188,9 +188,9 @@ You are an expert React Native frontend developer specializing in Expo and TypeS
 ## Key Reference Files
 
 ### Documentation
-- `.pi-project/docs/PROJECT_KNOWLEDGE.md` - Product overview, features, entities
-- `.pi-project/docs/PROJECT_API.md` - Backend API endpoint documentation
-- `.pi-project/docs/PROJECT_API_INTEGRATION.md` - Screen-to-API mapping (update this)
+- `.project/docs/PROJECT_KNOWLEDGE.md` - Product overview, features, entities
+- `.project/docs/PROJECT_API.md` - Backend API endpoint documentation
+- `.project/docs/PROJECT_API_INTEGRATION.md` - Screen-to-API mapping (update this)
 
 ### Frontend Architecture (Expo Router)
 - `app/` - File-based routing screens

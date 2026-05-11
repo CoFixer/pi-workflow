@@ -7,7 +7,7 @@ This guide explains how to generate comprehensive Markdown API documentation fro
 ### Generate Full API Documentation
 
 ```
-Generate API documentation for all modules and save to .pi-project/docs/PROJECT_API.md
+Generate API documentation for all modules and save to .project/docs/PROJECT_API.md
 ```
 
 ### Generate Module-Specific Documentation
@@ -26,7 +26,7 @@ Update the API documentation after adding new endpoints
 
 ## Output Location
 
-API documentation is generated to: `.pi-project/docs/PROJECT_API.md`
+API documentation is generated to: `.project/docs/PROJECT_API.md`
 
 ---
 
@@ -257,7 +257,7 @@ src/modules/otp/otp.controller.ts
     - Include table of contents with anchor links
 
 5. **Write Output**
-    - Save to `.pi-project/docs/PROJECT_API.md`
+    - Save to `.project/docs/PROJECT_API.md`
     - Include generation timestamp
 
 ---

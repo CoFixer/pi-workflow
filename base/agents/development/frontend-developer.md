@@ -287,7 +287,7 @@ const initialState: ProjectState = { projects: [], loading: false, error: null }
 - Redux Toolkit with typed hooks (`useAppDispatch`, `useAppSelector`), async thunks
 
 ### 5. API Integration
-- Reference `.pi-project/docs/PROJECT_API.md` for endpoint specifications
+- Reference `.project/docs/PROJECT_API.md` for endpoint specifications
 - Create type-safe API services using httpService wrapper
 - Implement loading, error, and empty states for all API calls
 
@@ -297,12 +297,12 @@ const initialState: ProjectState = { projects: [], loading: false, error: null }
 
 | Document | Path | Purpose |
 |----------|------|---------|
-| Project Knowledge | `.pi-project/docs/PROJECT_KNOWLEDGE.md` | Architecture & tech stack |
-| API Spec | `.pi-project/docs/PROJECT_API.md` | API endpoint specifications |
-| Design Guidelines | `.pi-project/docs/PROJECT_DESIGN_GUIDELINES.md` | Colors, typography, spacing, component patterns |
-| API Integration | `.pi-project/docs/PROJECT_API_INTEGRATION.md` | Frontend-API mapping |
-| HTML Prototypes | `.pi-project/resources/HTML/` | Visual design reference |
-| Screen Status | `.pi-project/status/SCREEN_IMPLEMENTATION_STATUS.md` | Implementation tracking |
+| Project Knowledge | `.project/docs/PROJECT_KNOWLEDGE.md` | Architecture & tech stack |
+| API Spec | `.project/docs/PROJECT_API.md` | API endpoint specifications |
+| Design Guidelines | `.project/docs/PROJECT_DESIGN_GUIDELINES.md` | Colors, typography, spacing, component patterns |
+| API Integration | `.project/docs/PROJECT_API_INTEGRATION.md` | Frontend-API mapping |
+| HTML Prototypes | `.project/resources/HTML/` | Visual design reference |
+| Screen Status | `.project/status/SCREEN_IMPLEMENTATION_STATUS.md` | Implementation tracking |
 
 ### Frontend Structure
 
@@ -373,7 +373,7 @@ See `agent-registry.json` for full invocation patterns.
 ## HTML to React Conversion Workflow
 
 1. **Pre-Flight (MANDATORY)** — Read file-organization.md, plan file structure, verify naming conventions, plan `~/` imports
-2. **Analysis** — Read HTML from `.pi-project/resources/HTML/`, reference DESIGN_GUIDELINES.md, identify patterns and navigation
+2. **Analysis** — Read HTML from `.project/resources/HTML/`, reference DESIGN_GUIDELINES.md, identify patterns and navigation
 3. **Component Extraction** — Base layouts in `components/layout/`, Shadcn primitives in `components/ui/`, pages in `pages/{route}/`
 4. **Routing Setup** — Create route configs in `routes/{feature}.routes.ts`, set up React Router, add guards
 5. **State & API** — Create services in `services/httpServices/`, types in `types/`, Redux slices, data fetching with loading/error states
@@ -488,7 +488,7 @@ When completing tasks, provide:
 ## Important Notes
 
 - **Follow design system** — Always reference PROJECT_DESIGN_GUIDELINES.md
-- **Use HTML prototypes** — Check `.pi-project/resources/HTML/` before implementation
+- **Use HTML prototypes** — Check `.project/resources/HTML/` before implementation
 - **Always TypeScript** — No plain JavaScript files
 - **Follow existing patterns** — Review existing components before creating new ones
 - **Tailwind first** — Use Tailwind utilities before custom CSS

@@ -152,7 +152,7 @@ Run `git status --porcelain` and group changes by their root folder.
 - `frontend/` - Main frontend app
 - `frontend-*/` - Any frontend variant
 - `mobile/` - Mobile app
-- `.pi-project/` - Project documentation
+- `.project/` - Project documentation
 
 **Exclusions** (never commit):
 - `.env` files or files containing secrets

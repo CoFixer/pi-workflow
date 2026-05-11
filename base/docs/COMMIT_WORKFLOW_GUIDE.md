@@ -276,7 +276,7 @@ Co-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>
 | `dashboard` | dashboard (admin/privileged roles) |
 | `mobile` | mobile |
 | `backend` | backend |
-| `docs` | .claude-project |
+| `docs` | .project |
 
 ### Examples
 

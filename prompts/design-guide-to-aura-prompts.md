@@ -632,7 +632,7 @@ Before generating, verify Design Guide contains:
 ```
 
 **Output:** Single markdown file with AURA-compatible prompts for all pages
-**Location:** `.pi-project/design/[ProjectName]_AURAPrompts_[YYMMDD].md`
+**Location:** `.project/design/[ProjectName]_AURAPrompts_[YYMMDD].md`
 
 ---
 

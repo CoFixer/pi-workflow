@@ -34,7 +34,7 @@ Determine scan scope from the argument:
 
 #### 0b. Multi-Stack Detection
 
-Read `CLAUDE.md` (or `.pi-project/docs/PROJECT_KNOWLEDGE.md`) and verify with package/config files to detect ALL stacks:
+Read `CLAUDE.md` (or `.project/docs/PROJECT_KNOWLEDGE.md`) and verify with package/config files to detect ALL stacks:
 
 | Stack | Primary Signal | Verification | Detected Directory |
 |-------|---------------|-------------|-------------------|
@@ -53,7 +53,7 @@ If detection fails, ask:
 
 #### 0c. Match Documentation
 
-Map each detected stack to its documentation from the shared `.pi-project/`:
+Map each detected stack to its documentation from the shared `.project/`:
 
 | Stack | PRD | Design | API | HTML Prototypes | Database |
 |-------|-----|--------|-----|----------------|----------|
@@ -72,7 +72,7 @@ DETECTED STACKS
   Web:      {React}               → {frontend/}
   Mobile:   {React Native}        → {mobile/}
 ─────────────────────────────────────────
-Docs:     .pi-project/ (shared)
+Docs:     .project/ (shared)
   Web HTML:    resources/HTML/web/
   Mobile HTML: resources/HTML/mobile/
 ─────────────────────────────────────────
@@ -85,18 +85,18 @@ Scope:    {all | frontend | backend}
 Read all project documentation to establish the baseline:
 
 ```
-.pi-project/prd/prd.pdf              → Required features and screens
-.pi-project/docs/PROJECT_DESIGN_GUIDELINES.md → Design system rules
-.pi-project/docs/PROJECT_API.md       → API endpoint specifications
-.pi-project/docs/PROJECT_API_INTEGRATION.md → Frontend-API mapping
-.pi-project/docs/PROJECT_DATABASE.md  → Database schema
-.pi-project/docs/PROJECT_KNOWLEDGE.md → Architecture overview
+.project/prd/prd.pdf              → Required features and screens
+.project/docs/PROJECT_DESIGN_GUIDELINES.md → Design system rules
+.project/docs/PROJECT_API.md       → API endpoint specifications
+.project/docs/PROJECT_API_INTEGRATION.md → Frontend-API mapping
+.project/docs/PROJECT_DATABASE.md  → Database schema
+.project/docs/PROJECT_KNOWLEDGE.md → Architecture overview
 ```
 
 HTML prototypes (matched to stack):
 ```
-.pi-project/resources/HTML/web/       → React web prototype screens
-.pi-project/resources/HTML/mobile/    → React Native prototype screens
+.project/resources/HTML/web/       → React web prototype screens
+.project/resources/HTML/mobile/    → React Native prototype screens
 ```
 
 ### Step 2: Frontend Scan (if scope includes frontend)

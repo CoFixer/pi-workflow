@@ -18,9 +18,9 @@ You are an HTML-to-React conversion specialist. Your task is to generate structu
 - Extract shared components from repeated patterns
 - Follow PROJECT_KNOWLEDGE architecture patterns
 
-**Output Location:** `.pi-project/resources/prompts/html-to-react/`
+**Output Location:** `.project/resources/prompts/html-to-react/`
 
-**HTML Source:** `.pi-project/resources/HTML/` (auto-discovered)
+**HTML Source:** `.project/resources/HTML/` (auto-discovered)
 
 ---
 
@@ -30,14 +30,14 @@ Before running any command phase, verify:
 
 1. **HTML files exist:**
    ```bash
-   fd -e html . .pi-project/resources/HTML
+   fd -e html . .project/resources/HTML
    ```
    - Should contain HTML prototype files
    - Can be organized in subfolders by category (optional)
 
 2. **Project documentation exists (optional but recommended):**
-   - `.pi-project/docs/PROJECT_KNOWLEDGE.md` - Architecture and frontend definitions
-   - `.pi-project/docs/PROJECT_API.md` - API endpoints
+   - `.project/docs/PROJECT_KNOWLEDGE.md` - Architecture and frontend definitions
+   - `.project/docs/PROJECT_API.md` - API endpoints
    - `.pi/react/skills/converters/html-to-react-converter.md` - Conversion patterns
 
 3. **Frontend directories exist:**
@@ -133,11 +133,11 @@ When invoked without arguments, show:
 
 ```bash
 # Count total HTML files
-HTML_COUNT=$(fd -e html . .pi-project/resources/HTML | wc -l)
+HTML_COUNT=$(fd -e html . .project/resources/HTML | wc -l)
 echo "Total HTML files: $HTML_COUNT"
 
 # List files with relative paths
-fd -e html . .pi-project/resources/HTML
+fd -e html . .project/resources/HTML
 ```
 
 ### 2. Category Detection
@@ -145,7 +145,7 @@ fd -e html . .pi-project/resources/HTML
 Analyze folder structure to detect categories:
 ```bash
 # Detect categories from folder names
-fd -t d . .pi-project/resources/HTML --max-depth 1 | sed 's|.*/||'
+fd -t d . .project/resources/HTML --max-depth 1 | sed 's|.*/||'
 ```
 
 Display discovered categories and file counts per category.
@@ -174,11 +174,11 @@ done
 
 ```bash
 # Check if architecture docs exist
-if [ -f .pi-project/docs/PROJECT_KNOWLEDGE.md ]; then
+if [ -f .project/docs/PROJECT_KNOWLEDGE.md ]; then
   echo "✅ PROJECT_KNOWLEDGE.md found - will use for frontend mapping"
 
   # Extract frontend structure from docs
-  grep -A 10 "Project Structure" .pi-project/docs/PROJECT_KNOWLEDGE.md
+  grep -A 10 "Project Structure" .project/docs/PROJECT_KNOWLEDGE.md
 else
   echo "⚠️  PROJECT_KNOWLEDGE.md not found - will infer from directory structure"
 fi
@@ -187,7 +187,7 @@ fi
 ### 5. Output Directory Status
 
 ```bash
-ls -la .pi-project/resources/prompts/html-to-react/ 2>&1
+ls -la .project/resources/prompts/html-to-react/ 2>&1
 ```
 
 Show status:
@@ -225,7 +225,7 @@ Analyze all HTML files dynamically to:
 
 ```bash
 # Discover all HTML files
-HTML_FILES=$(fd -e html . .pi-project/resources/HTML)
+HTML_FILES=$(fd -e html . .project/resources/HTML)
 
 # Read each file
 for file in $HTML_FILES; do
@@ -341,10 +341,10 @@ Scan for repeating HTML structures across multiple files (threshold: 3+ occurren
 
 ```bash
 # Create output directory
-mkdir -p .pi-project/resources/prompts/html-to-react
+mkdir -p .project/resources/prompts/html-to-react
 
 # Write analysis.md
-Write: .pi-project/resources/prompts/html-to-react/analysis.md
+Write: .project/resources/prompts/html-to-react/analysis.md
 ```
 
 **analysis.md Structure:**
@@ -459,10 +459,10 @@ Discovered:
 - [N] JavaScript event handlers extracted
 - [M] anti-pattern occurrences cataloged
 
-Output: .pi-project/resources/prompts/html-to-react/analysis.md
+Output: .project/resources/prompts/html-to-react/analysis.md
 
 Design Guidelines:
-  📄 .pi-project/docs/PROJECT_DESIGN_GUIDELINES.md
+  📄 .project/docs/PROJECT_DESIGN_GUIDELINES.md
 
   Reference during conversion for:
   ✓ Component states (Section 6) - hover, focus, active, disabled
@@ -518,13 +518,13 @@ done
 
 ```bash
 # Read project docs if available
-if [ -f .pi-project/docs/PROJECT_KNOWLEDGE.md ]; then
-  Read: .pi-project/docs/PROJECT_KNOWLEDGE.md
+if [ -f .project/docs/PROJECT_KNOWLEDGE.md ]; then
+  Read: .project/docs/PROJECT_KNOWLEDGE.md
   # Extract frontend structure and purpose from docs
 fi
 
-if [ -f .pi-project/docs/PROJECT_API.md ]; then
-  Read: .pi-project/docs/PROJECT_API.md
+if [ -f .project/docs/PROJECT_API.md ]; then
+  Read: .project/docs/PROJECT_API.md
   # Extract API endpoint mappings
 fi
 ```
@@ -532,7 +532,7 @@ fi
 #### Step 3: Read Analysis
 
 ```bash
-Read: .pi-project/resources/prompts/html-to-react/analysis.md
+Read: .project/resources/prompts/html-to-react/analysis.md
 ```
 
 #### Step 4: Infer Mapping Rules
@@ -573,7 +573,7 @@ For each screen, identify API endpoints from PROJECT_API.md (if available):
 ### Output: Create `mapping.json`
 
 ```bash
-Write: .pi-project/resources/prompts/html-to-react/mapping.json
+Write: .project/resources/prompts/html-to-react/mapping.json
 ```
 
 **mapping.json Structure:**
@@ -582,7 +582,7 @@ Write: .pi-project/resources/prompts/html-to-react/mapping.json
 {
   "version": "1.0",
   "generated_at": "[ISO timestamp]",
-  "html_source": ".pi-project/resources/HTML",
+  "html_source": ".project/resources/HTML",
   "html_inventory": {
     "total_files": "[discovered count]",
     "by_category": {
@@ -632,7 +632,7 @@ Display:
 ```
 ✅ Mapping complete!
 
-Output: .pi-project/resources/prompts/html-to-react/mapping.json
+Output: .project/resources/prompts/html-to-react/mapping.json
 
 Discovered:
 - [X] HTML files mapped
@@ -662,17 +662,17 @@ Generate token-optimized conversion prompt files for each discovered frontend, o
 #### Step 1: Read Dependencies
 
 ```bash
-Read: .pi-project/resources/prompts/html-to-react/mapping.json
-Read: .pi-project/resources/prompts/html-to-react/analysis.md
+Read: .project/resources/prompts/html-to-react/mapping.json
+Read: .project/resources/prompts/html-to-react/analysis.md
 Read: .pi/react/skills/converters/html-to-react-converter.md
 
 # Optional: Read project docs if available
-if [ -f .pi-project/docs/PROJECT_KNOWLEDGE.md ]; then
-  Read: .pi-project/docs/PROJECT_KNOWLEDGE.md
+if [ -f .project/docs/PROJECT_KNOWLEDGE.md ]; then
+  Read: .project/docs/PROJECT_KNOWLEDGE.md
 fi
 
-if [ -f .pi-project/docs/PROJECT_API.md ]; then
-  Read: .pi-project/docs/PROJECT_API.md
+if [ -f .project/docs/PROJECT_API.md ]; then
+  Read: .project/docs/PROJECT_API.md
 fi
 ```
 
@@ -684,14 +684,14 @@ FRONTENDS=$(jq -r '.frontends[].name' mapping.json)
 
 # Create directory for each frontend
 for frontend in $FRONTENDS; do
-  mkdir -p .pi-project/resources/prompts/html-to-react/$frontend
+  mkdir -p .project/resources/prompts/html-to-react/$frontend
 done
 ```
 
 #### Step 3: Generate Shared Components Catalog
 
 ```bash
-Write: .pi-project/resources/prompts/html-to-react/shared-components.json
+Write: .project/resources/prompts/html-to-react/shared-components.json
 ```
 
 **Content:** Dynamic JSON based on analysis.md shared components
@@ -756,9 +756,9 @@ Converting [count] HTML screens to React components for [frontend-name].
 **Reference:**
 - Conversion: `.pi/react/skills/converters/html-to-react-converter.md`
 [If PROJECT_API.md exists:]
-- API: `.pi-project/docs/PROJECT_API.md`
+- API: `.project/docs/PROJECT_API.md`
 [If PROJECT_KNOWLEDGE.md exists:]
-- Architecture: `.pi-project/docs/PROJECT_KNOWLEDGE.md`
+- Architecture: `.project/docs/PROJECT_KNOWLEDGE.md`
 
 ---
 
@@ -921,7 +921,7 @@ Display dynamic summary:
 ```
 ✅ Prompts generated successfully!
 
-Output directory: .pi-project/resources/prompts/html-to-react/
+Output directory: .project/resources/prompts/html-to-react/
 
 Files created:
 - mapping.json
@@ -959,7 +959,7 @@ Show current conversion progress by checking mapping.json status field.
 #### Step 1: Check if Mapping Exists
 
 ```bash
-if [ ! -f .pi-project/resources/prompts/html-to-react/mapping.json ]; then
+if [ ! -f .project/resources/prompts/html-to-react/mapping.json ]; then
   echo "❌ Mapping not found. Run /html-to-react --map first."
   exit 1
 fi
@@ -968,7 +968,7 @@ fi
 #### Step 2: Read Mapping
 
 ```bash
-Read: .pi-project/resources/prompts/html-to-react/mapping.json
+Read: .project/resources/prompts/html-to-react/mapping.json
 ```
 
 #### Step 3: Calculate Progress Dynamically
@@ -1014,8 +1014,8 @@ Next Actions:
 - `.pi/react/skills/design-qa-html.md` - Visual QA tool (if available)
 
 **Project Docs (if available):**
-- `.pi-project/docs/PROJECT_KNOWLEDGE.md` - Architecture
-- `.pi-project/docs/PROJECT_API.md` - API endpoints
+- `.project/docs/PROJECT_KNOWLEDGE.md` - Architecture
+- `.project/docs/PROJECT_API.md` - API endpoints
 
 **Commands:**
 - `/commit` - Commit changes

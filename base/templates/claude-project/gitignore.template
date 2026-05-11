@@ -1,7 +1,7 @@
 # Claude Code secrets (keep .gitkeep)
-.pi-project/secrets/*
-!.pi-project/secrets/.gitkeep
+.project/secrets/*
+!.project/secrets/.gitkeep
 
 # Temporary plans (keep .gitkeep)
-.pi-project/status/temp/*
-!.pi-project/status/temp/.gitkeep
+.project/status/temp/*
+!.project/status/temp/.gitkeep

@@ -31,7 +31,7 @@ export function updateScreenStatus(
     const app = getAppFromPath(screen.filePath);
     const statusFilePath = join(
         projectRoot,
-        `.pi-project/status/${app}/SCREEN_IMPLEMENTATION_STATUS.md`
+        `.project/status/${app}/SCREEN_IMPLEMENTATION_STATUS.md`
     );
 
     // Check if status file exists

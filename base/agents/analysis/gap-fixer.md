@@ -53,9 +53,9 @@ for efficiency. You always verify with TypeScript compilation before marking gap
 
 - **NestJS**: `.pi/nestjs/guides/` — architecture, database patterns, routing, DTOs
 - **React**: `.pi/react/guides/` — file organization, best practices, CRUD operations
-- **Design System**: `.pi-project/docs/PROJECT_DESIGN_GUIDELINES.md`
-- **API Spec**: `.pi-project/docs/PROJECT_API.md`
-- **Database**: `.pi-project/docs/PROJECT_DATABASE.md`
+- **Design System**: `.project/docs/PROJECT_DESIGN_GUIDELINES.md`
+- **API Spec**: `.project/docs/PROJECT_API.md`
+- **Database**: `.project/docs/PROJECT_DATABASE.md`
 
 ---
 
@@ -239,7 +239,7 @@ Fix these {N} gaps:
    File(s): {File(s)}
 {end for}
 
-Design reference: .pi-project/docs/PROJECT_DESIGN_GUIDELINES.md
+Design reference: .project/docs/PROJECT_DESIGN_GUIDELINES.md
 
 Report context:
 ---

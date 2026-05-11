@@ -103,13 +103,13 @@ function getFileType(
 }
 
 function getProjectRoot(filePath: string): string {
-    // Walk up from file path to find project root (where .claude-project exists)
+    // Walk up from file path to find project root (where .project exists)
     let dir = dirname(filePath);
     const maxDepth = 10;
     let depth = 0;
 
     while (depth < maxDepth) {
-        if (existsSync(resolve(dir, '.claude-project'))) {
+        if (existsSync(resolve(dir, '.project'))) {
             return dir;
         }
         const parent = dirname(dir);

@@ -82,7 +82,7 @@ Parse the client answer file and extract information for each question category:
 
 After extracting the App Name:
 
-1. Check `.pi-project/prd/` directory for existing PRD files matching the app name
+1. Check `.project/prd/` directory for existing PRD files matching the app name
 2. If found, ask user:
    ```
    Existing PRD found: [filename]
@@ -625,7 +625,7 @@ If user selects **No**, skip to Step 9.
 
 ### 9.1 Create Output Directory
 ```bash
-mkdir -p .pi-project/prd
+mkdir -p .project/prd
 ```
 
 ### 9.2 Save File
@@ -633,14 +633,14 @@ Filename format: `[AppName]_PRD_[YYMMDD].md`
 - Sanitize app name: Replace spaces with underscores, remove special characters
 - Example: `ActivityCoaching_PRD_260112.md`
 
-Location: `.pi-project/prd/`
+Location: `.project/prd/`
 
 ### 9.3 Report Results
 ```markdown
 ## PRD Generation Complete
 
 ### Output
-- File: `.pi-project/prd/[filename].md`
+- File: `.project/prd/[filename].md`
 - Mode: [New / Update]
 
 ### Summary

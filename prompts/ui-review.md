@@ -24,7 +24,7 @@ Parallel QA orchestrator. Auto-discovers YAML user stories, spawns one `playwrig
 ### 1.1 Find Story Files
 
 ```
-Glob: .pi-project/user_stories/*.yaml
+Glob: .project/user_stories/*.yaml
 ```
 
 ### 1.2 Apply Filter (if provided)
@@ -55,13 +55,13 @@ Extract all individual stories into a flat list.
 ### 1.4 Generate Run Directory
 
 ```bash
-RUN_DIR=".pi-project/qa/runs/$(date +%Y%m%d_%H%M%S)"
+RUN_DIR=".project/qa/runs/$(date +%Y%m%d_%H%M%S)"
 mkdir -p "$RUN_DIR"
 ```
 
 ### 1.5 Validate
 
-- If no YAML files found: show error and suggest creating `.pi-project/user_stories/` with example
+- If no YAML files found: show error and suggest creating `.project/user_stories/` with example
 - If no stories parsed: show error about YAML format
 - Report: "Found {N} stories across {M} files"
 
@@ -156,7 +156,7 @@ Display to user:
 1. **Chat session** (chat-generation.yaml)
    - Step 3: SSE indicator not visible
    - Screenshot: {RUN_DIR}/chat-session/02_verify-sse.png
-     (e.g. .pi-project/qa/runs/20260219_153000/chat-session/02_verify-sse.png)
+     (e.g. .project/qa/runs/20260219_153000/chat-session/02_verify-sse.png)
 ```
 
 ---
@@ -177,7 +177,7 @@ Display to user:
 
 1. `@playwright/cli` installed globally: `npm install -g @playwright/cli@latest`
 2. Application servers running (backend + frontend)
-3. YAML story files in `.pi-project/user_stories/`
+3. YAML story files in `.project/user_stories/`
 
 ---
 
@@ -185,7 +185,7 @@ Display to user:
 
 ```bash
 # First time: create a story file
-# .pi-project/user_stories/auth.yaml
+# .project/user_stories/auth.yaml
 
 # Run all stories
 /ui-review

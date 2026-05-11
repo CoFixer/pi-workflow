@@ -33,8 +33,8 @@
 | Dimension | Key | Stored Value | Captured At |
 |-----------|-----|-------------|-------------|
 | .claude submodule | claude_submodule_hash | - | never |
-| .pi-project/docs | docs_composite_hash | - | never |
-| .pi-project/memory | memory_composite_hash | - | never |
+| .project/docs | docs_composite_hash | - | never |
+| .project/memory | memory_composite_hash | - | never |
 | Contract: API | contract_api_hash | - | never |
 | Contract: DB Schema | contract_db_hash | - | never |
 | Contract: Frontend Data | contract_fe_hash | - | never |

@@ -13,7 +13,7 @@ Phase 1 of the fullstack pipeline. Sets up project infrastructure.
 
 - **Project**: Read from PIPELINE_STATUS.md or prompt
 - **Previous phase**: None (first phase)
-- **Expected output**: `.pi-project/` folder, `.pi/` submodule (if new)
+- **Expected output**: `.project/` folder, `.pi/` submodule (if new)
 
 ## Smart Detection
 
@@ -33,18 +33,18 @@ ls -la .pi/ 2>/dev/null
 **If `.pi/` EXISTS:**
 - Skip to Check 2
 
-### Check 2: Does .pi-project/ exist?
+### Check 2: Does .project/ exist?
 
 ```bash
-# Check if .pi-project/ exists
-ls -la .pi-project/ 2>/dev/null
+# Check if .project/ exists
+ls -la .project/ 2>/dev/null
 ```
 
-**If `.pi-project/` does NOT exist:**
+**If `.project/` does NOT exist:**
 - Project has Claude config but no documentation
 - Execute `/init-workspace` workflow (see below)
 
-**If `.pi-project/` EXISTS:**
+**If `.project/` EXISTS:**
 - Verify structure is complete
 - Report ready
 
@@ -176,12 +176,12 @@ After creating the status file, update the Configuration section with the select
 
 ```bash
 # Create PIPELINE_STATUS.md from template
-mkdir -p .pi-project/status/{project}
-cp .pi/base/templates/PIPELINE_STATUS.template.md .pi-project/status/{project}/PIPELINE_STATUS.md
+mkdir -p .project/status/{project}
+cp .pi/base/templates/PIPELINE_STATUS.template.md .project/status/{project}/PIPELINE_STATUS.md
 
 # Replace placeholders
-sed -i '' "s/{PROJECT_NAME}/$PROJECT_NAME/g" .pi-project/status/{project}/PIPELINE_STATUS.md
-sed -i '' "s/{DATE}/$(date +%Y-%m-%d)/g" .pi-project/status/{project}/PIPELINE_STATUS.md
+sed -i '' "s/{PROJECT_NAME}/$PROJECT_NAME/g" .project/status/{project}/PIPELINE_STATUS.md
+sed -i '' "s/{DATE}/$(date +%Y-%m-%d)/g" .project/status/{project}/PIPELINE_STATUS.md
 ```
 
 **Update the tech_stack configuration:**
@@ -225,7 +225,7 @@ After setup, continue to Execution Path B.
 
 ## Execution Path B: Initialize Project Documentation
 
-When `.pi/` exists but `.pi-project/` doesn't:
+When `.pi/` exists but `.project/` doesn't:
 
 ### B.1 Auto-Detect Project Info
 
@@ -240,23 +240,23 @@ tech_stack=$(ls .pi/ | grep -E "nestjs|react|react-native")
 ### B.2 Create Documentation Structure
 
 ```bash
-mkdir -p .pi-project/{docs,memory,plans,prd}
+mkdir -p .project/{docs,memory,plans,prd}
 
 # Create docs files
-touch .pi-project/docs/PROJECT_KNOWLEDGE.md
-touch .pi-project/docs/PROJECT_API.md
-touch .pi-project/docs/PROJECT_DATABASE.md
-touch .pi-project/docs/PROJECT_API_INTEGRATION.md
+touch .project/docs/PROJECT_KNOWLEDGE.md
+touch .project/docs/PROJECT_API.md
+touch .project/docs/PROJECT_DATABASE.md
+touch .project/docs/PROJECT_API_INTEGRATION.md
 
 # Create memory files
-touch .pi-project/memory/DECISIONS.md
-touch .pi-project/memory/LEARNINGS.md
-touch .pi-project/memory/PREFERENCES.md
+touch .project/memory/DECISIONS.md
+touch .project/memory/LEARNINGS.md
+touch .project/memory/PREFERENCES.md
 
 # Create plan folders for each project folder
 for folder in backend frontend frontend-* mobile; do
   if [ -d "$folder" ]; then
-    mkdir -p ".pi-project/status/$folder"
+    mkdir -p ".project/status/$folder"
   fi
 done
 ```
@@ -274,15 +274,15 @@ Copy templates from `.pi/base/templates/claude-project/` and replace placeholder
 
 ## Execution Path C: Verify Existing Structure
 
-When both `.pi/` and `.pi-project/` exist:
+When both `.pi/` and `.project/` exist:
 
 ### C.1 Verify Required Folders
 
 ```bash
 required_folders=(
-  ".pi-project/docs"
-  ".pi-project/memory"
-  ".pi-project/status"
+  ".project/docs"
+  ".project/memory"
+  ".project/status"
 )
 
 for folder in "${required_folders[@]}"; do
@@ -298,8 +298,8 @@ done
 
 ```bash
 required_files=(
-  ".pi-project/docs/PROJECT_KNOWLEDGE.md"
-  ".pi-project/docs/PROJECT_API.md"
+  ".project/docs/PROJECT_KNOWLEDGE.md"
+  ".project/docs/PROJECT_API.md"
 )
 
 for file in "${required_files[@]}"; do
@@ -316,7 +316,7 @@ done
 Project Init Verification
 =========================
 .pi/           ✅ Present
-.pi-project/   ✅ Present
+.project/   ✅ Present
   docs/            ✅ Complete
   memory/          ✅ Complete
   plans/           ✅ Complete
@@ -329,10 +329,10 @@ Project is ready for next phase.
 ## Completion Criteria
 
 - [ ] `.pi/` submodule exists and is initialized
-- [ ] `.pi-project/` folder structure exists
-- [ ] `.pi-project/docs/` has required files
-- [ ] `.pi-project/memory/` has required files
-- [ ] `.pi-project/status/` has project-specific subfolders
+- [ ] `.project/` folder structure exists
+- [ ] `.project/docs/` has required files
+- [ ] `.project/memory/` has required files
+- [ ] `.project/status/` has project-specific subfolders
 - [ ] `PIPELINE_STATUS.md` exists with valid `tech_stack` configuration
 - [ ] All required framework submodules exist (`.pi/$BACKEND/`, `.pi/$FRONTEND/`)
 
@@ -340,7 +340,7 @@ Project is ready for next phase.
 
 Update PIPELINE_STATUS.md:
 ```
-| init | project-init.md | :white_check_mark: | - | .pi-project/ | Done |
+| init | project-init.md | :white_check_mark: | - | .project/ | Done |
 ```
 
 Add to Execution Log:

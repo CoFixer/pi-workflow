@@ -54,10 +54,10 @@ Use `AskUserQuestion` tool to ask which mode before starting.
 
 | Document | Path | Purpose |
 |----------|------|---------|
-| API Spec | `.pi-project/docs/PROJECT_API.md` | Endpoint specifications |
-| Integration Status | `.pi-project/docs/PROJECT_API_INTEGRATION.md` | Frontend-API mapping |
-| Database Schema | `.pi-project/docs/PROJECT_DATABASE.md` | Entity relationships |
-| Project Knowledge | `.pi-project/docs/PROJECT_KNOWLEDGE.md` | Architecture overview |
+| API Spec | `.project/docs/PROJECT_API.md` | Endpoint specifications |
+| Integration Status | `.project/docs/PROJECT_API_INTEGRATION.md` | Frontend-API mapping |
+| Database Schema | `.project/docs/PROJECT_DATABASE.md` | Entity relationships |
+| Project Knowledge | `.project/docs/PROJECT_KNOWLEDGE.md` | Architecture overview |
 
 ### Backend Structure
 
@@ -142,7 +142,7 @@ Generate comprehensive audit report covering:
 
 ### Phase 4: Status Update (Full implementation mode only)
 
-1. Update `.pi-project/docs/PROJECT_API_INTEGRATION.md` with status changes
+1. Update `.project/docs/PROJECT_API_INTEGRATION.md` with status changes
 2. Generate specific implementation tasks linked to audit findings
 
 ### Phase 5: Build & Test Verification (Full implementation mode only)

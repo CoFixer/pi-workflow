@@ -51,7 +51,7 @@ See `workflow_v2/docs/FULLSTACK_ORCHESTRATOR_HISTORY.md` for architectural decis
 
 # BUILD IN A DIFFERENT FOLDER (remote project)
 # Uses .pi/ from current project, outputs to target path
-/fullstack tirebank --path /Users/me/projects/tirebank --prd .pi-project/prd/ABCTire_PRD.md --run-all --skip-spec
+/fullstack tirebank --path /Users/me/projects/tirebank --prd .project/prd/ABCTire_PRD.md --run-all --skip-spec
 
 # After first run, target project has its own .pi/ — can run natively:
 # cd /Users/me/projects/tirebank && claude
@@ -64,7 +64,7 @@ See `workflow_v2/docs/FULLSTACK_ORCHESTRATOR_HISTORY.md` for architectural decis
 
 | # | Phase | Skill | Tier | Prerequisites | Output |
 |---|-------|-------|------|---------------|--------|
-| 1 | init | project-init.md | base | - | .pi-project/, .pi/ |
+| 1 | init | project-init.md | base | - | .project/, .pi/ |
 | 2 | prd | convert-prd-to-knowledge.md | nestjs | init | PROJECT_KNOWLEDGE.md |
 | 3 | database | database-schema-designer.md | nestjs | prd | Entities, migrations |
 | 4 | backend | (composite skills) | nestjs | database | API endpoints |
@@ -140,8 +140,8 @@ IF --path is provided:
   1. TARGET_DIR = resolve to absolute path (e.g., /Users/.../projects/tirebank)
   2. Verify TARGET_DIR exists → if not, mkdir -p TARGET_DIR
   3. ALL file operations below use TARGET_DIR as root (not cwd)
-     - Status file:   TARGET_DIR/.pi-project/status/{project}/PIPELINE_STATUS.md
-     - PRD:           TARGET_DIR/.pi-project/prd/
+     - Status file:   TARGET_DIR/.project/status/{project}/PIPELINE_STATUS.md
+     - PRD:           TARGET_DIR/.project/prd/
      - Skills/agents: still read from cwd's .pi/ (the source project)
      - Code output:   TARGET_DIR/backend/, TARGET_DIR/frontend/, etc.
   4. If --prd path is relative, resolve it from cwd (not TARGET_DIR)
@@ -166,7 +166,7 @@ This ensures the target project becomes self-sufficient — after the first run,
 
 ### Step 2: Locate or Create Status File
 
-Status file path: `.pi-project/status/{project}/PIPELINE_STATUS.md`
+Status file path: `.project/status/{project}/PIPELINE_STATUS.md`
 
 **If status file doesn't exist:**
 1. Copy template from `.pi/base/templates/PIPELINE_STATUS.template.md`
@@ -267,7 +267,7 @@ Fullstack Pipeline - {project}
 
 Phase       | Status      | Output
 ------------|-------------|------------------
-init        | Complete    | .pi-project/
+init        | Complete    | .project/
 prd         | Complete    | PROJECT_KNOWLEDGE.md
 database    | In Progress | migrations/
 backend     | Pending     | -
@@ -573,7 +573,7 @@ PHASE_RESULT: {
     "Max 3 items. Max 100 chars each. Only blockers or critical failures."
   ],
   "artifact_paths": [
-    ".pi-project/status/{tier}/API_IMPLEMENTATION_STATUS.md"
+    ".project/status/{tier}/API_IMPLEMENTATION_STATUS.md"
   ],
   "next_phase_hints": "Max 300 chars. Only context the IMMEDIATELY next phase strictly needs."
 }
@@ -615,7 +615,7 @@ Options:
 1. Run `/prd-to-design-prompts {prd-path} --tool generic`
 2. Update status: `frontend` | `Blocked` | `Awaiting external designs`
 3. Report output location and next steps:
-   - Prompts saved to `.pi-project/design-prompts/`
+   - Prompts saved to `.project/design-prompts/`
    - User should create designs using AI tools (Aura, v0, Gemini, etc.)
    - Re-run `/fullstack {project} --phase frontend` when designs are ready
 4. **STOP** - User must create designs externally
@@ -977,7 +977,7 @@ fi
 
 ```bash
 for doc in PROJECT_KNOWLEDGE PROJECT_API PROJECT_DATABASE; do
-  doc_path=".pi-project/docs/${doc}.md"
+  doc_path=".project/docs/${doc}.md"
   if [ -f "$doc_path" ]; then
     current_mtime=$(stat -f %m "$doc_path" 2>/dev/null || stat -c %Y "$doc_path")
     stored_mtime=$(read from PIPELINE_STATUS.md change_tracking.doc_mtimes.$doc)
@@ -1107,7 +1107,7 @@ Show these task lists in the Phase Start display (Step 4.2):
 
 ```
 init:
-  1. Detect project state (new vs existing .pi-project/)
+  1. Detect project state (new vs existing .project/)
   2. Gather tech stack configuration (AskUserQuestion)
   3. Create Claude config repo on GitHub (if new)
   4. Clone boilerplate repositories
@@ -1115,7 +1115,7 @@ init:
   6. Validate all required submodules exist
 
 prd:
-  1. Locate PRD document in .pi-project/prd/
+  1. Locate PRD document in .project/prd/
   2. Extract all PRD sections systematically
   3. Generate PROJECT_KNOWLEDGE.md
   4. Generate PROJECT_API.md (all endpoints)
@@ -1191,27 +1191,27 @@ Task(
 Coordinator: project-coordinator. Pipeline: fullstack-pipeline. Phase: prd (2/9).
 
 Project: {PROJECT}
-Status file: .pi-project/status/{PROJECT}/PIPELINE_STATUS.md
+Status file: .project/status/{PROJECT}/PIPELINE_STATUS.md
 Skill to follow: .pi/{BACKEND}/skills/convert-prd-to-knowledge.md
 
 Read this skill file FIRST and follow its instructions exactly.
 
 Context from init phase:
 - Tech stack: backend={BACKEND}, frontend={FRONTEND}
-- .pi-project/ structure is initialized
+- .project/ structure is initialized
 - All required submodules have been validated
 
 Your task:
 1. Read the skill file at .pi/{BACKEND}/skills/convert-prd-to-knowledge.md
-2. Locate the PRD document in .pi-project/prd/
+2. Locate the PRD document in .project/prd/
 3. Follow skill instructions to generate all required knowledge documents
 4. Delegate to prd-converter for the extraction and conversion work
 5. Ensure all output files are complete before returning
 
 Success criteria:
-- .pi-project/docs/PROJECT_KNOWLEDGE.md — populated with architecture, tech stack, features
-- .pi-project/docs/PROJECT_API.md — all API endpoints identified
-- .pi-project/docs/PROJECT_DATABASE.md — entities and ERD described
+- .project/docs/PROJECT_KNOWLEDGE.md — populated with architecture, tech stack, features
+- .project/docs/PROJECT_API.md — all API endpoints identified
+- .project/docs/PROJECT_DATABASE.md — entities and ERD described
 - No critical information gaps from the PRD
 
 Your FINAL output must include a PHASE_RESULT JSON block (≤ 500 tokens, use counts not lists):
@@ -1222,9 +1222,9 @@ PHASE_RESULT: {
   "counts": { "endpoints_extracted": N, "entities_extracted": N, "screens_identified": N, "gaps_found": N },
   "top_issues": ["max 3 critical gaps or missing info items, 100 chars each"],
   "artifact_paths": [
-    ".pi-project/docs/PROJECT_KNOWLEDGE.md",
-    ".pi-project/docs/PROJECT_API.md",
-    ".pi-project/docs/PROJECT_DATABASE.md"
+    ".project/docs/PROJECT_KNOWLEDGE.md",
+    ".project/docs/PROJECT_API.md",
+    ".project/docs/PROJECT_DATABASE.md"
   ],
   "next_phase_hints": "Max 300 chars — e.g. primary entity names, backend module list, key constraints"
 }
@@ -1242,15 +1242,15 @@ Task(
 Coordinator: project-coordinator. Pipeline: fullstack-pipeline. Phase: database (3/9).
 
 Project: {PROJECT}
-Status file: .pi-project/status/{PROJECT}/PIPELINE_STATUS.md
+Status file: .project/status/{PROJECT}/PIPELINE_STATUS.md
 Skill to follow: .pi/{BACKEND}/skills/database-schema-designer.md
 
 Read this skill file FIRST and follow its instructions exactly.
 
 Context from prd phase (compact summary from PIPELINE_STATUS.md ## Agent Results → prd):
 {INSERT prd next_phase_hints here — max 300 tokens, counts + summary only}
-- For full entity/API details: read .pi-project/docs/PROJECT_DATABASE.md
-- For architecture context: read .pi-project/docs/PROJECT_KNOWLEDGE.md
+- For full entity/API details: read .project/docs/PROJECT_DATABASE.md
+- For architecture context: read .project/docs/PROJECT_KNOWLEDGE.md
 - Tech stack: backend={BACKEND}
 - Backend codebase: ./backend/
 
@@ -1280,7 +1280,7 @@ PHASE_RESULT: {
   "summary": "One sentence max 200 chars",
   "counts": { "entities_created": N, "migrations_generated": N, "build_status": "pass|fail" },
   "top_issues": ["max 3 critical issues, 100 chars each"],
-  "artifact_paths": [".pi-project/docs/PROJECT_DATABASE.md"],
+  "artifact_paths": [".project/docs/PROJECT_DATABASE.md"],
   "next_phase_hints": "Max 300 chars — e.g. key entities or constraints the backend phase needs"
 }
 """
@@ -1297,7 +1297,7 @@ Task(
 Coordinator: project-coordinator. Pipeline: fullstack-pipeline. Phase: backend (4/9).
 
 Project: {PROJECT}
-Status file: .pi-project/status/{PROJECT}/PIPELINE_STATUS.md
+Status file: .project/status/{PROJECT}/PIPELINE_STATUS.md
 
 Skill resources (composite — read ALL):
 - .pi/{BACKEND}/guides/architecture-overview.md
@@ -1305,9 +1305,9 @@ Skill resources (composite — read ALL):
 
 Context from previous phases (compact summary from PIPELINE_STATUS.md ## Agent Results → database):
 {INSERT database next_phase_hints here — max 300 tokens, counts + summary only}
-- For full schema details: read .pi-project/docs/PROJECT_DATABASE.md
-- For endpoint requirements: read .pi-project/docs/PROJECT_API.md
-- For architecture: read .pi-project/docs/PROJECT_KNOWLEDGE.md
+- For full schema details: read .project/docs/PROJECT_DATABASE.md
+- For endpoint requirements: read .project/docs/PROJECT_API.md
+- For architecture: read .project/docs/PROJECT_KNOWLEDGE.md
 - Tech stack: backend={BACKEND}
 - Backend codebase: ./backend/
 
@@ -1347,7 +1347,7 @@ PHASE_RESULT: {
   "summary": "One sentence max 200 chars",
   "counts": { "modules_implemented": N, "endpoints_total": N, "build_status": "pass|fail" },
   "top_issues": ["max 3 critical issues, 100 chars each"],
-  "artifact_paths": [".pi-project/status/{tier}/API_IMPLEMENTATION_STATUS.md"],
+  "artifact_paths": [".project/status/{tier}/API_IMPLEMENTATION_STATUS.md"],
   "next_phase_hints": "Max 300 chars — e.g. auth strategy, base URL, key module names frontend needs"
 }
 """
@@ -1383,7 +1383,7 @@ Task(
 Coordinator: project-coordinator. Pipeline: fullstack-pipeline. Phase: frontend (5/9).
 
 Project: {PROJECT}
-Status file: .pi-project/status/{PROJECT}/PIPELINE_STATUS.md
+Status file: .project/status/{PROJECT}/PIPELINE_STATUS.md
 Frontend implementation path: {FRONTEND_PATH}  ← already selected, do NOT ask user again
 Skill to follow: .pi/{FRONTEND}/skills/{RESOLVED_SKILL_FILE}
 
@@ -1391,8 +1391,8 @@ Read this skill file FIRST and follow its instructions exactly.
 
 Context from previous phases (compact summary from PIPELINE_STATUS.md ## Agent Results → prd):
 {INSERT prd next_phase_hints here — max 300 tokens, counts + summary only}
-- For screens list: read .pi-project/docs/PROJECT_KNOWLEDGE.md
-- For API reference: read .pi-project/docs/PROJECT_API.md
+- For screens list: read .project/docs/PROJECT_KNOWLEDGE.md
+- For API reference: read .project/docs/PROJECT_API.md
 - Tech stack: frontend={FRONTEND}
 - Frontend directory: ./frontend/ (or ./mobile/ for react-native)
 {If figma: "- Figma URLs: {figma_urls_from_phase_config}"}
@@ -1429,7 +1429,7 @@ PHASE_RESULT: {
   "summary": "One sentence max 200 chars",
   "counts": { "screens_implemented": N, "components_created": N, "build_status": "pass|fail" },
   "top_issues": ["max 3 critical issues, 100 chars each"],
-  "artifact_paths": [".pi-project/status/{tier}/SCREEN_IMPLEMENTATION_STATUS.md"],
+  "artifact_paths": [".project/status/{tier}/SCREEN_IMPLEMENTATION_STATUS.md"],
   "next_phase_hints": "Max 300 chars — e.g. state mgmt approach, API client setup integrate needs to know"
 }
 """
@@ -1446,7 +1446,7 @@ Task(
 Coordinator: project-coordinator. Pipeline: fullstack-pipeline. Phase: integrate (6/9).
 
 Project: {PROJECT}
-Status file: .pi-project/status/{PROJECT}/PIPELINE_STATUS.md
+Status file: .project/status/{PROJECT}/PIPELINE_STATUS.md
 Skill to follow: .pi/{FRONTEND}/skills/api-integration.md (or guides/ equivalent)
 
 Read this skill file FIRST and follow its instructions exactly.
@@ -1454,8 +1454,8 @@ Read this skill file FIRST and follow its instructions exactly.
 Context from previous phases (compact summaries from PIPELINE_STATUS.md ## Agent Results):
 Backend: {INSERT backend next_phase_hints here — max 300 tokens}
 Frontend: {INSERT frontend next_phase_hints here — max 300 tokens}
-- For full endpoint list: read .pi-project/docs/PROJECT_API.md
-- For implementation status: read .pi-project/status/{tier}/API_IMPLEMENTATION_STATUS.md
+- For full endpoint list: read .project/docs/PROJECT_API.md
+- For implementation status: read .project/status/{tier}/API_IMPLEMENTATION_STATUS.md
 - Tech stack: backend={BACKEND}, frontend={FRONTEND}
 
 CONTEXT BUDGET: ≤ 600 tokens total for the above (300 per prior phase). Do NOT paste file contents here.
@@ -1467,7 +1467,7 @@ Your task:
 4. Delegate to api-integration-agent for a gap audit after wiring is complete
 5. Fix all Critical and High severity gaps from the audit
 6. Verify all builds pass
-7. Update `.pi-project/status/{FRONTEND}/API_INTEGRATION_STATUS.md` — mark each integrated
+7. Update `.project/status/{FRONTEND}/API_INTEGRATION_STATUS.md` — mark each integrated
    endpoint row as Complete with the service method name used
 
 Success criteria:
@@ -1483,7 +1483,7 @@ PHASE_RESULT: {
   "summary": "One sentence max 200 chars",
   "counts": { "screens_integrated": N, "gaps_found": N, "gaps_fixed": N, "build_status": "pass|fail" },
   "top_issues": ["max 3 critical issues, 100 chars each"],
-  "artifact_paths": [".pi-project/status/{tier}/API_INTEGRATION_STATUS.md"],
+  "artifact_paths": [".project/status/{tier}/API_INTEGRATION_STATUS.md"],
   "next_phase_hints": "Max 300 chars — e.g. remaining integration gaps, critical flows test phase needs"
 }
 """
@@ -1500,16 +1500,16 @@ Task(
 Coordinator: project-coordinator. Pipeline: fullstack-pipeline. Phase: test (7/9).
 
 Project: {PROJECT}
-Status file: .pi-project/status/{PROJECT}/PIPELINE_STATUS.md
+Status file: .project/status/{PROJECT}/PIPELINE_STATUS.md
 Skill to follow: .pi/{FRONTEND}/skills/e2e-test-generator.md
 
 Read this skill file FIRST and follow its instructions exactly.
 
 Context from previous phases (compact summary from PIPELINE_STATUS.md ## Agent Results → integrate):
 {INSERT integrate next_phase_hints here — max 300 tokens, counts + summary only}
-- For user flows: read .pi-project/docs/PROJECT_KNOWLEDGE.md
-- For API surface: read .pi-project/docs/PROJECT_API.md
-- For integration coverage: read .pi-project/status/{tier}/API_INTEGRATION_STATUS.md
+- For user flows: read .project/docs/PROJECT_KNOWLEDGE.md
+- For API surface: read .project/docs/PROJECT_API.md
+- For integration coverage: read .project/status/{tier}/API_INTEGRATION_STATUS.md
 - Tech stack: backend={BACKEND}, frontend={FRONTEND}
 
 CONTEXT BUDGET: ≤ 300 tokens for the above summary. Do NOT paste full file contents here.
@@ -1533,7 +1533,7 @@ PHASE_RESULT: {
   "summary": "One sentence max 200 chars",
   "counts": { "tests_generated": N, "tests_passing": N, "tests_failing": N },
   "top_issues": ["max 3 critical issues, 100 chars each"],
-  "artifact_paths": [".pi-project/status/{tier}/E2E_QA_STATUS.md"],
+  "artifact_paths": [".project/status/{tier}/E2E_QA_STATUS.md"],
   "next_phase_hints": "Max 300 chars — e.g. failing test patterns, coverage gaps qa phase must fix"
 }
 """
@@ -1550,15 +1550,15 @@ Task(
 Coordinator: project-coordinator. Pipeline: fullstack-pipeline. Phase: qa (8/9).
 
 Project: {PROJECT}
-Status file: .pi-project/status/{PROJECT}/PIPELINE_STATUS.md
+Status file: .project/status/{PROJECT}/PIPELINE_STATUS.md
 Skill to follow: .pi/{FRONTEND}/skills/design-qa-patterns.md
 
 Read this skill file FIRST and follow its instructions exactly.
 
 Context from previous phases (compact summary from PIPELINE_STATUS.md ## Agent Results → test):
 {INSERT test next_phase_hints here — max 300 tokens, counts + summary only}
-- For test details: read .pi-project/status/{tier}/E2E_QA_STATUS.md
-- For quality gates: read .pi-project/docs/PROJECT_KNOWLEDGE.md
+- For test details: read .project/status/{tier}/E2E_QA_STATUS.md
+- For quality gates: read .project/docs/PROJECT_KNOWLEDGE.md
 - Tech stack: backend={BACKEND}, frontend={FRONTEND}
 
 CONTEXT BUDGET: ≤ 300 tokens for the above summary. Do NOT paste full file contents here.
@@ -1586,7 +1586,7 @@ PHASE_RESULT: {
   "summary": "One sentence max 200 chars",
   "counts": { "pass_rate_pct": N, "critical_gaps_fixed": N, "iterations": N, "builds_passing": N },
   "top_issues": ["max 3 remaining blockers if status != complete, 100 chars each"],
-  "artifact_paths": [".pi-project/status/{tier}/GAP_ANALYSIS_REPORT.md"],
+  "artifact_paths": [".project/status/{tier}/GAP_ANALYSIS_REPORT.md"],
   "next_phase_hints": "Max 300 chars — e.g. remaining known issues ship phase should note in deployment docs"
 }
 """
@@ -1635,13 +1635,13 @@ Each phase **MUST** store its primary output as a file artifact. The PHASE_RESUL
 
 | Phase     | Primary Artifact File |
 |-----------|----------------------|
-| prd       | `.pi-project/docs/PROJECT_KNOWLEDGE.md`, `PROJECT_API.md`, `PROJECT_DATABASE.md` |
-| database  | `.pi-project/docs/PROJECT_DATABASE.md` (updated ERD + schema) |
-| backend   | `.pi-project/status/{tier}/API_IMPLEMENTATION_STATUS.md` |
-| frontend  | `.pi-project/status/{tier}/SCREEN_IMPLEMENTATION_STATUS.md` |
-| integrate | `.pi-project/status/{tier}/API_INTEGRATION_STATUS.md` |
-| test      | `.pi-project/status/{tier}/E2E_QA_STATUS.md` |
-| qa        | `.pi-project/status/{tier}/GAP_ANALYSIS_REPORT.md` |
+| prd       | `.project/docs/PROJECT_KNOWLEDGE.md`, `PROJECT_API.md`, `PROJECT_DATABASE.md` |
+| database  | `.project/docs/PROJECT_DATABASE.md` (updated ERD + schema) |
+| backend   | `.project/status/{tier}/API_IMPLEMENTATION_STATUS.md` |
+| frontend  | `.project/status/{tier}/SCREEN_IMPLEMENTATION_STATUS.md` |
+| integrate | `.project/status/{tier}/API_INTEGRATION_STATUS.md` |
+| test      | `.project/status/{tier}/E2E_QA_STATUS.md` |
+| qa        | `.project/status/{tier}/GAP_ANALYSIS_REPORT.md` |
 
 > **Rule:** If information is too large to fit in a PHASE_RESULT field, it belongs in an artifact file — not in the PHASE_RESULT JSON and not in the agent's prompt.
 
@@ -1671,7 +1671,7 @@ Each phase **MUST** store its primary output as a file artifact. The PHASE_RESUL
 
 ```bash
 /fullstack my-app --run
-# Runs init phase, creates .pi-project/
+# Runs init phase, creates .project/
 ```
 
 ### Build a New Product (Infinite Loop)
@@ -1695,7 +1695,7 @@ Each phase **MUST** store its primary output as a file artifact. The PHASE_RESUL
 
 ```bash
 /fullstack tirebank --path /Users/me/projects/tirebank \
-  --prd .pi-project/prd/ABCTire_PRD.md \
+  --prd .project/prd/ABCTire_PRD.md \
   --run-all --skip-spec
 ```
 

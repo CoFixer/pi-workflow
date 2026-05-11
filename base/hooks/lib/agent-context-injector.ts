@@ -113,7 +113,7 @@ function buildStackInfoBanner(stack: DetectedStack): string {
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Status: Project documentation not initialized
 Action: Using generic backend instructions (both NestJS and Django)
-Note: Run /new-project or manually create .pi-project/docs/PROJECT_KNOWLEDGE.md
+Note: Run /new-project or manually create .project/docs/PROJECT_KNOWLEDGE.md
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 `;
   }
@@ -135,7 +135,7 @@ Fix: Add "- **Backend**: nestjs" or "- **Backend**: django" to Tech Stack sectio
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ✓ DETECTED BACKEND STACK: ${stackName}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Source: .pi-project/docs/PROJECT_KNOWLEDGE.md
+Source: .project/docs/PROJECT_KNOWLEDGE.md
 Framework Resources: .pi/${stack.backend}/
 Action: Using ${stackName}-specific instructions and patterns
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

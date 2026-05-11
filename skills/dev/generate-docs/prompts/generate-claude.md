@@ -4,7 +4,7 @@
 
 This prompt guides the generation of the `claude.md` file in the project root, which serves as the project configuration and quick reference for Claude Code sessions.
 
-**Key Principle**: `claude.md` is a **concise summary** (~200 lines) that references detailed docs in `.pi-project/docs/`.
+**Key Principle**: `claude.md` is a **concise summary** (~200 lines) that references detailed docs in `.project/docs/`.
 
 ---
 
@@ -133,7 +133,7 @@ This prompt guides the generation of the `claude.md` file in the project root, w
 ├── frontend/                    # React user application
 ├── frontend-admin-dashboard/    # React admin dashboard
 ├── .pi/                     # Claude Code configuration
-├── .pi-project/             # Project documentation
+├── .project/             # Project documentation
 └── docker-compose.yml           # Docker configuration
 ```
 ```
@@ -155,26 +155,26 @@ This prompt guides the generation of the `claude.md` file in the project root, w
 
 | Document | Path | Description |
 |----------|------|-------------|
-| Project Knowledge | [.pi-project/docs/PROJECT_KNOWLEDGE.md](.pi-project/docs/PROJECT_KNOWLEDGE.md) | Core project info, features, roles |
-| API Documentation | [.pi-project/docs/PROJECT_API.md](.pi-project/docs/PROJECT_API.md) | API endpoints and specifications |
-| Database Schema | [.pi-project/docs/PROJECT_DATABASE.md](.pi-project/docs/PROJECT_DATABASE.md) | Entity definitions and relationships |
-| API Integration | [.pi-project/docs/PROJECT_API_INTEGRATION.md](.pi-project/docs/PROJECT_API_INTEGRATION.md) | Frontend-backend integration |
+| Project Knowledge | [.project/docs/PROJECT_KNOWLEDGE.md](.project/docs/PROJECT_KNOWLEDGE.md) | Core project info, features, roles |
+| API Documentation | [.project/docs/PROJECT_API.md](.project/docs/PROJECT_API.md) | API endpoints and specifications |
+| Database Schema | [.project/docs/PROJECT_DATABASE.md](.project/docs/PROJECT_DATABASE.md) | Entity definitions and relationships |
+| API Integration | [.project/docs/PROJECT_API_INTEGRATION.md](.project/docs/PROJECT_API_INTEGRATION.md) | Frontend-backend integration |
 
 ### Status Tracking
 
 | Status File | Path |
 |-------------|------|
-| Backend API Status | [.pi-project/status/backend/API_IMPLEMENTATION_STATUS.md](.pi-project/status/backend/API_IMPLEMENTATION_STATUS.md) |
-| Frontend Screens | [.pi-project/status/frontend/SCREEN_IMPLEMENTATION_STATUS.md](.pi-project/status/frontend/SCREEN_IMPLEMENTATION_STATUS.md) |
-| Frontend API Integration | [.pi-project/status/frontend/API_INTEGRATION_STATUS.md](.pi-project/status/frontend/API_INTEGRATION_STATUS.md) |
+| Backend API Status | [.project/status/backend/API_IMPLEMENTATION_STATUS.md](.project/status/backend/API_IMPLEMENTATION_STATUS.md) |
+| Frontend Screens | [.project/status/frontend/SCREEN_IMPLEMENTATION_STATUS.md](.project/status/frontend/SCREEN_IMPLEMENTATION_STATUS.md) |
+| Frontend API Integration | [.project/status/frontend/API_INTEGRATION_STATUS.md](.project/status/frontend/API_INTEGRATION_STATUS.md) |
 
 ### Memory (Persistent Context)
 
 | File | Purpose |
 |------|---------|
-| [DECISIONS.md](.pi-project/memory/DECISIONS.md) | Architecture decisions log |
-| [LEARNINGS.md](.pi-project/memory/LEARNINGS.md) | Patterns and insights |
-| [PREFERENCES.md](.pi-project/memory/PREFERENCES.md) | Coding style preferences |
+| [DECISIONS.md](.project/memory/DECISIONS.md) | Architecture decisions log |
+| [LEARNINGS.md](.project/memory/LEARNINGS.md) | Patterns and insights |
+| [PREFERENCES.md](.project/memory/PREFERENCES.md) | Coding style preferences |
 ```
 
 **Rules:**

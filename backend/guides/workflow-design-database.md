@@ -44,7 +44,7 @@ Before writing any code, thoroughly analyze the requirements document.
 
 ### 1.1 Read the PRD/Requirements
 
-- Read `.pi-project/docs/PROJECT_KNOWLEDGE.md` for project context
+- Read `.project/docs/PROJECT_KNOWLEDGE.md` for project context
 - Identify all user types and their roles
 - List all features for each user type
 - Note business rules and constraints
@@ -470,7 +470,7 @@ Create a `PROJECT_DATABASE.md` file in `.pi/docs/` to document your database des
 
 ```bash
 # Create the documentation file
-touch .pi-project/docs/PROJECT_DATABASE.md
+touch .project/docs/PROJECT_DATABASE.md
 ```
 
 Include the following sections in `PROJECT_DATABASE.md`:

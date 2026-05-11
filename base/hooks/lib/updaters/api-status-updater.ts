@@ -20,7 +20,7 @@ import {
     getModuleSectionHeader,
 } from '../detectors/api-detector';
 
-const STATUS_FILE_PATH = '.pi-project/status/backend/API_IMPLEMENTATION_STATUS.md';
+const STATUS_FILE_PATH = '.project/status/backend/API_IMPLEMENTATION_STATUS.md';
 
 /**
  * Update API status document with detected controller endpoints

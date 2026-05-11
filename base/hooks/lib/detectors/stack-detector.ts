@@ -22,7 +22,7 @@ export interface DetectedStack {
 export function detectBackendStack(projectRoot: string): DetectedStack {
   // Try CLAUDE.md first (faster, at root level, token-efficient)
   const claudeMdPath = join(projectRoot, 'CLAUDE.md');
-  const knowledgePath = join(projectRoot, '.claude-project', 'docs', 'PROJECT_KNOWLEDGE.md');
+  const knowledgePath = join(projectRoot, '.project', 'docs', 'PROJECT_KNOWLEDGE.md');
 
   const result: DetectedStack = {
     backend: null,

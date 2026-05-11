@@ -23,10 +23,10 @@ Error: .pi/base submodule not found.
 Run: git submodule update --init --recursive
 ```
 
-Check for .pi-project/ directory:
+Check for .project/ directory:
 
 ```bash
-ls .pi-project/ 2>/dev/null && echo "OK" || echo "MISSING"
+ls .project/ 2>/dev/null && echo "OK" || echo "MISSING"
 ```
 
 If MISSING, suggest running `/dev:init-workspace` first, then stop.
@@ -56,10 +56,10 @@ Store as `$PROJECT_NAME`.
 Create the sessions directory and CURRENT.md if they don't exist:
 
 ```bash
-mkdir -p .pi-project/sessions
+mkdir -p .project/sessions
 ```
 
-If `.pi-project/sessions/CURRENT.md` does NOT exist, create it:
+If `.project/sessions/CURRENT.md` does NOT exist, create it:
 
 ```markdown
 # Current Session — $DATE
@@ -94,18 +94,18 @@ If it already exists, skip — do not overwrite.
 Check current state:
 
 ```bash
-cat .pi-project/state/reflect-enabled.json 2>/dev/null || echo "NOT_EXISTS"
+cat .project/state/reflect-enabled.json 2>/dev/null || echo "NOT_EXISTS"
 ```
 
 If NOT_EXISTS or `enabled: false`:
 
 ```bash
-mkdir -p .pi-project/state
+mkdir -p .project/state
 ```
 
 Read existing file if it exists to preserve `lastReflection` and `totalReflections` values.
 
-Write `.pi-project/state/reflect-enabled.json`:
+Write `.project/state/reflect-enabled.json`:
 ```json
 {
   "enabled": true,
@@ -157,14 +157,14 @@ Find the first `---` separator in CLAUDE.md (end of the Overview/header section)
 ## For AI Agents
 
 ### Start every session by checking (if files exist):
-- `.pi-project/sessions/CURRENT.md` — what was in progress last session
-- `.pi-project/memory/LEARNINGS.md` — known pitfalls and patterns
-- `.pi-project/memory/DECISIONS.md` — architectural decisions already made
+- `.project/sessions/CURRENT.md` — what was in progress last session
+- `.project/memory/LEARNINGS.md` — known pitfalls and patterns
+- `.project/memory/DECISIONS.md` — architectural decisions already made
 
 ### Deep reference (load only when relevant):
-- API endpoints → `.pi-project/docs/PROJECT_API.md`
-- DB schema → `.pi-project/docs/PROJECT_DATABASE.md`
-- Full knowledge → `.pi-project/docs/PROJECT_KNOWLEDGE.md`
+- API endpoints → `.project/docs/PROJECT_API.md`
+- DB schema → `.project/docs/PROJECT_DATABASE.md`
+- Full knowledge → `.project/docs/PROJECT_KNOWLEDGE.md`
 
 ### Always confirm before doing:
 - Any file matching `**/migrations/**` → read existing migrations first
@@ -176,7 +176,7 @@ Find the first `---` separator in CLAUDE.md (end of the Overview/header section)
 (Fill in project-specific gotchas here)
 
 ### Before ending any session:
-Update `.pi-project/sessions/CURRENT.md` with:
+Update `.project/sessions/CURRENT.md` with:
 - What was completed this session
 - What's still in progress (half-done tasks)
 - Any blockers
@@ -195,7 +195,7 @@ Update `.pi-project/sessions/CURRENT.md` with:
 Check if LEARNINGS.md has real entries (beyond the template skeleton):
 
 ```bash
-grep -c "^#### Issue:" .pi-project/memory/LEARNINGS.md 2>/dev/null || echo "0"
+grep -c "^#### Issue:" .project/memory/LEARNINGS.md 2>/dev/null || echo "0"
 ```
 
 If count is 0 (still empty template), add a starter entry to the `### Common Issues & Solutions` section:
@@ -232,7 +232,7 @@ If LEARNINGS.md already has real entries (count > 0), skip with message: "LEARNI
 Check if DECISIONS.md has real entries:
 
 ```bash
-grep -c "^## 20" .pi-project/memory/DECISIONS.md 2>/dev/null || echo "0"
+grep -c "^## 20" .project/memory/DECISIONS.md 2>/dev/null || echo "0"
 ```
 
 If count is 0 (still empty template), add a starter entry under `## Decisions`:
@@ -292,7 +292,7 @@ Next steps:
   1. Add project-specific gotchas to CLAUDE.md "Known pitfalls" section
   2. Add project-specific dangers to CLAUDE.md "Always confirm" section
   3. Run /reflect-status to verify auto-reflect is working
-  4. At end of each session: update .pi-project/sessions/CURRENT.md
+  4. At end of each session: update .project/sessions/CURRENT.md
 ```
 
 ---
@@ -300,7 +300,7 @@ Next steps:
 ## Error Handling
 
 - **Template dir missing**: Report "Run git submodule update --init --recursive"
-- **.claude-project missing**: Report "Run /dev:init-workspace first"
+- **.project missing**: Report "Run /dev:init-workspace first"
 - **CLAUDE.md write fails**: Report file path and permissions issue
 - **reflect-enabled.json write fails**: Create state/ directory first, retry once
 - **User cancels at Step 7**: Continue with "Skip for now" behavior, report partial completion

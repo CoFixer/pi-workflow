@@ -79,7 +79,7 @@ Project: $PROJECT_NAME
 
 **This step ALWAYS runs in both normal and --docs-only modes.**
 
-This step automatically detects existing project resources (HTML prototypes, PRD documents) at the root directory and migrates them to the proper locations within `.pi-project/`.
+This step automatically detects existing project resources (HTML prototypes, PRD documents) at the root directory and migrates them to the proper locations within `.project/`.
 
 ### 0.5.1 Check for Existing Resources
 
@@ -116,19 +116,19 @@ Automatically migrate resources without prompting:
 
 ```bash
 # Create target directories
-mkdir -p .pi-project/resources
-mkdir -p .pi-project/prd
+mkdir -p .project/resources
+mkdir -p .project/prd
 
 # Move HTML folder
 if [ "$HTML_FOLDER_EXISTS" = true ]; then
-  mv HTML .pi-project/resources/HTML
-  echo "Migrated: HTML/ → .pi-project/resources/HTML/ ($HTML_FILE_COUNT files)"
+  mv HTML .project/resources/HTML
+  echo "Migrated: HTML/ → .project/resources/HTML/ ($HTML_FILE_COUNT files)"
 fi
 
 # Move PRD PDF
 if [ "$PRD_PDF_EXISTS" = true ]; then
-  mv prd.pdf .pi-project/prd/prd.pdf
-  echo "Migrated: prd.pdf → .pi-project/prd/prd.pdf"
+  mv prd.pdf .project/prd/prd.pdf
+  echo "Migrated: prd.pdf → .project/prd/prd.pdf"
 fi
 ```
 
@@ -158,18 +158,18 @@ Analyze first 3 HTML files for framework hints:
 
 ```bash
 # Check for TailwindCSS CDN (strongly suggests React)
-if grep -l "tailwindcss.com" .pi-project/resources/HTML/*.html 2>/dev/null | head -1; then
+if grep -l "tailwindcss.com" .project/resources/HTML/*.html 2>/dev/null | head -1; then
   FRAMEWORK_HINT="react"
   CSS_FRAMEWORK="tailwindcss"
 fi
 
 # Check for Vue.js
-if grep -l "vue.js\|vue.min.js" .pi-project/resources/HTML/*.html 2>/dev/null | head -1; then
+if grep -l "vue.js\|vue.min.js" .project/resources/HTML/*.html 2>/dev/null | head -1; then
   FRAMEWORK_HINT="vue"
 fi
 
 # Check for Angular
-if grep -l "angular" .pi-project/resources/HTML/*.html 2>/dev/null | head -1; then
+if grep -l "angular" .project/resources/HTML/*.html 2>/dev/null | head -1; then
   FRAMEWORK_HINT="angular"
 fi
 ```
@@ -194,14 +194,14 @@ These values will be used as defaults in Step 1.
 
 ### 0.5.6 Populate Documentation from PRD
 
-After stack detection, automatically populate `.pi-project/docs/` with detailed information extracted from the PRD.
+After stack detection, automatically populate `.project/docs/` with detailed information extracted from the PRD.
 
 #### 0.5.6.0 Organize HTML Files by Type
 
 Before populating docs, organize HTML files into subfolders by user type:
 
 ```bash
-cd .pi-project/resources/HTML
+cd .project/resources/HTML
 
 # Create type folders
 mkdir -p auth business-user data-analyst ops-manager admin settings modals
@@ -221,7 +221,7 @@ cd -
 
 **Result structure:**
 ```
-.pi-project/resources/HTML/
+.project/resources/HTML/
 ├── auth/           # 01-06 (landing, login, signup, forgot-pwd, reset-pwd, email-verify)
 ├── business-user/  # 07-12 (home, dashboard-list, dashboard-view, reports, alerts, settings)
 ├── data-analyst/   # 13-17 (home, builder, query, models, model-editor)
@@ -342,7 +342,7 @@ Before populating API integration documentation, cross-reference HTML files with
 **Cross-Check Process:**
 
 ```
-1. List all HTML files from .pi-project/resources/HTML/
+1. List all HTML files from .project/resources/HTML/
 2. Extract screen names from PRD Part 2 & Part 3 (Page Architecture sections)
 3. Match HTML files to PRD screens
 4. Identify discrepancies:
@@ -462,13 +462,13 @@ CREATE_DASHBOARD=false
 MULTIPLE_ROLES_DETECTED=false
 DETECTED_ROLES=()
 
-if [ -d ".pi-project/resources/HTML/admin" ]; then
+if [ -d ".project/resources/HTML/admin" ]; then
   DETECTED_ROLES+=("admin")
 fi
-if [ -d ".pi-project/resources/HTML/organizer" ]; then
+if [ -d ".project/resources/HTML/organizer" ]; then
   DETECTED_ROLES+=("organizer")
 fi
-if [ -d ".pi-project/resources/HTML/ops-manager" ]; then
+if [ -d ".project/resources/HTML/ops-manager" ]; then
   DETECTED_ROLES+=("ops-manager")
 fi
 
@@ -563,9 +563,9 @@ Boilerplate Code:
   - mobile/                        ← react-native-starter-kit (if React Native)
 
 Project Documentation:
-  - .pi-project/status/
-  - .pi-project/memory/
-  - .pi-project/docs/
+  - .project/status/
+  - .project/memory/
+  - .project/docs/
 
 Proceed with this setup?
 ```
@@ -742,12 +742,12 @@ networks:
 
 This step can be run standalone with `--docs-only` flag for existing projects.
 
-### 7.1 Check for existing .claude-project
+### 7.1 Check for existing .project
 
 ```bash
-if [ -d ".claude-project" ]; then
+if [ -d ".project" ]; then
   # Ask user: Overwrite, Merge, or Skip?
-  # - Overwrite: rm -rf .claude-project && continue
+  # - Overwrite: rm -rf .project && continue
   # - Merge: continue (will skip existing files)
   # - Skip: exit step 7
 fi
@@ -756,18 +756,18 @@ fi
 ### 7.2 Copy templates
 
 ```bash
-# Create .claude-project directory
-mkdir -p .claude-project
+# Create .project directory
+mkdir -p .project
 
 # Copy all templates from .pi/templates
-cp -r .pi/templates/claude-project/* .pi-project/
+cp -r .pi/templates/claude-project/* .project/
 ```
 
 ### 7.3 Rename template files (remove .template suffix)
 
 ```bash
 # Find all .template.md files recursively and rename them
-find .claude-project -name "*.template.md" | while read f; do
+find .project -name "*.template.md" | while read f; do
   mv "$f" "${f%.template.md}.md"
 done
 ```
@@ -778,17 +778,17 @@ Templates use `{PLACEHOLDER}` format (curly braces).
 
 ```bash
 # Replace {PROJECT_NAME} placeholder
-find .claude-project -name "*.md" -exec sed -i '' "s/{PROJECT_NAME}/$PROJECT_NAME/g" {} \;
+find .project -name "*.md" -exec sed -i '' "s/{PROJECT_NAME}/$PROJECT_NAME/g" {} \;
 
 # Replace {BACKEND} placeholder
-find .claude-project -name "*.md" -exec sed -i '' "s/{BACKEND}/$BACKEND/g" {} \;
+find .project -name "*.md" -exec sed -i '' "s/{BACKEND}/$BACKEND/g" {} \;
 
 # Replace {FRONTENDS} placeholder (join array with comma)
 FRONTENDS_STR=$(IFS=', '; echo "${FRONTENDS[*]}")
-find .claude-project -name "*.md" -exec sed -i '' "s/{FRONTENDS}/$FRONTENDS_STR/g" {} \;
+find .project -name "*.md" -exec sed -i '' "s/{FRONTENDS}/$FRONTENDS_STR/g" {} \;
 
 # Replace {DATE} placeholder
-find .claude-project -name "*.md" -exec sed -i '' "s/{DATE}/$(date +%Y-%m-%d)/g" {} \;
+find .project -name "*.md" -exec sed -i '' "s/{DATE}/$(date +%Y-%m-%d)/g" {} \;
 ```
 
 ### 7.4.5 Filter Framework-Specific Sections Based on Tech Stack
@@ -798,20 +798,20 @@ find .claude-project -name "*.md" -exec sed -i '' "s/{DATE}/$(date +%Y-%m-%d)/g"
 ```bash
 # Remove unused backend architecture sections
 if [ "$BACKEND" = "nestjs" ]; then
-  sed -i '' '/<!-- Django Backend Architecture -->/,/<!-- End Django section -->/d' .pi-project/docs/PROJECT_KNOWLEDGE.md
+  sed -i '' '/<!-- Django Backend Architecture -->/,/<!-- End Django section -->/d' .project/docs/PROJECT_KNOWLEDGE.md
 elif [ "$BACKEND" = "django" ]; then
-  sed -i '' '/<!-- NestJS Backend Architecture -->/,/<!-- End NestJS section -->/d' .pi-project/docs/PROJECT_KNOWLEDGE.md
+  sed -i '' '/<!-- NestJS Backend Architecture -->/,/<!-- End NestJS section -->/d' .project/docs/PROJECT_KNOWLEDGE.md
 fi
 
 # Remove React Native section if not in frontends
 if [[ ! " ${FRONTENDS[@]} " =~ " react-native " ]]; then
-  sed -i '' '/<!-- React Native Mobile Architecture -->/,/<!-- End React Native section -->/d' .pi-project/docs/PROJECT_KNOWLEDGE.md
-  sed -i '' '/├── mobile\//d' .pi-project/docs/PROJECT_KNOWLEDGE.md
+  sed -i '' '/<!-- React Native Mobile Architecture -->/,/<!-- End React Native section -->/d' .project/docs/PROJECT_KNOWLEDGE.md
+  sed -i '' '/├── mobile\//d' .project/docs/PROJECT_KNOWLEDGE.md
 fi
 
 # Remove React section if not in frontends (edge case)
 if [[ ! " ${FRONTENDS[@]} " =~ " react " ]]; then
-  sed -i '' '/<!-- React Web Architecture -->/,/<!-- End React section -->/d' .pi-project/docs/PROJECT_KNOWLEDGE.md
+  sed -i '' '/<!-- React Web Architecture -->/,/<!-- End React section -->/d' .project/docs/PROJECT_KNOWLEDGE.md
 fi
 
 echo "✓ Filtered framework-specific sections based on tech stack"
@@ -820,10 +820,10 @@ echo "✓ Filtered framework-specific sections based on tech stack"
 ### 7.4.6 Remove Generic Database Template if PRD Exists
 
 ```bash
-if [ -f ".pi-project/prd/prd.pdf" ]; then
+if [ -f ".project/prd/prd.pdf" ]; then
   echo "✓ PRD detected - will generate database schema from PRD entities"
   sed -i '' '/<!-- Generic Template ERD -->/,/<!-- End Generic Template ERD -->/d' \
-    .pi-project/docs/PROJECT_DATABASE.md
+    .project/docs/PROJECT_DATABASE.md
 else
   echo "⚠ No PRD found - keeping generic template ERD for reference"
 fi
@@ -832,9 +832,9 @@ fi
 ### 7.5 Handle gitignore template
 
 ```bash
-if [ -f ".pi-project/gitignore.template" ]; then
-  cat .pi-project/gitignore.template >> .gitignore
-  rm .pi-project/gitignore.template
+if [ -f ".project/gitignore.template" ]; then
+  cat .project/gitignore.template >> .gitignore
+  rm .project/gitignore.template
 fi
 ```
 
@@ -844,7 +844,7 @@ fi
 # Create status subfolders for each existing project folder
 for folder in backend frontend mobile; do
   if [ -d "$folder" ]; then
-    mkdir -p ".pi-project/status/$folder"
+    mkdir -p ".project/status/$folder"
     echo "✓ Created status folder for $folder"
   fi
 done
@@ -853,17 +853,17 @@ done
 if [ "$DASHBOARD_STRATEGY" = "separate" ]; then
   for role in "${DETECTED_ROLES[@]}"; do
     if [ -d "dashboard-${role}" ]; then
-      mkdir -p ".pi-project/status/dashboard-${role}"
+      mkdir -p ".project/status/dashboard-${role}"
       echo "✓ Created status folder for dashboard-${role}"
     fi
   done
 elif [ -d "dashboard" ]; then
-  mkdir -p ".pi-project/status/dashboard"
+  mkdir -p ".project/status/dashboard"
   echo "✓ Created status folder for dashboard (consolidated)"
 fi
 
 # Create temp folder for temporary/working files
-mkdir -p ".pi-project/status/temp"
+mkdir -p ".project/status/temp"
 echo "✓ Created status/temp folder for working files"
 ```
 
@@ -871,7 +871,7 @@ echo "✓ Created status/temp folder for working files"
 
 ```bash
 # Verify required files exist
-required_files=(".pi-project/docs/PROJECT_KNOWLEDGE.md" ".pi-project/docs/PROJECT_API.md" ".pi-project/docs/PROJECT_DATABASE.md" "CLAUDE.md" "README.md")
+required_files=(".project/docs/PROJECT_KNOWLEDGE.md" ".project/docs/PROJECT_API.md" ".project/docs/PROJECT_DATABASE.md" "CLAUDE.md" "README.md")
 
 echo "=== Verifying Documentation ==="
 for file in "${required_files[@]}"; do
@@ -920,7 +920,7 @@ After templates are copied and placeholders replaced, add PRD-specific content e
 **BEFORE GENERATING SCHEMA**: Read `.pi/templates/examples/new-project-database-example.md` for the complete ERD diagram format and all table definition structures.
 
 ```bash
-if [ -f ".pi-project/prd/prd.pdf" ]; then
+if [ -f ".project/prd/prd.pdf" ]; then
   echo "Generating database schema from PRD..."
 
   # Append to PROJECT_DATABASE.md using heredoc with content following
@@ -928,7 +928,7 @@ if [ -f ".pi-project/prd/prd.pdf" ]; then
   # - Entity Relationship Diagram (ASCII box format with PK/FK markers)
   # - Entity Relationships tables (1:N and N:N)
   # - All table schemas (Column | Type | Nullable | Default | Description + Constraints)
-  cat >> .pi-project/docs/PROJECT_DATABASE.md << 'DBEOF'
+  cat >> .project/docs/PROJECT_DATABASE.md << 'DBEOF'
   [Generate ERD and table schemas from PRD entities following the example format]
 DBEOF
 
@@ -1007,15 +1007,15 @@ fi
 cp .pi/templates/README.template.md README.md
 
 # Extract project description from PROJECT_KNOWLEDGE.md
-if [ -f ".pi-project/docs/PROJECT_KNOWLEDGE.md" ]; then
-  PROJECT_DESC=$(sed -n '/^## Overview/,/^##/p' .pi-project/docs/PROJECT_KNOWLEDGE.md | sed '1d;$d' | head -3)
+if [ -f ".project/docs/PROJECT_KNOWLEDGE.md" ]; then
+  PROJECT_DESC=$(sed -n '/^## Overview/,/^##/p' .project/docs/PROJECT_KNOWLEDGE.md | sed '1d;$d' | head -3)
   if [ -n "$PROJECT_DESC" ]; then
     sed -i '' "/^\> \[Project description/c\\
 > $PROJECT_DESC" README.md
   fi
 
   # Extract features from Goals section
-  GOALS=$(sed -n '/^### Goals/,/^##/p' .pi-project/docs/PROJECT_KNOWLEDGE.md | grep '^[0-9]' | sed 's/^[0-9]*\. /- /')
+  GOALS=$(sed -n '/^### Goals/,/^##/p' .project/docs/PROJECT_KNOWLEDGE.md | grep '^[0-9]' | sed 's/^[0-9]*\. /- /')
   if [ -n "$GOALS" ]; then
     sed -i '' "/^- Feature 1/,/^- Feature 3/d" README.md
     sed -i '' "/^## Features/a\\
@@ -1154,7 +1154,7 @@ git checkout main
 
 $PROJECT_NAME/
 ├── .pi/              # Shared claude-workflow (base, nestjs, django, react, react-native)
-├── .pi-project/      # Project docs (docs/, memory/, prd/, resources/, status/)
+├── .project/      # Project docs (docs/, memory/, prd/, resources/, status/)
 ├── backend/              # $BACKEND boilerplate
 ├── frontend/             # React Web (if selected)
 ├── dashboard/            # Consolidated dashboard (if DASHBOARD_STRATEGY=single)
@@ -1165,8 +1165,8 @@ $PROJECT_NAME/
 ├── CLAUDE.md
 └── README.md
 
-Migrated: HTML/ ($HTML_FILE_COUNT files) → .pi-project/resources/HTML/
-Migrated: prd.pdf → .pi-project/prd/prd.pdf
+Migrated: HTML/ ($HTML_FILE_COUNT files) → .project/resources/HTML/
+Migrated: prd.pdf → .project/prd/prd.pdf
 Auto-Detected: Backend=$BACKEND_DETECTED, Frontend=$FRONTENDS_DETECTED, Dashboards=$DASHBOARDS_DETECTED
 
 GitHub: https://github.com/potentialInc/$PROJECT_NAME (private)
@@ -1193,7 +1193,7 @@ If setup fails midway:
 
 ```bash
 # Clean up local
-rm -rf backend frontend frontend-dashboard mobile .claude .claude-project docker-compose.yml
+rm -rf backend frontend frontend-dashboard mobile .claude .project docker-compose.yml
 
 # Clean up GitHub (if repo was created)
 gh repo delete potentialInc/$PROJECT_NAME --yes

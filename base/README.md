@@ -16,7 +16,7 @@ Shared Claude Code configuration, commands, and knowledge for all projects.
 - [Folder Structure](#folder-structure)
 - [Documentation & Templates](#documentation--templates)
   - [Why Two Folders?](#why-two-folders-claude-vs-claude-project)
-  - [How .claude-project Gets Created](#how-claude-project-gets-created)
+  - [How .project Gets Created](#how-claude-project-gets-created)
   - [Purpose of Each Folder](#purpose-of-each-folder)
 - [How Skills Are Triggered](#how-skills-are-triggered)
 - [Creating Custom Skills](#creating-custom-skills)
@@ -78,7 +78,7 @@ Every project can have a `CLAUDE.md` file in the **root directory**. This file p
 my-project/
 ├── CLAUDE.md              ← Project-level config (Claude reads this first)
 ├── .pi/               ← System configuration (skills, hooks, agents)
-├── .pi-project/       ← Project documentation (PRD, status, memory)
+├── .project/       ← Project documentation (PRD, status, memory)
 ├── backend/
 └── frontend/
 ```
@@ -111,7 +111,7 @@ Description of what this skill does...
 | `CLAUDE.md` | Quick reference, custom skill docs | This project only |
 | `.pi/settings.json` | System configuration | This project only |
 | `.pi/base/` | Shared skills/agents/hooks | All projects (submodule) |
-| `.pi-project/` | PRD, documentation, status | This project only |
+| `.project/` | PRD, documentation, status | This project only |
 
 **Key Point**: CLAUDE.md is for human-readable project context. The `.pi/` folder is for system configuration (hooks, agents, skills).
 
@@ -452,7 +452,7 @@ Complete annotated structure of the `.pi/` system:
 
 ## Documentation & Templates
 
-### Why Two Folders? `.pi/` vs `.pi-project/`
+### Why Two Folders? `.pi/` vs `.project/`
 
 The system separates **configuration** from **project knowledge**:
 
@@ -461,7 +461,7 @@ The system separates **configuration** from **project knowledge**:
 │                    Two-Folder Architecture                               │
 ├─────────────────────────────────────────────────────────────────────────┤
 │                                                                          │
-│   .pi/                          .pi-project/                     │
+│   .pi/                          .project/                     │
 │   ─────────                         ────────────────                     │
 │   HOW Claude works                  WHAT Claude knows                    │
 │                                                                          │
@@ -479,11 +479,11 @@ The system separates **configuration** from **project knowledge**:
 
 **Key Insight**:
 - `.pi/` = Reusable across projects (via git submodules)
-- `.pi-project/` = Unique to this project (committed to project repo)
+- `.project/` = Unique to this project (committed to project repo)
 
 ---
 
-### How `.pi-project/` Gets Created
+### How `.project/` Gets Created
 
 When you run `/new-project`, templates from `.pi/base/templates/claude-project/` are copied to the project root:
 
@@ -495,7 +495,7 @@ When you run `/new-project`, templates from `.pi/base/templates/claude-project/`
 │   SOURCE (in claude-base)              DESTINATION (in your project)    │
 │                                                                          │
 │   .pi/base/templates/              my-project/                       │
-│   └── claude-project/         ──►      └── .pi-project/              │
+│   └── claude-project/         ──►      └── .project/              │
 │       ├── docs/                            ├── docs/                     │
 │       │   └── *.template.md                │   └── *.md (variables replaced)
 │       ├── memory/                          ├── memory/                   │
@@ -514,16 +514,16 @@ When you run `/new-project`, templates from `.pi/base/templates/claude-project/`
 2. Templates are copied from `.pi/base/templates/claude-project/`
 3. `.template.md` suffix is removed from filenames
 4. Variables (`$PROJECT_NAME`, `$BACKEND`, etc.) are replaced with actual values
-5. Result: A ready-to-use `.pi-project/` folder in your project root
+5. Result: A ready-to-use `.project/` folder in your project root
 
 ---
 
-### `.pi-project/` Folder Structure
+### `.project/` Folder Structure
 
-Project documentation lives in `.pi-project/` (separate from `.pi/`):
+Project documentation lives in `.project/` (separate from `.pi/`):
 
 ```
-.pi-project/
+.project/
 │
 ├── docs/                           # Technical documentation
 │   ├── PROJECT_KNOWLEDGE.md        # Core project info for Claude
@@ -852,7 +852,7 @@ See [Architecture Overview](./resources/architecture-overview.md) for details.
 | `/dev-docs-update` | Update dev documentation before context compaction |
 | `/figma-extract-screens` | Extract Figma screen names and node IDs |
 | `/init-claude-config` | Initialize Claude config only (advanced) |
-| `/init-workspace` | Initialize .claude-project folder with templates |
+| `/init-workspace` | Initialize .project folder with templates |
 | `/validate-claude-config` | Validate .claude configuration structure |
 | `/build-registry` | Build centralized registry of skills, commands, and cross-references |
 | `/validate-references` | Check for broken or stale references in documentation |
@@ -891,7 +891,7 @@ See [Architecture Overview](./resources/architecture-overview.md) for details.
 
 **Feature Development:**
 ```
-1. Read PRD:  Read .pi-project/prd/prd.md
+1. Read PRD:  Read .project/prd/prd.md
 2. Plan:      "Plan implementing X feature"
 3. Implement: "Implement the X feature"
 4. Test:      /ralph e2e-tests frontend
@@ -1218,7 +1218,7 @@ claude-base/
 ├── hooks/            # Git and Claude hooks
 ├── skills/           # Shared skills
 └── templates/        # Project templates
-    └── claude-project/  # .claude-project folder templates
+    └── claude-project/  # .project folder templates
 ```
 
 ### Related Repositories
@@ -1381,7 +1381,7 @@ Hooks are registered in the `hooks` object by event type:
         "hooks": [
           {
             "type": "command",
-            "command": "$CLAUDE_PROJECT_DIR/.pi-project/hooks/tsc-check.sh"
+            "command": "$CLAUDE_PROJECT_DIR/.project/hooks/tsc-check.sh"
           }
         ]
       }
@@ -1567,7 +1567,7 @@ Ralph is an autonomous workflow system that runs iterative tasks until completio
 │         │                                                                │
 │         ▼                                                                │
 │   ┌─────────────────┐                                                    │
-│   │ Load Status File │  ← .pi-project/plans/frontend/               │
+│   │ Load Status File │  ← .project/plans/frontend/               │
 │   │ & Skill          │    SCREEN_IMPLEMENTATION_STATUS.md                │
 │   └────────┬────────┘                                                    │
 │            │                                                             │

@@ -74,7 +74,7 @@ Which frontend project would you like to QA?
 After project selection, look for the screen implementation status file:
 
 ```
-.pi-project/plans/{project-name}/SCREEN_IMPLEMENTATION_STATUS.md
+.project/plans/{project-name}/SCREEN_IMPLEMENTATION_STATUS.md
 ```
 
 If the status file doesn't exist, ask the user to provide:
@@ -355,7 +355,7 @@ For each screen, evaluate these categories:
    └─> "Which project to QA?"
 
 3. Load Status File
-   └─> .pi-project/plans/{project}/SCREEN_IMPLEMENTATION_STATUS.md
+   └─> .project/plans/{project}/SCREEN_IMPLEMENTATION_STATUS.md
 
 4. Select Screen(s)
    └─> From status file OR direct file paths
@@ -442,7 +442,7 @@ After completing QA for a screen:
 If no status file exists for the project:
 1. Ask user for direct file paths (HTML and React)
 2. Or ask user to create/provide status file location
-3. Suggest using the template: `.pi-project/plans/frontend/SCREEN_IMPLEMENTATION_STATUS.template.md`
+3. Suggest using the template: `.project/plans/frontend/SCREEN_IMPLEMENTATION_STATUS.template.md`
 
 ### HTML File Not Found
 
@@ -487,4 +487,4 @@ Before completing any Design QA session, verify:
 ## See Also
 
 - [Design QA (Figma)](./design-qa-figma.md) - QA against Figma designs
-- [Screen Implementation Status Template](../../../.pi-project/plans/frontend/SCREEN_IMPLEMENTATION_STATUS.template.md) - Status tracking template
+- [Screen Implementation Status Template](../../../.project/plans/frontend/SCREEN_IMPLEMENTATION_STATUS.template.md) - Status tracking template

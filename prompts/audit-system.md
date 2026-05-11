@@ -47,7 +47,7 @@ Set variables:
 ```
 team_name = "audit-system"
 pi_dir = ".pi"
-report_dir = ".pi-project/status/audit"
+report_dir = ".project/status/audit"
 report_file = "${report_dir}/SYSTEM_AUDIT_REPORT.md"
 timestamp = current date/time
 ```

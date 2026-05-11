@@ -31,7 +31,7 @@ This single command will:
 3. Set up `.pi/` submodule with framework patterns
 4. Clone selected boilerplate repos
 5. Generate `docker-compose.yml`
-6. Create `.pi-project/` documentation structure
+6. Create `.project/` documentation structure
 7. Make initial commit
 
 **Done!** Your complete project is ready.
@@ -162,17 +162,17 @@ monkey-project/
 
 ---
 
-## What Happens to `.claude-project`?
+## What Happens to `.project`?
 
-The `.pi-project/` folder in this starter kit is **project-specific documentation** that:
+The `.project/` folder in this starter kit is **project-specific documentation** that:
 - Contains plans, memory, and project knowledge
 - Is NOT part of the `.claude` submodule system
 - Would be created fresh for your "Monkey" project
 
-For a new project, you would create your own `.pi-project/` structure:
+For a new project, you would create your own `.project/` structure:
 ```
 monkey-project/
-└── .pi-project/
+└── .project/
     ├── plans/              ← Implementation plans
     ├── memory/             ← Context for Claude
     └── docs/               ← Project documentation
@@ -197,7 +197,7 @@ monkey-project/
 | Best way to start a new project? | `/new-project` - does everything in one command |
 | Need just Claude config? | `/initialize-claude` |
 | Need just boilerplate code? | `/create-mono-repo` |
-| What about `.claude-project`? | `/new-project` creates it; otherwise create manually |
+| What about `.project`? | `/new-project` creates it; otherwise create manually |
 
 ---
 
@@ -232,7 +232,7 @@ mkdir monkey && cd monkey && git init
 # → Generates docker-compose.yml
 
 # 4. Create project docs manually
-mkdir -p .pi-project/{plans,memory,docs}
+mkdir -p .project/{plans,memory,docs}
 
 # 5. Initial commit
 git add . && git commit -m "Initial Monkey project setup"

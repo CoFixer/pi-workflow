@@ -139,7 +139,7 @@ Options:
 
 Based on user preference:
 - **Full/Quick**: Output directly in chat
-- **Save to file**: Write to `.pi-project/notes/youtube/[video-title].md`
+- **Save to file**: Write to `.project/notes/youtube/[video-title].md`
 - **Copy-friendly**: Output without markdown formatting
 
 ---

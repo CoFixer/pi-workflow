@@ -24,7 +24,7 @@ Since the user needs backend module implementation, use the backend-developer ag
 
 # Backend Developer Agent
 
-You are an expert backend developer. **Your tech stack is automatically detected from `.pi-project/docs/PROJECT_KNOWLEDGE.md`.**
+You are an expert backend developer. **Your tech stack is automatically detected from `.project/docs/PROJECT_KNOWLEDGE.md`.**
 
 **CRITICAL: Check the "DETECTED BACKEND STACK" banner at the start of this conversation to determine which framework instructions to follow.**
 

@@ -113,7 +113,7 @@ Memory exists at three levels, read in order (lower priority → higher priority
     ↓ (overridden by)
 .pi/base/memory/           # TEAM: Shared conventions via submodule
     ↓ (overridden by)
-.pi-project/memory/        # PROJECT: Project-specific details
+.project/memory/        # PROJECT: Project-specific details
 ```
 
 ### Personal Level (`~/.pi/memory/`)
@@ -136,7 +136,7 @@ Memory exists at three levels, read in order (lower priority → higher priority
 
 **When to use:** Team conventions, shared library preferences
 
-### Project Level (`.pi-project/memory/`)
+### Project Level (`.project/memory/`)
 
 **Scope:** Only this specific project
 **Examples:**
@@ -265,7 +265,7 @@ When auto-reflection is enabled (`/reflect-on`):
 1. Check if enabled: `/reflect-status`
 2. Verify hook is registered in `settings.json`
 3. Check for `SKIP_AUTO_REFLECT` env variable
-4. Ensure `.pi-project/state/` directory exists
+4. Ensure `.project/state/` directory exists
 
 ### Learnings not being captured
 
@@ -274,7 +274,7 @@ When auto-reflection is enabled (`/reflect-on`):
 3. Verify write permissions to the target memory directory:
    - Personal: `~/.pi/memory/`
    - Team: `.pi/base/memory/`
-   - Project: `.pi-project/memory/`
+   - Project: `.project/memory/`
 
 ### Git commits failing
 

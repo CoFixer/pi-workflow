@@ -187,7 +187,7 @@ Refer to these resources when designing database schemas and entities.
 - Check `.pi/docs/PROJECT_KNOWLEDGE.md` for business requirements
 - Reference `.pi/docs/PROJECT_API.md` for data needs of endpoints
 - Update `.pi/docs/PROJECT_DATABASE.md` with schema documentation
-- Review `.pi-project/docs/PROJECT_DATABASE.md` for comprehensive schema
+- Review `.project/docs/PROJECT_DATABASE.md` for comprehensive schema
 
 **Entity References:**
 - Review existing entities in `src/modules/*/entities/`

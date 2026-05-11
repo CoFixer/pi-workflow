@@ -39,7 +39,7 @@ For each item in the status file:
 
 ### Step 1: Read Feature Context
 
-Read the PRD section for this feature from `.pi-project/prd/`.
+Read the PRD section for this feature from `.project/prd/`.
 
 Extract:
 - Feature name and description
@@ -119,7 +119,7 @@ Rules:
 
 When the status file has no items, discover features from the PRD:
 
-1. Read all files in `.pi-project/prd/`
+1. Read all files in `.project/prd/`
 2. Extract distinct features/stories/modules
 3. Group by category (e.g., auth, payments, messaging, admin)
 4. Populate the status file with one row per feature
@@ -136,8 +136,8 @@ When the status file has no items, discover features from the PRD:
 
 ## Output
 
-- PRD files updated in-place at `.pi-project/prd/` (single source of truth)
-- Status file: `.pi-project/status/{project}/SPEC_STATUS.md`
+- PRD files updated in-place at `.project/prd/` (single source of truth)
+- Status file: `.project/status/{project}/SPEC_STATUS.md`
 - Completion promise: `<promise>SPEC_COMPLETE</promise>`
 
 ---

@@ -91,8 +91,8 @@ Before generating a new project, scan existing projects to avoid duplicates.
 
 **Scan directories:**
 ```bash
-ls .pi-project/training/*.md 2>/dev/null | xargs -I {} basename {} .md | cut -d'_' -f1 | sort -u
-ls .pi-project/prd/*.md 2>/dev/null | xargs -I {} basename {} .md | sed 's/_PRD_.*//' | sort -u
+ls .project/training/*.md 2>/dev/null | xargs -I {} basename {} .md | cut -d'_' -f1 | sort -u
+ls .project/prd/*.md 2>/dev/null | xargs -I {} basename {} .md | sed 's/_PRD_.*//' | sort -u
 ```
 
 **Store existing project names:**
@@ -369,11 +369,11 @@ Generate the output file matching the `/generate-prd` input format:
 
 **Create output directory:**
 ```bash
-mkdir -p .pi-project/training
+mkdir -p .project/training
 ```
 
 **Save file:**
-- Location: `.pi-project/training/`
+- Location: `.project/training/`
 - Filename format: `[ProjectName]_[YYMMDD_HHMMSS].md`
 - Sanitize project name: Replace spaces with underscores, remove special characters
 - Example: `HealthBridge_260115_143022.md`
@@ -401,7 +401,7 @@ Output a summary before triggering PRD generation. **Always display the full abs
 - **Dashboard:** [Yes / No]
 
 ### Output File
-**Full Path:** `/Users/dongsub/Documents/Potential/projects/claude-base/.pi-project/training/[filename].md`
+**Full Path:** `/Users/dongsub/Documents/Potential/projects/claude-base/.project/training/[filename].md`
 
 ### Next Step
 Triggering /generate-prd with the generated file...
@@ -416,23 +416,23 @@ Triggering /generate-prd with the generated file...
 After saving the file, automatically trigger the PRD generation using the **full absolute path** of the generated training file:
 
 ```
-/generate-prd /Users/dongsub/Documents/Potential/projects/claude-base/.pi-project/training/[filename].md
+/generate-prd /Users/dongsub/Documents/Potential/projects/claude-base/.project/training/[filename].md
 ```
 
 **Example with actual filename:**
 ```
-/generate-prd /Users/dongsub/Documents/Potential/projects/claude-base/.pi-project/training/HealthBridge_260115_143022.md
+/generate-prd /Users/dongsub/Documents/Potential/projects/claude-base/.project/training/HealthBridge_260115_143022.md
 ```
 
 **IMPORTANT:** Always use the complete absolute path when triggering `/generate-prd`. The path format is:
 ```
-[PROJECT_ROOT]/.pi-project/training/[ProjectName]_[YYMMDD_HHMMSS].md
+[PROJECT_ROOT]/.project/training/[ProjectName]_[YYMMDD_HHMMSS].md
 ```
 
 This will:
 1. Read the generated client questionnaire from the training file
 2. Generate a comprehensive PRD document
-3. Save the PRD to `.pi-project/prd/`
+3. Save the PRD to `.project/prd/`
 
 ---
 
@@ -441,15 +441,15 @@ This will:
 After `/generate-prd` completes successfully, convert the PRD markdown to PDF:
 
 ```
-/md-to-pdf .pi-project/prd/[ProjectName]_PRD_[YYMMDD].md
+/md-to-pdf .project/prd/[ProjectName]_PRD_[YYMMDD].md
 ```
 
 **Example:**
 ```
-/md-to-pdf .pi-project/prd/HealthBridge_Pro_PRD_260115.md
+/md-to-pdf .project/prd/HealthBridge_Pro_PRD_260115.md
 ```
 
-This creates a PDF at `.pi-project/prd/[ProjectName]_PRD_[YYMMDD].pdf`
+This creates a PDF at `.project/prd/[ProjectName]_PRD_[YYMMDD].pdf`
 
 ---
 
@@ -458,7 +458,7 @@ This creates a PDF at `.pi-project/prd/[ProjectName]_PRD_[YYMMDD].pdf`
 **File save error:**
 ```
 Error: Unable to save training project file.
-Please check write permissions for .pi-project/training/ directory.
+Please check write permissions for .project/training/ directory.
 ```
 
 ---
@@ -484,15 +484,15 @@ Running `/generate-random-project`:
 - **Dashboard:** Yes
 
 ### Output File
-**Full Path:** /Users/dongsub/Documents/Potential/projects/claude-base/.pi-project/training/HealthBridge_Pro_260115_143022.md
+**Full Path:** /Users/dongsub/Documents/Potential/projects/claude-base/.project/training/HealthBridge_Pro_260115_143022.md
 
 ### Next Step
 Triggering /generate-prd with the generated file...
 
-/generate-prd /Users/dongsub/Documents/Potential/projects/claude-base/.pi-project/training/HealthBridge_Pro_260115_143022.md
+/generate-prd /Users/dongsub/Documents/Potential/projects/claude-base/.project/training/HealthBridge_Pro_260115_143022.md
 
 ### PDF Generation
-/md-to-pdf .pi-project/prd/HealthBridge_Pro_PRD_260115.md
+/md-to-pdf .project/prd/HealthBridge_Pro_PRD_260115.md
 ```
 
 ---

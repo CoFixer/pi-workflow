@@ -1,7 +1,7 @@
 # Design Guidelines - {PROJECT_NAME}
 
 **Last Updated:** {DATE}
-**Source:** Extracted from HTML prototypes in `.pi-project/resources/HTML/`
+**Source:** Extracted from HTML prototypes in `.project/resources/HTML/`
 
 This document provides comprehensive design system guidelines extracted from your HTML prototypes. Use this as the single source of truth for maintaining design consistency across React components during HTML-to-React conversion.
 

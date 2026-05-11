@@ -35,7 +35,7 @@ export function updateIntegrationStatus(
 
     const statusFilePath = join(
         projectRoot,
-        `.pi-project/status/${app}/API_INTEGRATION_STATUS.md`
+        `.project/status/${app}/API_INTEGRATION_STATUS.md`
     );
 
     // Check if status file exists

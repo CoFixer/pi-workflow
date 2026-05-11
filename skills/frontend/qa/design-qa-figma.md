@@ -68,7 +68,7 @@ Output has been saved to /Users/.../.pi/projects/.../tool-results/mcp-figma-get_
 2. Ask User to Select Project → "Which project to QA?"
 
 3. Load Status File
-   → .pi-project/plans/{project}/SCREEN_IMPLEMENTATION_STATUS.md
+   → .project/plans/{project}/SCREEN_IMPLEMENTATION_STATUS.md
 
 4. Select Screen(s) → From status file OR Figma URL
 
@@ -96,7 +96,7 @@ ls -d frontend* 2>/dev/null
 
 Locate status file:
 ```
-.pi-project/plans/{project-name}/SCREEN_IMPLEMENTATION_STATUS.md
+.project/plans/{project-name}/SCREEN_IMPLEMENTATION_STATUS.md
 ```
 
 ---

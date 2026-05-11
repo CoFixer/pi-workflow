@@ -102,7 +102,7 @@ cat .pi/settings.json
 **Verify each hook file exists and is executable:**
 ```bash
 ls -la .pi/base/hooks/*.sh
-ls -la .pi-project/hooks/*.sh 2>/dev/null || echo "No project hooks"
+ls -la .project/hooks/*.sh 2>/dev/null || echo "No project hooks"
 ```
 
 **Expected:**
@@ -112,7 +112,7 @@ ls -la .pi-project/hooks/*.sh 2>/dev/null || echo "No project hooks"
 **If not executable and `--fix` requested:**
 ```bash
 chmod +x .pi/base/hooks/*.sh
-chmod +x .pi-project/hooks/*.sh 2>/dev/null
+chmod +x .project/hooks/*.sh 2>/dev/null
 ```
 
 ---

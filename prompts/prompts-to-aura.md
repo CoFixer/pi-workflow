@@ -331,7 +331,7 @@ If Download Site Files fails:
 ## Example Session
 
 ```
-User: /prompts-to-aura .pi-project/design-prompts/myproject-prompts.md
+User: /prompts-to-aura .project/design-prompts/myproject-prompts.md
 
 Claude:
 1. Parsing prompts file...

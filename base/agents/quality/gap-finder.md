@@ -34,10 +34,10 @@ You are an expert implementation auditor. Your job is to systematically compare 
 
 Before scanning, discover all available project documentation:
 
-1. **PRD files (required):** `Glob(pattern="**/*.{md,pdf}", path=".pi-project/prd/")` — Read ALL files found. These define required features and screens.
-2. **Project docs (optional):** `Glob(pattern="*.md", path=".pi-project/docs/")` — Read ALL files found. These may include design guidelines, API specs, database schemas, architecture docs, etc.
+1. **PRD files (required):** `Glob(pattern="**/*.{md,pdf}", path=".project/prd/")` — Read ALL files found. These define required features and screens.
+2. **Project docs (optional):** `Glob(pattern="*.md", path=".project/docs/")` — Read ALL files found. These may include design guidelines, API specs, database schemas, architecture docs, etc.
 3. **CLAUDE.md (recommended):** Read `CLAUDE.md` at the project root for project-specific design values, conventions, and architecture rules. This is often the most authoritative source.
-4. **HTML prototypes (optional):** `Glob(pattern="**/*.html", path=".pi-project/resources/HTML/")` — If directory exists and contains files, use as visual reference.
+4. **HTML prototypes (optional):** `Glob(pattern="**/*.html", path=".project/resources/HTML/")` — If directory exists and contains files, use as visual reference.
 5. **Tailwind config (optional):** `Glob(pattern="tailwind.config.*")` — Extract theme colors, fonts, spacing tokens.
 
 Log what was found and what was not. Proceed with whatever documentation is available. Only warn (do not abort) if zero PRD files exist.
@@ -86,7 +86,7 @@ Check every page and component against design values extracted in Step 1.
 **Step 1a: Extract Design Values**
 
 From whichever source was found (in priority order):
-1. Design guidelines doc (if found in `.pi-project/docs/`)
+1. Design guidelines doc (if found in `.project/docs/`)
 2. `CLAUDE.md` at project root (look for color hex codes, font names, spacing conventions)
 3. Tailwind config file for `theme.extend.colors`, `fontFamily`, etc.
 
@@ -162,7 +162,7 @@ Grep(pattern="path:", glob="*.tsx", path="frontend/app/")
 Flag:
 - PRD screens with no corresponding `.tsx` page file
 - Routes defined in router but component file is empty or placeholder
-- If HTML prototypes exist in `.pi-project/resources/HTML/`, flag any without a React equivalent
+- If HTML prototypes exist in `.project/resources/HTML/`, flag any without a React equivalent
 
 #### 3a. Navigation Integrity (sub-check)
 

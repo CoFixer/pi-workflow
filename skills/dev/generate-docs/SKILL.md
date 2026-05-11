@@ -5,7 +5,7 @@ description: Generate and update project documentation (PROJECT_KNOWLEDGE, PROJE
 
 # Project Documentation Writer
 
-Generate and maintain project documentation in `.pi-project/` folder based on PRD files.
+Generate and maintain project documentation in `.project/` folder based on PRD files.
 
 ---
 
@@ -13,7 +13,7 @@ Generate and maintain project documentation in `.pi-project/` folder based on PR
 
 This skill helps you:
 
-1. **Read PRD files** from `.pi-project/prd/`
+1. **Read PRD files** from `.project/prd/`
 2. **Generate documentation** for `docs/` and `plans/` folders
 3. **Keep docs in sync** with PRD changes
 4. **Create strategic plans** from project requirements
@@ -50,7 +50,7 @@ This skill helps you:
 
 ### Step 1: Locate PRD
 
-- Check `.pi-project/prd/` for PRD files
+- Check `.project/prd/` for PRD files
 - Support formats: PDF, Markdown (.md)
 - If no PRD found: Use AskUserQuestion to request PRD path or upload
 
@@ -74,10 +74,10 @@ Extract key sections:
 
 | Document | Target Path |
 |----------|-------------|
-| PROJECT_KNOWLEDGE.md | `.pi-project/docs/` |
-| PROJECT_DATABASE.md | `.pi-project/docs/` |
-| PROJECT_API.md | `.pi-project/docs/` |
-| Strategic plans | `.pi-project/plans/` |
+| PROJECT_KNOWLEDGE.md | `.project/docs/` |
+| PROJECT_DATABASE.md | `.project/docs/` |
+| PROJECT_API.md | `.project/docs/` |
+| Strategic plans | `.project/plans/` |
 | claude.md | Project root |
 
 **Note**: `claude.md` is generated **last** because it references/summarizes the other docs.
@@ -93,7 +93,7 @@ Extract key sections:
 ## Target Directory Structure
 
 ```
-.pi-project/
+.project/
 ├── prd/                    # Source: PRD files
 │   └── [ProjectName]_PRD.pdf
 ├── docs/                   # Target: Generated docs
@@ -186,7 +186,7 @@ Extract key sections:
 - Overview (name, type, status, description)
 - Tech Stack (table format)
 - Project Structure (ASCII tree)
-- Key Documentation (links to .pi-project/)
+- Key Documentation (links to .project/)
 - User Roles & Permissions
 - Core Enums
 - Development Conventions
@@ -234,10 +234,10 @@ Interactive section-by-section updates:
 
 ### Missing PRD Flow
 
-If no PRD found in `.pi-project/prd/`:
+If no PRD found in `.project/prd/`:
 
 ```
-No PRD found in .pi-project/prd/
+No PRD found in .project/prd/
 
 Please choose an option:
 1. Provide path to existing PRD file
@@ -269,7 +269,7 @@ Uses AskUserQuestion tool to gather PRD source.
 ```
 User: /project-doc-writer
 
-Claude: Checking .pi-project/prd/ for PRD files...
+Claude: Checking .project/prd/ for PRD files...
 Found: MyProject_PRD_v2.pdf
 
 Parsing PRD content...
@@ -295,7 +295,7 @@ Generating documentation...
 ✓ claude.md (180 lines)
 
 Files updated:
-- .pi-project/docs/ (3 files)
+- .project/docs/ (3 files)
 - ./claude.md (project root)
 ```
 
@@ -326,7 +326,7 @@ After generation, the skill validates:
 
 - **generate-prd**: Create PRD from client input
 - **pdf-to-prd**: Convert PDF PRD to markdown format
-- **init-workspace**: Initialize .pi-project folder structure
+- **init-workspace**: Initialize .project folder structure
 
 ---
 

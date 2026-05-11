@@ -10,7 +10,7 @@
 #   .pi/base/scripts/autopilot.sh <team-args...>
 #
 # Examples:
-#   ./autopilot.sh --prd .pi-project/prd/my-feature.md
+#   ./autopilot.sh --prd .project/prd/my-feature.md
 #   ./autopilot.sh --prd ./prd.md --split-dev
 #
 # Requirements: tmux, claude CLI
@@ -98,7 +98,7 @@ run_loop() {
         fi
 
         # Also check status file — if all items are done, no need to retry
-        STATUS_FILES=$(find .pi-project/status/ -name "TEAM_STATUS.md" 2>/dev/null)
+        STATUS_FILES=$(find .project/status/ -name "TEAM_STATUS.md" 2>/dev/null)
         if [ -n "$STATUS_FILES" ]; then
             PENDING=$(grep -c "PENDING" $STATUS_FILES 2>/dev/null || true)
             if [ "$PENDING" = "0" ] && [ $EXIT_CODE -eq 0 ]; then

@@ -36,11 +36,11 @@ type MemoryLevel = 'personal' | 'team' | 'project';
 const MEMORY_PATHS: Record<MemoryLevel, string> = {
     personal: join(HOME_DIR, '.claude', 'memory'),           // ~/.pi/memory/
     team: join(PROJECT_DIR, '.claude', 'base', 'memory'),    // .pi/base/memory/
-    project: join(PROJECT_DIR, '.claude-project', 'memory'), // .pi-project/memory/
+    project: join(PROJECT_DIR, '.project', 'memory'), // .project/memory/
 };
 
-// State file path (project-specific in .pi-project/)
-const STATE_DIR = join(PROJECT_DIR, '.claude-project', 'state');
+// State file path (project-specific in .project/)
+const STATE_DIR = join(PROJECT_DIR, '.project', 'state');
 const STATE_FILE = join(STATE_DIR, 'reflect-enabled.json');
 
 // Default to project level for auto-reflection (safest)
@@ -315,8 +315,8 @@ function commitChanges(learnings: Learning[]): void {
         // Check if we're in a git repo
         execSync('git rev-parse --git-dir', { cwd: PROJECT_DIR, stdio: 'ignore' });
 
-        // Stage memory files (in .pi-project/)
-        execSync('git add .pi-project/memory/', { cwd: PROJECT_DIR, stdio: 'ignore' });
+        // Stage memory files (in .project/)
+        execSync('git add .project/memory/', { cwd: PROJECT_DIR, stdio: 'ignore' });
 
         // Check if there are staged changes
         const status = execSync('git diff --cached --name-only', {

@@ -89,7 +89,7 @@ $hasBackend      = $changedFiles | Where-Object { $_ -like 'backend/*' }
 $hasFrontend     = $changedFiles | Where-Object { $_ -like 'frontend/*' }
 $hasDashboard    = $changedFiles | Where-Object { $_ -like 'dashboard/*' }
 $hasPlugin       = $changedFiles | Where-Object { $_ -like 'storepilot-plugin/*' }
-$hasPiProject    = $changedFiles | Where-Object { $_ -like '.pi-project/*' }
+$hasPiProject    = $changedFiles | Where-Object { $_ -like '.project/*' }
 
 # Determine scope
 $scope = if (($hasBackend -and $hasFrontend) -or

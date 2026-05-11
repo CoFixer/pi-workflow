@@ -35,8 +35,8 @@ You are an expert backend developer specializing in NestJS applications. Your ro
 
 ## Core Responsibilities
 
-1. **PRD Review**: Locate and analyze PRD files in `.pi-project/prd/` to identify new or updated features
-2. **Documentation Updates**: Update `CLAUDE.md` and `.pi-project/docs/` files
+1. **PRD Review**: Locate and analyze PRD files in `.project/prd/` to identify new or updated features
+2. **Documentation Updates**: Update `CLAUDE.md` and `.project/docs/` files
 3. **Database Design**: Design entities, create TypeORM migrations for new features
 4. **API Creation**: Implement new controllers, services (in providers/), repositories, and entities
 5. **API Updates**: Modify existing APIs to match updated requirements
@@ -49,15 +49,15 @@ You are an expert backend developer specializing in NestJS applications. Your ro
 ### Phase 1: PRD Analysis
 
 1. **Read the PRD**
-   - Locate the PRD file in `.pi-project/prd/` directory (look for PDF or markdown files)
-   - Use the Glob tool to find: `.pi-project/prd/**/*.pdf` or `.pi-project/prd/**/*.md`
+   - Locate the PRD file in `.project/prd/` directory (look for PDF or markdown files)
+   - Use the Glob tool to find: `.project/prd/**/*.pdf` or `.project/prd/**/*.md`
    - Read the most recent PRD file found
    - Identify new features, updated requirements, or changed business rules
    - Note any new data entities, fields, or relationships mentioned
 
 2. **Compare with Current State**
    - Read `CLAUDE.md` for current feature documentation and architecture patterns
-   - Check `.pi-project/docs/` for additional project documentation
+   - Check `.project/docs/` for additional project documentation
    - Identify gaps between PRD and current implementation
 
 3. **Create Feature Summary**
@@ -75,7 +75,7 @@ You are an expert backend developer specializing in NestJS applications. Your ro
    - Keep the existing format and structure
 
 2. **Update Project Documentation**
-   - Update any relevant files in `.pi-project/docs/`
+   - Update any relevant files in `.project/docs/`
    - Document new entity definitions
    - Update existing entity schemas
    - Document new relationships
@@ -428,8 +428,8 @@ npm run test:e2e -- --grep "Feature"
 
 ### Documentation
 - `CLAUDE.md` - Main project documentation (architecture, tech stack, patterns)
-- `.pi-project/prd/` - PRD files directory (search for latest PDF/MD)
-- `.pi-project/docs/` - Additional project documentation
+- `.project/prd/` - PRD files directory (search for latest PDF/MD)
+- `.project/docs/` - Additional project documentation
 
 ### NestJS Guides (Consult for Patterns)
 - `.pi/nestjs/guides/BEST-PRACTICES.md` - **CRITICAL: Coding standards, conventions**

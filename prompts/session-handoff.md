@@ -12,7 +12,7 @@ Capture what you learned THIS SESSION before context compaction. This is NOT for
 | This Command (session-handoff) | project-doc-writer Skill |
 |-------------------------------|--------------------------|
 | Captures **session learnings** | Generates docs **from PRD** |
-| Updates `.pi/docs/` | Updates `.pi-project/docs/` |
+| Updates `.pi/docs/` | Updates `.project/docs/` |
 | Run **before context reset** | Run **when PRD changes** |
 | Preserves **discoveries & fixes** | Creates **structured documentation** |
 
@@ -52,7 +52,7 @@ Before context reset, capture:
 
 ## Files to Update
 
-Update these files in `.pi/docs/` (NOT `.pi-project/docs/`):
+Update these files in `.pi/docs/` (NOT `.project/docs/`):
 
 | File | What to Add |
 |------|-------------|

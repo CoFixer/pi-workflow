@@ -61,7 +61,7 @@ $ARGUMENTS
 #### Detection Logic
 
 ```
-1. Glob: .pi-project/status/*/SCREEN_IMPLEMENTATION_STATUS.md
+1. Glob: .project/status/*/SCREEN_IMPLEMENTATION_STATUS.md
 2. If found:
    a. Read the status file
    b. Check if entries contain Figma node IDs (pattern: digits:digits)
@@ -78,7 +78,7 @@ $ARGUMENTS
 **Available when:**
 - YAML story files exist:
   ```
-  .pi-project/user_stories/*.yaml
+  .project/user_stories/*.yaml
   ```
 
 ### Validation
@@ -91,7 +91,7 @@ No QA scopes available.
 
 - Design (Figma): Needs SCREEN_IMPLEMENTATION_STATUS.md with Figma node IDs
 - Design (HTML): Needs HTML prototype files in prototypes/ or designs/
-- Acceptance: Needs .pi-project/user_stories/*.yaml files
+- Acceptance: Needs .project/user_stories/*.yaml files
 ```
 
 ---
@@ -178,7 +178,7 @@ After all scopes complete, display:
 | Scope partially fails | Report failures, continue other scopes |
 | `playwright-cli` not installed | Show: `npm install -g @playwright/cli@latest` |
 | Figma MCP not responding | Show: "Ensure Figma desktop app is running with the file open" |
-| No YAML stories found | Show: "Create stories in .pi-project/user_stories/*.yaml" |
+| No YAML stories found | Show: "Create stories in .project/user_stories/*.yaml" |
 | Servers not running | Show: "Start dev servers before running acceptance tests" |
 
 ---

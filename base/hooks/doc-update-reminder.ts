@@ -35,37 +35,37 @@ interface DocMapping {
 const DOC_MAPPINGS: DocMapping[] = [
     {
         pattern: /backend\/src\/.*\.controller\.ts$/,
-        docFile: '.pi-project/status/backend/API_IMPLEMENTATION_STATUS.md',
+        docFile: '.project/status/backend/API_IMPLEMENTATION_STATUS.md',
         category: 'backend-api',
         description: 'Backend API controller',
     },
     {
         pattern: /backend\/src\/.*\.entity\.ts$/,
-        docFile: '.pi-project/status/backend/API_IMPLEMENTATION_STATUS.md',
+        docFile: '.project/status/backend/API_IMPLEMENTATION_STATUS.md',
         category: 'backend-entity',
         description: 'Backend entity',
     },
     {
         pattern: /frontend\/app\/pages\/.*\.tsx$/,
-        docFile: '.pi-project/status/frontend/SCREEN_IMPLEMENTATION_STATUS.md',
+        docFile: '.project/status/frontend/SCREEN_IMPLEMENTATION_STATUS.md',
         category: 'frontend-screen',
         description: 'Frontend screen/page',
     },
     {
         pattern: /frontend\/app\/services\/.*\.ts$/,
-        docFile: '.pi-project/status/frontend/API_INTEGRATION_STATUS.md',
+        docFile: '.project/status/frontend/API_INTEGRATION_STATUS.md',
         category: 'frontend-api',
         description: 'Frontend API service',
     },
     {
         pattern: /frontend-dashboard\/app\/pages\/.*\.tsx$/,
-        docFile: '.pi-project/status/frontend-dashboard/SCREEN_IMPLEMENTATION_STATUS.md',
+        docFile: '.project/status/frontend-dashboard/SCREEN_IMPLEMENTATION_STATUS.md',
         category: 'dashboard-screen',
         description: 'Dashboard screen/page',
     },
     {
         pattern: /frontend-dashboard\/app\/services\/.*\.ts$/,
-        docFile: '.pi-project/status/frontend-dashboard/API_INTEGRATION_STATUS.md',
+        docFile: '.project/status/frontend-dashboard/API_INTEGRATION_STATUS.md',
         category: 'dashboard-api',
         description: 'Dashboard API service',
     },

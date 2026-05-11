@@ -40,7 +40,7 @@ Automatically activates when you mention:
 
 | # | Phase | Tier | Prerequisites | Output |
 |---|-------|------|---------------|--------|
-| 1 | init | base | - | .pi-project/, .pi/ |
+| 1 | init | base | - | .project/, .pi/ |
 | 2 | prd | backend | init | PROJECT_KNOWLEDGE.md |
 | 3 | database | backend | prd | Entities, migrations |
 | 4 | backend | backend | database | API endpoints |

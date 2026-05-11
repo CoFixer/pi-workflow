@@ -11,8 +11,8 @@ Show the current status of the reflection system including auto-reflection state
 
 ## What To Check
 
-1. Read `.pi-project/state/reflect-enabled.json` for enabled status
-2. Count entries in `.pi-project/memory/LEARNINGS.md`
+1. Read `.project/state/reflect-enabled.json` for enabled status
+2. Count entries in `.project/memory/LEARNINGS.md`
 3. Check if PREFERENCES.md and CORRECTIONS.md exist
 4. Show recent git commits with "reflect" in message
 
@@ -20,7 +20,7 @@ Show the current status of the reflection system including auto-reflection state
 
 ## Step 1: Check Auto-Reflection State
 
-Read `.pi-project/state/reflect-enabled.json`:
+Read `.project/state/reflect-enabled.json`:
 
 ```json
 {
@@ -36,7 +36,7 @@ If file doesn't exist, report as "Not configured (disabled by default)".
 
 ## Step 2: Count Memory Entries
 
-For each memory file in `.pi-project/memory/`:
+For each memory file in `.project/memory/`:
 
 **LEARNINGS.md:**
 - Count entries by counting `### ` headings after "## Entries"
@@ -76,7 +76,7 @@ Total Auto-Reflections: [count]
 
 ---
 
-Memory Files (.pi-project/memory/):
+Memory Files (.project/memory/):
 
   LEARNINGS.md      [X entries | Not created]
   PREFERENCES.md    [X entries | Not created]
@@ -115,7 +115,7 @@ Total Auto-Reflections: 5
 
 ---
 
-Memory Files (.pi-project/memory/):
+Memory Files (.project/memory/):
 
   LEARNINGS.md      12 entries
   PREFERENCES.md    3 entries

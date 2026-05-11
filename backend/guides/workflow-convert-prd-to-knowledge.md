@@ -1,6 +1,6 @@
 # PRD to PROJECT_KNOWLEDGE Converter
 
-Convert a Product Requirements Document (PRD) PDF into structured `.pi-project/docs/PROJECT_KNOWLEDGE.md` documentation.
+Convert a Product Requirements Document (PRD) PDF into structured `.project/docs/PROJECT_KNOWLEDGE.md` documentation.
 
 ---
 
@@ -37,7 +37,7 @@ This resource guides the transformation of `prd.pdf` (located in the project roo
 ## Prerequisites
 
 - `prd.pdf` must exist in the project root directory
-- Write access to `.pi-project/docs/PROJECT_KNOWLEDGE.md`
+- Write access to `.project/docs/PROJECT_KNOWLEDGE.md`
 
 ---
 
@@ -102,7 +102,7 @@ Collect all "Rules" subsections from the PRD, including:
 Read the current PROJECT_KNOWLEDGE.md to preserve the Architecture Overview section:
 
 ```
-Read .pi-project/docs/PROJECT_KNOWLEDGE.md
+Read .project/docs/PROJECT_KNOWLEDGE.md
 ```
 
 Extract and preserve:
@@ -116,7 +116,7 @@ Extract and preserve:
 
 ### Step 4: Generate PROJECT_KNOWLEDGE.md
 
-Write the complete file to `.pi-project/docs/PROJECT_KNOWLEDGE.md` using the template below.
+Write the complete file to `.project/docs/PROJECT_KNOWLEDGE.md` using the template below.
 
 ---
 

@@ -39,7 +39,7 @@
 ├── mobile/               # React Native mobile app
 [endif]
 ├── .pi/              # Claude configuration & skills
-├── .pi-project/      # Project documentation
+├── .project/      # Project documentation
 └── docker-compose.yml    # Service orchestration
 ```
 
@@ -113,10 +113,10 @@ npm run migration:run
 ## Documentation
 
 - **Quick Reference**: See [CLAUDE.md](CLAUDE.md) for Claude context
-- **Full Documentation**: See `.pi-project/docs/`
-  - [PROJECT_KNOWLEDGE.md](.pi-project/docs/PROJECT_KNOWLEDGE.md) - Architecture
-  - [PROJECT_API.md](.pi-project/docs/PROJECT_API.md) - API specs
-  - [PROJECT_DATABASE.md](.pi-project/docs/PROJECT_DATABASE.md) - Database schema
+- **Full Documentation**: See `.project/docs/`
+  - [PROJECT_KNOWLEDGE.md](.project/docs/PROJECT_KNOWLEDGE.md) - Architecture
+  - [PROJECT_API.md](.project/docs/PROJECT_API.md) - API specs
+  - [PROJECT_DATABASE.md](.project/docs/PROJECT_DATABASE.md) - Database schema
 
 ## Project Structure
 
@@ -194,7 +194,7 @@ This project uses [Claude Code](https://claude.ai) for AI-assisted development w
 ├── templates/              # Project templates
 └── settings.json           # Configuration
 
-.pi-project/            # What Claude knows (project-specific)
+.project/            # What Claude knows (project-specific)
 ├── docs/                   # Technical documentation
 ├── memory/                 # Project memory (decisions, learnings, preferences)
 ├── prd/                    # Product requirements
@@ -208,7 +208,7 @@ Claude maintains persistent context across sessions at three levels:
 | Level | Location | Purpose |
 |-------|----------|---------|
 | Team | `.pi/memory/` | Shared patterns and corrections across all projects |
-| Project | `.pi-project/memory/` | Project-specific decisions, learnings, preferences |
+| Project | `.project/memory/` | Project-specific decisions, learnings, preferences |
 | Agent | `.pi/agent-memory/` | Per-agent state and knowledge |
 
 For full documentation, see [.pi/README.md](.pi/README.md).

@@ -97,7 +97,7 @@ Extract from ticket:
 
 ### 2A.6. Update Project Documentation
 
-After implementing the fix, review whether any `.pi-project/docs/` files need updating based on the changes made:
+After implementing the fix, review whether any `.project/docs/` files need updating based on the changes made:
 
 - **`PROJECT_API.md`** — If new API endpoints were added or existing ones modified
 - **`PROJECT_DATABASE.md`** — If database entities, columns, or relations were added or changed
@@ -133,7 +133,7 @@ Process all project tickets from Notion sequentially with status tracking and re
 
 ### 2B.1. Read Status File
 
-Read existing status from `.pi-project/status/tickets/TICKET_STATUS.md`:
+Read existing status from `.project/status/tickets/TICKET_STATUS.md`:
 - If file exists → parse the Item Tracking table to get ticket statuses
 - If not → will be created after fetching tickets
 
@@ -372,7 +372,7 @@ curl -s -X PATCH "https://api.notion.com/v1/pages/[PAGE_ID]" \
 
 ## Status File
 
-**Path:** `.pi-project/status/tickets/TICKET_STATUS.md`
+**Path:** `.project/status/tickets/TICKET_STATUS.md`
 
 This file tracks ticket processing across runs. It follows the Ralph status file format.
 

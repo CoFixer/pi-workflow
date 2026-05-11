@@ -192,9 +192,9 @@ if stack == "all":
 # Special case: fix-tickets uses nested skill path
 if workflow == "fix-tickets":
     skill_path = .pi/skills/notion-ticket-reviewer/prompts/batch-fix.md
-    status_path = .pi-project/status/tickets/TICKET_STATUS.md
+    status_path = .project/status/tickets/TICKET_STATUS.md
 
-status_path = .pi-project/status/{project}/{status_file}
+status_path = .project/status/{project}/{status_file}
 ```
 
 ### Step 4: Load Skill Content
@@ -217,7 +217,7 @@ Generate the prompt for `/ralph-loop`:
 ## Context
 - Project: {PROJECT}
 - Skill: .pi/{STACK}/skills/{SKILL}
-- Status File: .pi-project/status/{PROJECT}/{STATUS_FILE}
+- Status File: .project/status/{PROJECT}/{STATUS_FILE}
 
 ## Instructions
 
@@ -282,7 +282,7 @@ Project: {project}
 Stack: {stack}
 
 Skill Path: .pi/{stack}/skills/{skill}
-Status File: .pi-project/status/{project}/{status_file}
+Status File: .project/status/{project}/{status_file}
 
 Completion Promise: {completion_promise}
 Max Iterations: {max_iterations}
